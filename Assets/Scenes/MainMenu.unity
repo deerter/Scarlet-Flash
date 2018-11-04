@@ -989,12 +989,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 587306145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c22836d587b82464cb13940ec77d255c, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a6f68ec79a563749b6d4cfd9fec9e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   eventSystem: {fileID: 465893858}
   firstObject: {fileID: 1531010444}
-  selectedObject: {fileID: 1811643485}
+  selectedObject: {fileID: 0}
 --- !u!1 &669241101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1400,15 @@ MonoBehaviour:
   eventSystem: {fileID: 465893858}
   firstObject: {fileID: 1361269853}
   selectedObject: {fileID: 0}
+  buttonSelected: 0
+  lastInputTime: 0
+  sequence:
+  - D
+  - DR
+  - R
+  - LP
+  i: 0
+  acceptableTime: 0.5
 --- !u!1 &1361269853
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1507,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 587306150}
+      - m_Target: {fileID: 0}
         m_MethodName: selectObject
         m_Mode: 1
         m_Arguments:
@@ -2246,6 +2255,15 @@ MonoBehaviour:
   eventSystem: {fileID: 465893858}
   firstObject: {fileID: 0}
   selectedObject: {fileID: 2100652841}
+  buttonSelected: 0
+  lastInputTime: 0
+  sequence:
+  - D
+  - DR
+  - R
+  - LP
+  i: 0
+  acceptableTime: 0.5
 --- !u!1001 &1891573530
 Prefab:
   m_ObjectHideFlags: 0
