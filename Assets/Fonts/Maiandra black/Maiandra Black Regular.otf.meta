@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f6bdcdd8763c60d4b80b8a4914bd7711
+timeCreated: 1541429995
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Maiandra Black
+  fontNames:
+  - Maiandra Black
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

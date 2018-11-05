@@ -8,12 +8,12 @@ public class SelectOnInput : MonoBehaviour {
 	public GameObject firstObject;
 	public GameObject selectedObject;
 	private bool buttonSelected;
-	private double lastInputTime;
-	string sequenceQCF = "D DR R LP ";
-    string sequenceShoryuken = "R D R DR LP R";
-    string sequence = "";
-	int i = 0;
-	double acceptableTime = 0.4;
+	//private double lastInputTime;
+	//string sequenceQCF = "D DR R LP ";   //Needs a last space character
+    //string sequenceShoryuken = "R D R DR R LP ";  //Needs a last space character
+    //string sequence = "";
+	//int i = 0;
+	//double acceptableTime = 0.4;
 
 
 	// Use this for initialization
@@ -24,9 +24,9 @@ public class SelectOnInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        addToString();
-		specialMoveQCF ();
-        shoryuken();
+        //addToString();
+		//specialMoveQCF ();
+        //shoryuken();
 		/*if (Input.GetKeyDown("up")) {
 			eventSystem.SetSelectedGameObject (selectedObject);
 		}*/
@@ -45,7 +45,7 @@ public class SelectOnInput : MonoBehaviour {
 		eventSystem.SetSelectedGameObject (firstObject);
 	}
 
-	private void addToString(){
+	/*private void addToString(){
         if (sequence == "" || Time.time - lastInputTime < acceptableTime)
         {
             if (Input.GetKeyDown(GameConstants.D))
@@ -80,16 +80,16 @@ public class SelectOnInput : MonoBehaviour {
             //print("2 " + sequence);
         }
 
-	}
+	}*/
 
-	private void specialMoveQCF (){
+	/*private void specialMoveQCF (){
         print(sequence);
 		if (sequence == sequenceQCF)
         {
             print("Hadoooooken");
         }
 
-		/*if (i == 0 || Time.time - lastInputTime < acceptableTime) {
+		if (i == 0 || Time.time - lastInputTime < acceptableTime) {
 		if (Input.GetKey (sequenceQCF [i])) {
 				i++;
 				lastInputTime = Time.time;
@@ -100,16 +100,17 @@ public class SelectOnInput : MonoBehaviour {
 			}
 		} else {
 			i = 0;
-		}*/
-	}
+		}
+	}*/
 
-    private void shoryuken()
+    /*private void shoryuken()
     {
+        print(sequence);
         if (sequence == sequenceShoryuken)
         {
             print("Shooooryuken");
         }
-    }
+    }*/
 
 	/*private void OnDisable(){
 		buttonSelected = false;

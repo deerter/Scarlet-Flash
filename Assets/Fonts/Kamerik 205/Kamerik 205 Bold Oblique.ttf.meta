@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 255b2d1469d5b08459d12d5f5d1c286b
+timeCreated: 1541429994
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Kamerik205
+  fontNames:
+  - Kamerik205
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
