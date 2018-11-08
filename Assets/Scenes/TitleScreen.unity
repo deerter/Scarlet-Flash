@@ -123,9 +123,7 @@ GameObject:
   - component: {fileID: 47217001}
   - component: {fileID: 47217003}
   - component: {fileID: 47217002}
-  - component: {fileID: 47217004}
   - component: {fileID: 47217005}
-  - component: {fileID: 47217006}
   m_Layer: 5
   m_Name: Press Start
   m_TagString: Untagged
@@ -193,24 +191,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 2045692277}
   m_GameObject: {fileID: 47217000}
---- !u!95 &47217004
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 95366267358220312, guid: b978afd6799a7d744af36d6e7c61233b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2045692277}
-  m_GameObject: {fileID: 47217000}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e01def5ced9c6074f89bffe9b5cf5ab5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!225 &47217005
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -223,17 +203,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &47217006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 47217000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0eaf71139a5d1498d1cbdf368a0760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &722279686
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +213,7 @@ GameObject:
   - component: {fileID: 722279687}
   - component: {fileID: 722279689}
   - component: {fileID: 722279688}
+  - component: {fileID: 722279690}
   m_Layer: 5
   m_Name: Subtitle
   m_TagString: Untagged
@@ -308,6 +278,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 722279686}
+--- !u!225 &722279690
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 722279686}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &752876401
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +300,8 @@ GameObject:
   - component: {fileID: 752876404}
   - component: {fileID: 752876403}
   - component: {fileID: 752876402}
+  - component: {fileID: 752876406}
+  - component: {fileID: 752876407}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -403,6 +386,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &752876406
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752876401}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e01def5ced9c6074f89bffe9b5cf5ab5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &752876407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752876401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0eaf71139a5d1498d1cbdf368a0760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1247448353
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +684,18 @@ Prefab:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 225001237343109724, guid: b978afd6799a7d744af36d6e7c61233b,
+        type: 2}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95366267358220312, guid: b978afd6799a7d744af36d6e7c61233b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: b978afd6799a7d744af36d6e7c61233b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2127878706

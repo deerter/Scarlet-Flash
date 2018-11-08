@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.EventSystems;
 
 public class SelectOnInput : MonoBehaviour {
 	public EventSystem eventSystem;
-	public GameObject firstObject;
-	public GameObject selectedObject;
-	private bool buttonSelected;
+    public GameObject lastObject;
+	//private bool buttonSelected;
 	//private double lastInputTime;
 	//string sequenceQCF = "D DR R LP ";   //Needs a last space character
     //string sequenceShoryuken = "R D R DR R LP ";  //Needs a last space character
@@ -24,6 +24,7 @@ public class SelectOnInput : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //if (eventSystem.currentSelectedGameObject == lastObject)   //Para saber el objeto actualmente seleccionado
         //addToString();
 		//specialMoveQCF ();
         //shoryuken();
@@ -39,10 +40,6 @@ public class SelectOnInput : MonoBehaviour {
 			eventSystem.SetSelectedGameObject (selectedObject);
 			buttonSelected = true;
 		}*/
-	}
-
-	public void selectObject (){
-		eventSystem.SetSelectedGameObject (firstObject);
 	}
 
 	/*private void addToString(){

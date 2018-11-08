@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonPressed : MonoBehaviour {
     private Animator animator;
@@ -17,4 +18,14 @@ public class ButtonPressed : MonoBehaviour {
             animator.SetTrigger("ButtonPressed");
         }
 	}
+
+    public void FadeToBlack()
+    {
+        animator.SetTrigger("FadeToBlack");
+    }
+
+    public void LoadByIndex(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
+    }
 }
