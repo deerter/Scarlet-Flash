@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage[legalpaper, margin=0.5in]{geometry}
+
+\begin{document}
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{24cm}{c|c|c|c|c|c|c|c|c|c}
+      \textbf{Timer} & \textbf{Team} & \textbf{Distance} & \textbf{Character state} & \textbf{Character health} & \textbf{Red health} & \textbf{Trap in the field} & \textbf{} & \textbf{Behaviour}\\
+      \hline
+      X & X & \makecell{Mid-screen} & X & X & X & No & & \makecell{- Block \\ - Advancing guard \\ - Jump backwards}\\
+      \hline
+      X & X & \makecell{Mid-screen} & X & X & X & Yes & & \makecell{- Block \\ - Advancing guard}\\
+      \hline
+      X & X & \makecell{Poke-range \\ In-close} & X & X & X & X & & \makecell{- Block \\ - Advancing guard}\\
+      \hline
+  \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+
+\end{document}

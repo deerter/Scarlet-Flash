@@ -1,0 +1,28 @@
+\documentclass{article}
+
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage[legalpaper, margin=0.5in]{geometry}
+
+\begin{document}
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{22cm}{c|c|c|c}
+      \textbf{Character health} & \textbf{Change time expired} & \textbf{} & \textbf{Behaviour}\\
+      \hline
+      Point character's health $<$ 2nd character's health $>$ 3rd character's health & Yes & & - Change to second character\\
+      \hline
+      Point character's health $<$ 2nd character's health $<$ 3rd character's health & Yes & & - Change to third character\\
+      \hline
+        \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+\end{document}

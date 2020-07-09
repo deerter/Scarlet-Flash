@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage[legalpaper, margin=0.5in]{geometry}
+
+\begin{document}
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{24cm}{c|c|c|c|c|c|c|c|c}
+      \textbf{Timer} & \textbf{Team} & \textbf{Distance} & \textbf{Character state} & \textbf{Character health} & \textbf{Red health} & \textbf{Trap in the field} & \textbf{} & \textbf{Behaviour}\\
+      \hline
+      \makecell{$>$ 20 sec \\ $\infty$} & \makecell {Own: 3 \\ Own: 2} & Full-screen & Own: Stand / Rival: Stand & \makecell {Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & No & & \makecell{- Use projectile \\ - Move forwards \\ - Dash forwards \\ - Jump forwards \\ - Use taunt}\\
+      \hline
+      \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & Full-screen & Own: Stand / Rival: Stand & \makecell{Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & No & & \makecell{- Move backwards \\ - Dash backwards \\ - Use projectile \\ - Jump backwards \\ - Block \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & Full-screen & Own: Stand / Rival: Stand & Rival life $>$ Own life & X & No & & \makecell{- Use projectile \\ - Move forwards \\ - Dash forwards \\ - Jump forwards}\\
+     \hline
+     $<$ 20 sec & X & Full-screen & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & No & & \makecell{- Move backwards \\ - Dash backwards \\ - Use projectile \\ - Jump backwards \\ - Block \\ - Use taunt \\ - Advancing guard}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell {Own: 3 \\ Own: 2} & Full-screen & Own: Stand / Rival: Stand & \makecell {Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & Yes & & \makecell{- Use projectile \\  - Use taunt}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & Full-screen & Own: Stand / Rival: Stand & \makecell{Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & Full-screen & Own: Stand / Rival: Stand & Rival life $>$ Own life & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & Full-screen & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Use taunt \\ - Advancing guard}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell {Own: 3 \\ Own: 2} & Mid-screen & Own: Stand / Rival: Stand & \makecell {Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & No & & \makecell{- Use projectile \\ - Move forwards \\ - Dash forwards \\ - Jump forwards \\ - Use taunt \\ - Use mid-screen attack}\\
+     \hline
+  \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{24cm}{c|c|c|c|c|c|c|c|c}
+    \textbf{Timer} & \textbf{Team} & \textbf{Distance} & \textbf{Character state} & \textbf{Character health} & \textbf{Red health} & \textbf{Trap in the field} & \textbf{} & \textbf{Behaviour}\\
+    \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & Mid-screen & Own: Stand / Rival: Stand & \makecell{Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & No & & \makecell{- Move backwards \\ - Dash backwards \\ - Use projectile \\ - Jump backwards \\ - Block \\ - Advancing guard \\ - Use mid-screen attack}\\
+     \hline
+     $<$ 20 sec & X & Mid-screen & Own: Stand / Rival: Stand & Rival life $>$ Own life & X & No & & \makecell{- Use projectile \\ - Move forwards \\ - Dash forwards \\ - Jump forwards \\ - Use mid-screen attack}\\
+     \hline
+     $<$ 20 sec & X & Mid-screen & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & No & & \makecell{- Move backwards \\ - Dash backwards \\ - Use projectile \\ - Jump backwards \\ - Block \\ - Use taunt \\ - Advancing guard \\ - Use mid-screen attack}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell {Own: 3 \\ Own: 2} & Mid-screen & Own: Stand / Rival: Stand & \makecell {Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & Yes & & \makecell{- Use projectile \\  - Use taunt \\ - Use mid-screen attack}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & Mid-screen & Own: Stand / Rival: Stand & \makecell{Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Advancing guard \\ - Use mid-screen attack}\\
+     \hline
+     $<$ 20 sec & X & Mid-screen & Own: Stand / Rival: Stand & Rival life $>$ Own life & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Advancing guard \\ - Use mid-screen attack}\\
+     \hline
+     $<$ 20 sec & X & Mid-screen & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & Yes & & \makecell{- Use projectile \\ - Block \\ - Use taunt \\ - Advancing guard \\ - Use mid-screen attack}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2} & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & \makecell {Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & X & & \makecell{- Start combo \\ - Use projectile \\ - Use taunt \\ - Block \\ - Advancing guard \\ - Use throw}\\
+     \hline
+ \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{24cm}{c|c|c|c|c|c|c|c|c}
+    \textbf{Timer} & \textbf{Team} & \textbf{Distance} & \textbf{Character state} & \textbf{Character health} & \textbf{Red health} & \textbf{Trap in the field} & \textbf{} & \textbf{Behaviour}\\
+    \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & \makecell {Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & No & & \makecell{- Start combo \\ - Use projectile \\ - Dash backwards \\ - Move backwards \\ - Jump backwards\\ 
+     - Block \\ - Advancing guard \\ - Use throw}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & \makecell {Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & Yes & & \makecell{- Start combo \\ - Use projectile \\ - Block \\ - Advancing guard \\ - Use throw}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & Rival life $>$ Own life & X & X & & \makecell{- Start combo \\ - Use projectile \\ - Block \\ - Advancing guard \\ - Use throw}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & No & & \makecell{- Start combo \\ - Use projectile \\ - Block \\ - Advancing guard \\ - Use throw \\ - Dash backwards \\ - Move backwards \\ - Jump backwards \\ - Use taunt}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Poke-range \\ In-close} & Own: Stand / Rival: Stand & Rival life $<$ Own life & X & Yes & & \makecell{- Start combo \\ - Use projectile \\ - Block \\ - Advancing guard \\ - Use throw \\ - Use taunt}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2} & \makecell{Full-screen \\ Mid-screen} & Own: Jump / Rival: Stand & \makecell{Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & No & & \makecell{- Air-dash forwards}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & \makecell{Full-screen \\ Mid-screen} & Own: Jump / Rival: Stand & \makecell{Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & No & & \makecell{- Air-dash backwards \\ - Block \\ - Advancing guard}\\
+     \hline
+     X & X & \makecell{Full-screen \\ Mid-screen} & Own: Jump / Rival: Stand & X & X & Yes & & \makecell{- Block \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Full-screen \\ Mid-screen} & Own: Jump / Rival: Stand & Rival life $>$ Own life & X & No & & \makecell{- Air-dash forwards}\\
+     \hline
+     
+     \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\newpage
+
+
+\begin{landscape}
+
+\begin{table}[h!]
+  \begin{center}
+    \begin{tabular*}{24cm}{c|c|c|c|c|c|c|c|c}
+    \textbf{Timer} & \textbf{Team} & \textbf{Distance} & \textbf{Character state} & \textbf{Character health} & \textbf{Red health} & \textbf{Trap in the field} & \textbf{} & \textbf{Behaviour}\\
+    \hline
+$<$ 20 sec & X & \makecell{Full-screen \\ Mid-screen} & Own: Jump / Rival: Stand & Rival life $<$ Own life & X & No & & \makecell{- Air-dash backwards \\ - Block \\ - Advancing guard}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2} & \makecell{Poke-range \\ In-close} & Own: Jump / Rival: Stand & \makecell{Own: 3 Full \\ Own: 2 Full, 1 Low \\ Own: 1 Full, 2 Low \\ Own: 2 Full} & X & X & & \makecell{- Start combo \\ - Block \\ - Advancing guard}\\
+     \hline
+     \makecell{$>$ 20 sec \\ $\infty$} & \makecell{Own: 3 \\ Own: 2 \\ Own: 1} & \makecell{Poke-range \\ In-close} & Own: Jump / Rival: Stand & \makecell {Own: 3 Low \\ Own: 1 Full, 1 Low \\ Own: 2 Low \\ Own: 1 Low \\ Own: 1 Full} & X & No & & \makecell{- Start combo \\ - Block \\ - Advancing guard \\ - Air-dash backwards}\\
+     \hline
+     X & X & \makecell{Poke-range \\ In-close} & Own: Jump / Rival: Stand & X & X & Yes & & \makecell{- Start combo \\ - Block \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Poke-range \\ In-close} & Own: Jump / Rival: Stand & Rival life $>$ Own life & X & X & & \makecell{- Start combo \\ - Bock \\ - Advancing guard}\\
+     \hline
+     $<$ 20 sec & X & \makecell{Poke-range \\ In-close} & Own: Jump / Rival: Stand & Rival life $<$ Own life & X & No & & \makecell{- Start combo \\ - Block \\ - Advancing guard \\ - Air-dash backwards}\\
+     \hline
+     
+     \end{tabular*}
+  \end{center}
+\end{table}
+
+\end{landscape}
+
+\end{document}

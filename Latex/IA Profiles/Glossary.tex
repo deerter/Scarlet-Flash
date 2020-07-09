@@ -1,0 +1,126 @@
+\documentclass{article}
+
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage[legalpaper, margin=0.5in]{geometry}
+\setlength{\parindent}{1.5em}
+
+
+\begin{document}
+
+
+\begin{flushleft}
+
+{\LARGE\textbf{Term Glossary}}
+
+\par\rule[0.5em]{18em}{1pt}
+
+\hfill
+
+\begin{description}
+\item[\textit{Light attack:}] Refers to attacks performed by pressing the `Light punch' or `Light kick' buttons. They're fast and deal low damage.
+\item[\textit{Heavy attack:}] Refers to attacks performed by pressing the `Heavy punch' or `Heavy kick' buttons. They're slow and deal high damage.
+\item[\textit{Assist:}] Refers to the action of swapping your point character with the called teammate by pressing the `Assist 1' or `Assist 2' buttons. `Assist 1' calls the second character
+of your team (that whose lifebar is below the point character's) and `Assist 2' the third. If the player only has two characters left, the assist character will be swapped in regardless of the assist button pressed. If the player is left with one character, this action cannot be performed. Regardless of remaining team members, this action cannot be performed while being on hit stun, block stun or using a level 3 hyper combo. Once the action is done, the player must wait a refresh time to perform it again.
+\item[\textit{Point character:}] Refers to the character who's being currently used.
+\item[\textit{Normal attack:}] Refers to any attack done by pressing the `Light punch', `Light kick', `Heavy punch' or `Heavy kick' buttons.
+\item[\textit{Command normal attack:}] Refers to attacks performed by pressing a direction plus an attack button (the direction and button varies between attacks and characters) 
+\item[\textit{Special attack:}] Refers to attacks performed by pressing a controller motion plus an attack button (the motion and button varies between special attacks and characters)
+\item[\textit{Dash:}] Refers to the action of moving the directional control forwards or backwards twice (holding the direction doesn't count) in order to propel the character so it travels a certain distance of the screen faster than it would by walking (the time and length of distance varies between characters). Can be canceled into a jump, block or attacks.
+\item[\textit{Air-dash:}] A dash done while in jump state. Only certain characters can perform it. Cannot be canceled.
+\item[\textit{Super jump:}] Action performed by tapping the `down' button for a fraction of a second and quickly pressing `up'. Once done, the character will enter the super jumping state. The character will perform a higher jump than with a regular jump. While in super jump state, the point character can block any attack regardless of the direction it comes from. 
+\item[\textit{Cancel:}] Refers to the action of stopping the animation of a move at a certain frame to start the animation of another move. The frames of animation that can be canceled varies depending on the move and character.
+\item[\textit{Rapid fire:}] Light attacks that cancel into themselves.
+\item[\textit{Hyper bar:}] Refers to the bars located at the right-bottom and left-bottom sides of the screen that belong to each player respectively. The bars indicate the current level of hyper meter (number) and the progress to reach the next level (loading bar). Once the progress bar reaches the end, the level of hyper meter will increase by one up to a total of five levels. The hyper bar is shared by the team. At the start of a match, the level will begin at one by default (although it can be changed in the pre-fight options). Hyper meter is obtained by way of hitting the opponent, hitting the opponent while he's blocking, getting hit or blocking attacks. Hyper combos that hit or are blocked by the opponent do not give their user hyper meter.
+\item[\textit{Hyper combo:}] High damage attacks that can only be performed if you have the correct amount of hyper meter available. Most of them require one level of hyper meter, though some (level 3 hyper combos) require three levels. Every character has, at least, three hyper combos. They require controller motions plus two attack buttons of the same type (kicks or punches) to be performed (the motions and buttons pressed vary between hyper combos and characters)
+\item[\textit{Airok:}] Special attacks or hyper combos that can be performed while in jump or ground state.
+\item[\textit{Air only:}] Special attacks or hyper combos that can be performed only in jump state.
+\item[\textit{Jump cancel:}] Attacks that can be canceled into a jump.
+\item[\textit{Dash cancel:}]  Attacks that can be canceled into a dash.
+\item[\textit{Unblockable Attack:}] Attacks that cannot be blocked.
+\item[\textit{Low attack:}] Attacks that can only be blocked while crouching.
+\item[\textit{High attack/Overhead:}] Attacks that can only be blocked while standing.
+\item[\textit{Medium attack:}] Attacks that can be blocked while crouching or standing.
+\item[\textit{Launch:}] Attacks that can be canceled into super jumps.
+\item[\textit{Air combo finisher:}] Attacks that end air combos and plunge the opponent to the ground.
+\item[\textit{Off the ground (OTG):}] Attacks that hit the opponent even on a floored state.
+\item[\textit{Hard knockdown:}] Attacks that put the opponent into a floored state and cannot perform any action during some time.
+\item[\textit{Soft knockdown:}] Attacks that put the opponent into a floored state but can perform a roll immediately.
+\item[\textit{Ground bounce:}] Attacks that cause the opponent to bounce against the ground. These attacks are always treated as hard knockdowns except when the same attack is used a second time during a combo, in which case they produce a soft knockdown instead of a ground bounce.
+\item[\textit{Wall bounce:}] Attacks that cause the opponent to bounce against the wall if it hits the end of the screen. These Attacks are always treated as hard knockdowns except when the same attack is used a second time during a combo, in which case they produce a soft knockdown instead of a ground bounce.
+\item[\textit{Crumple:}] State caused by some attacks in which the opponent slowly falls to the ground on its knees. When on the floor they behave as a hard knockdown. The opponent cannot perform any action to recover from the state.
+\item[\textit{Dizzy:}] State caused by some attacks in which the opponent cannot perform any action during some time. It can be shaken off by pressing buttons rapidly.
+\item[\textit{Invulnerability startup:}] Attacks that have frames at the start-up phase in which the player cannot be damaged.
+\item[\textit{Armored:}] Attacks that can absorb one hit.
+\item[\textit{Counter:}] Attacks that trigger when hit by the opponent.
+\item[\textit{Projector reflect:}] Attacks that reflect projectiles.
+\item[\textit{Projector nullify:}] Attacks that nullify projectiles.
+\item[\textit{Block stun:}] Frames referencing the animation that is triggered when a character is hit while blocking. If any attack hits a character while in block stun, it is considered a block string.
+\item[\textit{Hit stun:}] Frames referencing the animation that is triggered when a character is hit without blocking. If any attack connects after that, it is considered a combo.
+\item[\textit{Flight:}] Ability of some characters to maintain themselves in the air during a period of time (varies between characters). Characters cannot block while in flight.
+\item[\textit{Advancing guard:}] Action performed by pressing the `Light punch' plus `Light kick' buttons while on block stun. Once activated, the player will block the attack and the opponent will be pushed away. Once a character performs an advancing guard, it will be stuck in advancing guard delay. During this delay, only blocking is allowed, chip damage is ignored and block stun will not be present.
+\item[\textit{Score counter:}] Refers to the counter that displays the points acquired at the moment during the current arcade mode run.
+\item[\textit{Time clock:}] Refers to the counter that displays the time that remains before the current match is over. By default, the time clock is set at 99 seconds but it can be changed in the pre-fight options. Each second represents two seconds in real life.
+\item[\textit{Special time bar:}] Refers to a special bar that some characters have once they activate a special or hyper combo. It depletes gradually and once it has, the character losses its power-up. If the character is swapped, the bar disappears from screen until that character is swapped in again. The bar will not deplete while the character is not present in battle. The hyper combo cannot be executed again until the bar is completely depleted.
+\item[\textit{Combo counter:}] Refers to the number counter that pops up when the player starts a combo. When the combo is dropped, the combo counter disappears and a message pertaining the level of the combo appears. The number increases by one each time a hit is delivered until it reaches 999.
+\item[\textit{Sweep:}] Refers to an attack that hits low and knocks the opponent down to the ground causing a soft knockdown.
+\item[\textit{Projectile:}] Refers to an attack that, once casted, has a hit box of its own. The movement or position of it on the screen and the speed with which it travels varies between projectiles and characters. There are five levels of projectiles. When two projectiles of different levels clash, the one with a higher level is prioritized and nullifies the opposing one. If both projectiles share the same level, both are nullified.
+\item[\textit{Teleport:}] Refers to special attacks that transport almost instantly the character that performs them to a position in the screen. The position and speed varies between teleports and characters.
+\item[\textit{Break away:}] Refers to the action performed by pressing the buttons `forwards' (or `backwards', depending on the side of the screen your character is) plus `Heavy punch' while the opponent remains in the start-up phase of a throw. Once activated, it will cancel the throw and push the opponent away. This action doesn't work with command throws.
+\item[\textit{Command throw:}] Refers to a throw done by a command different from that of a regular throw. It is always treated as a special attack. It requires contact of hit boxes for it to connect.
+\item[\textit{Throw:}] Refers to an attack done by pressing the buttons `forwards' (opponent lands on the same side of the screen he was in) or `backwards' (opponent lands on the opposite side of the screen) plus `Heavy punch'. Both characters must be in-close for it to connect. Throws cannot connect while the opponent is in hit stun or block stun. Throws can also be done in the air, but an air-throw cannot grab a grounded opponent nor a regular throw an aerial.
+\item[\textit{Armor breaking attack:}] Refers to attacks that have the ability of breaking armored attacks.
+\item[\textit{Mega crash:}] Refers to the action done by pressing the buttons `Light punch', `Light kick', `Heavy punch' and `Heavy kick' at the same time while in a hit stun or block stun state. It breaks the current combo the opponent is performing and pushes the characters away. The opponent will receive damage and enter hit stun. It can only be used by depleting half of your point character's red health and two levels of hyper meter.
+\item[\textit{Chip damage:}] Refers to the residual damage done to a character when it blocks a special attack or hyper combo.
+\item[\textit{Start-up phase:}] Frames of any attack that happen before the active phase frames.
+\item[\textit{Active phase:}] Frames of any attack where the damage hit box is active. If both players hit the opposing character while they're both in this phase, both will be hit.
+\item[\textit{Recovery phase:}] Frames of any attack that happen after the active phase frames.
+\item[\textit{Neutral state:}] Refers to the state of a character when the player is not pressing any buttons, remains on the ground and is not being hit.
+\item[\textit{Magic series:}] Rules set for each character that dictate which normal attacks can be canceled into each other. Each character has its own set of rules though some are shared between different characters. If a magic series is longer than two attacks, the player can skip from the first attack to any of the set series regardless of the character having performed the intermediate attacks. The magic series cannot be done backwards, an attack that is set later in the series cannot connect to an attack that precedes it. Some characters have an attack limit, thus, if their magic series is longer than their limit, the series cannot be performed in its entirety.
+\item[\textit{In-close:}] Refers to the position of the two characters in the screen in which every attack will hit. Throws and command throws will connect at this range.
+\item[\textit{Poke-range:}] Refers to the position of the two characters in the screen in which the farthest-reaching normal attacks will hit. Throws, command throws and some normal attacks will not connect at this range.
+\item[\textit{Mid screen:}] Refers to the position of the two characters in the screen in which normal attacks will not connect. Only certain special attacks will connect. By jumping forwards once, the characters get in-close.
+\item[\textit{Full screen:}] Refers to the position of the two characters in the screen in which only certain special attacks (predominantly projectiles) will hit.
+\item[\textit{Snap back:}] Attack performed by a controller motion (`Quarter circle forward') plus the `Assist 1' or `Assist 2' buttons. If the attack hits the enemy and enters hit stun, the opponent's character will be swapped with the assist character whose button has been pressed. If the opponent only has one assist character, the attack will force the opponent to swap their characters regardless of the assist button pressed. If the opponent doesn't have assist characters, the snap back will only work as a special attack usable for extending combos. It consumes one level of hyper meter.
+\item[\textit{Rolling:}] Action performed after a soft knockdown or hard knockdown. If the player presses the `Backwards' or `Forwards' button before the instant roll, the character will roll backwards or forwards respectively. If the player doesn't press any button, instant rolling will activate and the character will roll backwards. Once the roll begins, the character will remain invincible until the rolling state ends.  Once the rolling state ends, the character will get up in the spot and enter neutral state. A roll cannot be canceled.
+\item[\textit{Life bar:}] Refers to the bars located at the right and left uppermost sides of the screen that indicate the life (hit points) left of all the characters at play (three for each side). If a player is switched, the life bars between the point character and the called assist also switch. Every life bar has the same length although the number of hit points varies between characters.
+\item[\textit{Red health:}] Refers to the health of color red left behind in the life bar after being hit. The portion of red health in the life bar can be recovered as actual health while the character remains switched out. If a character that has red health and is acting as an assist is switched in, it will lose all of its red health. Red health does not count as actual health, meaning that if the life bar goes down to zero, the character will be defeated even if it had red health.
+\item[\textit{Double jump:}] Refers to the ability some characters possess with which they are able to make a second jump after executing a jump.
+\item[\textit{Triple jump:}] Refers to the ability some characters posses with which they are able to make a third jump after executing a double jump.
+\item[\textit{Air assist:}] Attack performed by a controller motion (`Quarter circle forwards') plus the `Assist 1' or `Assist2' buttons while doing an air combo. The character will execute an attack that, when landed, will cause a wall bounce on the opponent and the point character of the player that executed the attack will be swapped for the assist character related to the assist button pressed. Air assist can only be done a maximum of two times per air combo. If one of the assist characters is defeated and the assist button refering to that character is pressed, the remaining assist character will be swapped in. If only one character remains on the player's team, air assist cannot be performed at all. It consumes one level of hyper meter.
+\item[\textit{No cancel:}] Attacks that cannot be canceled into any other attacks.
+\item[\textit{Strike:}] Attacks that, when they connect while the opponent is on the ground, will pop the opponent into the air, although they cannot be followed by a super jump to extend the combo.
+\item[\textit{Capture:}] Attacks that, when landed, leave the opponent in a captured state. They ignore armor.
+\item[\textit{Captured state:}] State in which the player cannot perform any action during a fixed amount of time. While in this state, the player can be hit by any type of attack, although if the attack has a capture property, it will not extend the amount of time of the state. The captured time varies between attacks and characters.
+\item[\textit{Ground state:}] State in which the character is touching the ground and can only perform movements allowed while on the ground.
+\item[\textit{Jump state:}] State in which the character is in the air and can only perform movements allowed while in the air.
+\item[\textit{Floored state:}] State in which the character is touching the ground but cannot perform any action except a roll. This state is caused by hard knockdowns or soft knockdowns.
+\item[\textit{Wall jump:}] Ability that some characters possess which enables them to use the sides of a stage to propel themselves. In order to perform it, the `Forwards' button must be pressed when reaching the side of the screen after a jump. It does not count as a jump.
+\item[\textit{Air recovery:}] Action performed instantly after recovering from hit stun in the air. The character executes a small flip in the air and falls as usual. If no button is pressed, the flip will be done upwards. If the `Forwards' button is pressed, the flip will be done forwards-upwards. If the `Backwards' button is pressed, the flip will be done backwards-upwards. During the flip, the character will be invincible. The flip is not cancelable.
+\item[\textit{Hit stun deterioration:}] Refers to the lessen of the hit stun state of a character being caught in a combo. Hit stun deterioration kicks in each time a normal attack in the ground is repeated during a combo, causing the opponent to recover from hit stun quicker. Special attacks, hyper combos or air attacks do not cause hit stun deterioration.
+\item[\textit{Gravity deterioration:}] Refers to the increasing fall speed of a character being caught in a combo. Gravity deterioration kicks in each time a normal attack in the air is repeated during a combo, causing the opponent to fall faster to the ground. Special attacks, hyper combos or ground attacks do not cause gravity deterioration.
+\item[\textit{Damage scaling:}] Method by which the game balances out damage output within a combo. The longer a combo is, the less damage attacks will do until reaching a minimum limit of damage. The first hit of a combo is not affected by damage scaling. From then on, the hits are scaled depending on the type of attack and how far along they are performed in a combo. Level 3 hyper combos are not scaled.
+\item[\textit{Counter hit:}] Attack landed when the opponent remains in their start-up phase of an attack. Causes a bigger hit sun.
+\item[\textit{Super jump state:}] State in which the character is in the air and can only perform movements allowed while in the air. The particularities explained in the super jump section are applied.
+\item[\textit{Block:}] Refers to the action of nullifying an attack (though some may do chip damage) by holding `Backwards' during the active phase of an enemy attack. If the enemy attack hits the blocking character, it immediately enters block stun.
+\item[\textit{Crouch:}] Refers to the action of crouching by pressing or holding the `Down' button while the character is on the ground. Every attack done while crouching will be considered a low attack. If the `Down' button is not held, the character returns to neutral state.
+\item[\textit{Jump:}] Refers to the action of jumping by pressing the `Up' button while the character is on the ground (though some characters may jump again while in the air). Once done, the character immediately enters jump state. Every normal attack done while jumping will be considered a high attack.
+\item[\textit{Taunt:}] Humorous action activated by pressing the `Select' button designed to irritate your opponent. Cannot be canceled into any other moves except mega crash.
+\item[\textit{Hitbox:}] Refers to unseen by the player engine mechanics that dictate how interactions between characters and attacks work. There are three types; attack hitboxes (dictate the area an attack hits), block hitboxes (dictate the area where a character can get hit) and push hitboxes (dictate how characters push against each other)
+
+ 
+
+
+
+
+
+
+
+
+
+
+\end{description}
+
+\end{flushleft}
+
+\end{document}
