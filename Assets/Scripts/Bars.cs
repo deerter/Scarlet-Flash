@@ -11,10 +11,11 @@ public class Bars : MonoBehaviour
     [SerializeField] GameObject special;
     static int maxHealth = 1000000;
     static int maxHyper = 1000000;
+    static int maxHyperLevel = 5;
     int currentHealth = maxHealth;
     int currentRedHealth = maxHealth;
-    int hyperLevel = 1;
-    int currentHyper = 0;
+    int currentHyperLevel = -1;
+    int currentHyper = maxHyper;
     static int maxSpecialTime = 5000;
     int currentSpecialTime = maxSpecialTime;
     Coroutine coroutineSpecial;
@@ -104,30 +105,55 @@ public class Bars : MonoBehaviour
             newHyperBar.GetComponent<Image>().color = new Color(currentColor.r - randomNumber / 255f - 0.20f, currentColor.g, currentColor.b , 1);
             return true;
         }
+        else if ((currentColor.b == 1) && (currentColor.r == 1) && (currentColor.g == 1)){
+            newHyperBar.GetComponent<Image>().color = new Color(23/255f,48/255f,212/255f,1);
+            return true;
+        }
         
         return false;
     }
 
     public bool increaseHyperBar(int attackValue)
     {
-        if (hyper.transform.childCount < 6)
+        if (currentHyperLevel < maxHyperLevel)
         {
-
-            GameObject newHyperBar = Instantiate(hyper.transform.GetChild(hyperLevel).gameObject);
-            newHyperBar.transform.localScale = new Vector3(0.82f,1f);
-            newHyperBar.transform.SetParent(hyper.transform, false);
-            newHyperBar.name = "HyperBarFullLevel" + (hyperLevel+1);
-            //newHyperBar.transform.localPosition = new Vector3(newHyperBar.transform.localPosition.x, newHyperBar.transform.localPosition.y, newHyperBar.transform.localPosition.z);  //Para visualizarlo, luego se debe borrar
-            changeColorHyperBar(newHyperBar);
-            hyperLevel++;
+            if (currentHyper + attackValue > maxHyper)   //////When the hyper meter acquired (attack value) exceeds the maximum hyper meter... /////
+            {
+                currentHyperLevel++;
+                hyper.transform.GetChild(currentHyperLevel).localScale = new Vector3(1f, 1f);  ////... fills current hyper meter...///
+                if (currentHyperLevel != maxHyperLevel) ////... and creates next level with the remaining meter (unless the hyper meter level is at its max). /////
+                {
+                    attackValue = attackValue - (maxHyper - currentHyper);
+                    GameObject newHyperBar = Instantiate(hyper.transform.GetChild(currentHyperLevel).gameObject);
+                    newHyperBar.transform.localScale = new Vector3((float)attackValue / maxHyper, 1f);
+                    newHyperBar.transform.SetParent(hyper.transform, false);
+                    newHyperBar.name = "HyperBarFullLevel" + (currentHyperLevel + 1);
+                    changeColorHyperBar(newHyperBar);
+                    currentHyper = attackValue;
+                }
+            }
+            else
+            {
+                currentHyper += attackValue;
+                hyper.transform.GetChild(currentHyperLevel+1).localScale = new Vector3((float) currentHyper/maxHyper, 1f);
+            }
+            return true;
         }
-
         return false;
     }
 
-    public bool decreaseHyperBar(int hyperAttackLevel)
+    public bool depleteHyperBar(int hyperAttackCost)
     {
-
+        if (hyperAttackCost <= currentHyperLevel)
+        {
+            hyper.transform.GetChild((currentHyperLevel + 1) - hyperAttackCost).localScale = hyper.transform.GetChild(currentHyperLevel+1).localScale;
+            for (int i = 0; i < hyperAttackCost; i++)
+            {
+                Destroy(hyper.transform.GetChild(currentHyperLevel+1).gameObject);
+                currentHyperLevel--;
+            }
+            print(currentHyperLevel);
+        }
         return false;
     }
 
@@ -153,6 +179,11 @@ public class Bars : MonoBehaviour
         {
             TakeDamage(45000);
             increaseHyperBar(45000);
+        }
+        
+        if (Input.GetKeyDown(GameConstants.HK))
+        {
+            depleteHyperBar(1);
         }
 
         if (Input.GetKeyDown(GameConstants.HP))
