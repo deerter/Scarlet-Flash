@@ -14,7 +14,7 @@ public class Bars : MonoBehaviour
     static int maxHyperLevel = 5;
     int currentHealth = maxHealth;
     int currentRedHealth = maxHealth;
-    int currentHyperLevel = -1;
+    int currentHyperLevel = 0;
     int currentHyper = maxHyper;
     static int maxSpecialTime = 5000;
     int currentSpecialTime = maxSpecialTime;
@@ -119,7 +119,10 @@ public class Bars : MonoBehaviour
         {
             if (currentHyper + attackValue > maxHyper)   //////When the hyper meter acquired (attack value) exceeds the maximum hyper meter... /////
             {
-                currentHyperLevel++;
+                if (currentHyper != maxHyper)
+                {
+                    currentHyperLevel++;
+                }
                 hyper.transform.GetChild(currentHyperLevel).localScale = new Vector3(1f, 1f);  ////... fills current hyper meter...///
                 if (currentHyperLevel != maxHyperLevel) ////... and creates next level with the remaining meter (unless the hyper meter level is at its max). /////
                 {
@@ -136,6 +139,10 @@ public class Bars : MonoBehaviour
             {
                 currentHyper += attackValue;
                 hyper.transform.GetChild(currentHyperLevel+1).localScale = new Vector3((float) currentHyper/maxHyper, 1f);
+                if (currentHyper == maxHyper)
+                {
+                    currentHyperLevel++;
+                }
             }
             return true;
         }
@@ -146,7 +153,7 @@ public class Bars : MonoBehaviour
     {
         if (hyperAttackCost <= currentHyperLevel)
         {
-            hyper.transform.GetChild((currentHyperLevel + 1) - hyperAttackCost).localScale = hyper.transform.GetChild(currentHyperLevel+1).localScale;
+            hyper.transform.GetChild((currentHyperLevel+1) - hyperAttackCost).localScale = hyper.transform.GetChild(currentHyperLevel+1).localScale;
             for (int i = 0; i < hyperAttackCost; i++)
             {
                 Destroy(hyper.transform.GetChild(currentHyperLevel+1).gameObject);
