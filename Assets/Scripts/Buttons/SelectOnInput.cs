@@ -1,48 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.EventSystems;
 
 public class SelectOnInput : MonoBehaviour {
 	public EventSystem eventSystem;
     public GameObject lastObject;
-	//private bool buttonSelected;
-	//private double lastInputTime;
-	//string sequenceQCF = "D DR R LP ";   //Needs a last space character
-    //string sequenceShoryuken = "R D R DR R LP ";  //Needs a last space character
-    //string sequence = "";
-	//int i = 0;
-	//double acceptableTime = 0.4;
+	private bool buttonSelected;
+	private double lastInputTime;
+	string sequenceQCF = "D DR R LP ";   //Needs a last space character
+    string sequenceShoryuken = "R D R DR R LP ";  //Needs a last space character
+    string sequence = "";
+	int i = 0;
+	double acceptableTime = 0.4;
 
-
-	// Use this for initialization
-	void Start () {
-		//selectObject ();
-		//eventSystem.SetSelectedGameObject (firstObject);
+    
+	/*void Start () {
+		selectObject ();
+		eventSystem.SetSelectedGameObject (firstObject);
 	}
 	
-	// Update is called once per frame
 	private void Update () {
-        //if (eventSystem.currentSelectedGameObject == lastObject)   //Para saber el objeto actualmente seleccionado
-        //addToString();
-		//specialMoveQCF ();
-        //shoryuken();
-		/*if (Input.GetKeyDown("up")) {
+        if (eventSystem.currentSelectedGameObject == lastObject)   //Para saber el objeto actualmente seleccionado
+        addToString();
+		specialMoveQCF ();
+        shoryuken();
+		if (Input.GetKeyDown("up")) {
 			eventSystem.SetSelectedGameObject (selectedObject);
-		}*/
-		/*if (Input.GetKey ("right") && Input.GetKey ("down")) {
+		}
+		if (Input.GetKey ("right") && Input.GetKey ("down")) {
 			Hadoken ();
 			buttonPressedTime = Time.time;
 			print (buttonPressedTime);
-		}*/
-		/*if (Input.GetAxisRaw ("Vertical") != 0 && buttonSelected == false) {
+		}
+		if (Input.GetAxisRaw ("Vertical") != 0 && buttonSelected == false) {
 			eventSystem.SetSelectedGameObject (selectedObject);
 			buttonSelected = true;
-		}*/
+		}
 	}
 
-	/*private void addToString(){
+	private void addToString(){
         if (sequence == "" || Time.time - lastInputTime < acceptableTime)
         {
             if (Input.GetKeyDown(GameConstants.D))
@@ -77,9 +74,9 @@ public class SelectOnInput : MonoBehaviour {
             //print("2 " + sequence);
         }
 
-	}*/
+	}
 
-	/*private void specialMoveQCF (){
+	private void specialMoveQCF (){
         print(sequence);
 		if (sequence == sequenceQCF)
         {
@@ -98,18 +95,18 @@ public class SelectOnInput : MonoBehaviour {
 		} else {
 			i = 0;
 		}
-	}*/
+	}
 
-    /*private void shoryuken()
+    private void shoryuken()
     {
         print(sequence);
         if (sequence == sequenceShoryuken)
         {
             print("Shooooryuken");
         }
-    }*/
+    }
 
-	/*private void OnDisable(){
+	private void OnDisable(){
 		buttonSelected = false;
 	}*/
 }

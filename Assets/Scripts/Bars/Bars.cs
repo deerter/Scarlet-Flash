@@ -69,7 +69,7 @@ public class Bars : MonoBehaviour
 
     /// Hyper Bar Functions ///
 
-    private bool changeColorHyperBar(GameObject newHyperBar)
+    private bool ChangeColorHyperBar(GameObject newHyperBar)
     {
         Color currentColor = newHyperBar.GetComponent<Image>().color;
         float maxColor = (float) 150 / 255;
@@ -113,7 +113,7 @@ public class Bars : MonoBehaviour
         return false;
     }
 
-    public bool increaseHyperBar(int attackValue)
+    public bool IncreaseHyperBar(int attackValue)
     {
         if (currentHyperLevel < maxHyperLevel)
         {
@@ -131,7 +131,7 @@ public class Bars : MonoBehaviour
                     newHyperBar.transform.localScale = new Vector3((float)attackValue / maxHyper, 1f);
                     newHyperBar.transform.SetParent(hyper.transform, false);
                     newHyperBar.name = "HyperBarFullLevel" + (currentHyperLevel + 1);
-                    changeColorHyperBar(newHyperBar);
+                    ChangeColorHyperBar(newHyperBar);
                     currentHyper = attackValue;
                 }
             }
@@ -149,7 +149,7 @@ public class Bars : MonoBehaviour
         return false;
     }
 
-    public bool depleteHyperBar(int hyperAttackCost)
+    public bool DepleteHyperBar(int hyperAttackCost)
     {
         if (hyperAttackCost <= currentHyperLevel)
         {
@@ -185,12 +185,12 @@ public class Bars : MonoBehaviour
         if (Input.GetKeyDown(GameConstants.LP))
         {
             TakeDamage(45000);
-            increaseHyperBar(45000);
+            IncreaseHyperBar(45000);
         }
         
         if (Input.GetKeyDown(GameConstants.HK))
         {
-            depleteHyperBar(1);
+            DepleteHyperBar(1);
         }
 
         if (Input.GetKeyDown(GameConstants.HP))
