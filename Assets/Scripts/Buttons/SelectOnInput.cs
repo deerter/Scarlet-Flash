@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class SelectOnInput : MonoBehaviour {
-	public EventSystem eventSystem;
+	/*public EventSystem eventSystem;
     public GameObject lastObject;
 	private bool buttonSelected;
 	private double lastInputTime;
@@ -12,7 +12,7 @@ public class SelectOnInput : MonoBehaviour {
     string sequenceShoryuken = "R D R DR R LP ";  //Needs a last space character
     string sequence = "";
 	int i = 0;
-	double acceptableTime = 0.4;
+	double acceptableTime = 0.4;*/
 
     
 	/*void Start () {
