@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager: MonoBehaviour {
 
     public static GameManager instance;
+    //public ParticleSystem particleSystem;
 
     private void Awake()
     {
         MakeSingleton();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        //particleSystem.Play();
     }
 
     private void MakeSingleton()
