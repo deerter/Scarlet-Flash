@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class ButtonCurrentlySelected : MonoBehaviour {
     GameObject lastSelect;
 	
-	// Update is called once per frame
+	
 	void Update () {
         if (EventSystem.current.currentSelectedGameObject == null)
         {
