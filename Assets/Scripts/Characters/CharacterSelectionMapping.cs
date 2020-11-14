@@ -2,43 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class CharacterSelectionMapping {
+public class CharacterSelectionMapping {
 
-    // SF = Street Fighter //
-    public const string Ryu = "SF"; 
-    public const string Ken = "SF";
-    public const string Sakura = "SF";
+    public string GetCharacterSeries(string characterName){
+        switch (characterName){
+            // SF = Street Fighter //
+            case "Ryu":
+            case "Ken":
+            case "Sakura":
+                return "SF";
 
-    // KOF = King Of Fighters //
-    public const string Leona = "KOF";
+            // KOF = King Of Fighters //
+            case "Leona":
+                return "KOF";
 
-    // N = Naruto //
-    public const string Naruto = "N"; 
+            // N = Naruto //
+            case "Naruto":
+                return "N";
 
-    // B = Bleach //
-    public const string Ichigo = "B";
-    public const string Rukia = "B";
+            // B = Bleach //
+            case "Ichigo":
+            case "Rukia":
+                return "B";
 
-    // OP = One Piece //
-    public const string Luffy = "OP";
+            // OP = One Piece //
+            case "Luffy":
+                return "OP";
 
-    // DS = Darkstalkers //
-    public const string Morrigan = "DS";
+            // DS = Darkstalkers //
+            case "Morrigan":
+                return "DS";
 
-    // YGO = Yu-Gi-Oh //
-    public const string Yugi = "YGO";
-    public const string Kaiba = "YGO";
+            // YGO = Yu-Gi-Oh //
+            case "Yugi":
+            case "Kaiba":
+                return "YGO";
 
-    // MB = Medaka Box //
-    public const string Medaka = "MB";
+            // MB = Medaka Box //
+            case "Medaka":
+                return "MB";
 
-    // DC = Dino Crisis //
-    public const string Regina = "DC";
+            // DC = Dino Crisis //
+            case "Regina":
+                return "DC";
 
-    // SL = Slayers //
-    public const string Lina = "SL";
-    public const string Naga = "SL";
+            // SL = Slayers //
+            case "Lina":
+            case "Naga":
+                return "SL";
 
-    // JDI = Jungle De Ikou //
-    public const string Mii = "JDI";
+            // JDI = Jungle De Ikou //
+            case "Mii":
+                return "JDI";
+        }
+        return " ";
+    }
 }
