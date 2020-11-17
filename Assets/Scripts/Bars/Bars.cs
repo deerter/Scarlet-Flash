@@ -203,7 +203,7 @@ public class Bars : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(GameConstants.LK))
+        if (Input.GetKeyDown(GameConstants.LK) && coroutineSpecial!=null)
         {
             StopCoroutine(coroutineSpecial);
             specialActive = false;

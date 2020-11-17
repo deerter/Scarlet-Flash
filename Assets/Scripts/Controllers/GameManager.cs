@@ -5,21 +5,19 @@ using UnityEngine;
 public class GameManager: MonoBehaviour {
 
     public static GameManager instance;
-    //public ParticleSystem particleSystem;
 
     private void Awake()
     {
         MakeSingleton();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //particleSystem.Play();
     }
 
     private void MakeSingleton()
     {
-        if(instance != null)
+        if(instance!=null && instance!=this)
         {
-            Destroy(gameObject);
+            Destroy(gameObject);  //Same as this.gameObject
         }
         else
         {

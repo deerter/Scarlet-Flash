@@ -17,5 +17,7 @@ public static class GameConstants
 	public const string HK = "x";   //Heavy kick
 	public const string A1 = "d";   //Assist 1
 	public const string A2 = "c";   //Assist 2
+    public const string ACCEPT = "return";
+    public const string BACK = "escape";
 }
 
