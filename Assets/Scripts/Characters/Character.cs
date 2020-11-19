@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character
+public abstract class Character
 {
     protected string name;
     protected int health;
@@ -29,6 +29,27 @@ public class Character
 		return this.name;
 	}
 
+    public int GetHealth(){
+        return this.health;
+    }
+
+    public int GetLightPunch(){
+        return this.lightPunchDamage;
+    }
+
+    public int GetLightKick(){
+        return this.lightKickDamage;
+    }
+
+    public int GetHeavyPunch(){
+        return this.heavyPunchDamage;
+    }
+
+    public int GetHeavyKick(){
+        return this.heavyKickDamage;
+    }
+
+    
 
 
 

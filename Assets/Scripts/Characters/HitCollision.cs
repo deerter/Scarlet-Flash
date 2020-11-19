@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class HitCollision : MonoBehaviour {
 
+	private FightManager fightManager;
+
+	void Awake(){
+		fightManager = GameObject.FindObjectOfType<FightManager>();
+	}
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,10 +20,17 @@ public class HitCollision : MonoBehaviour {
 		
 	}
 
+	private void HitOpponent(string playerHit,int otherPlayer, int player){
+		//Check if character is blocking//
+		fightManager.GetHealthBar(playerHit, otherPlayer).TakeDamage(fightManager.GetCharacter(playerHit, player).GetLightPunch());
+
+	}
+
 	private void OnTriggerEnter2D(Collider2D otherPlayer){
-		if (otherPlayer.gameObject.CompareTag("Player2")){
-			print("Golpeo golpeo");
-			//quitar vida al jugador contrario
+		string playerHit = otherPlayer.gameObject.tag;
+		switch (playerHit){
+			case "Player2": HitOpponent(playerHit, 0,0); break;
+			case "Player1": HitOpponent(playerHit, 0,0); break;
 		}
 	}
 }
