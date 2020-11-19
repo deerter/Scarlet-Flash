@@ -6,6 +6,7 @@ public class CharacterMovement : MonoBehaviour {
 	
 
 	public Animator animator;
+	private Rigidbody2D rb;
 
 	//bool jump = false;
 	bool onAnimation = false;   ///Used to not enter other animations when the current one has finished and a button has been pressed during this one.
@@ -21,8 +22,12 @@ public class CharacterMovement : MonoBehaviour {
 			animator.Play("Crouching",0,0.29f);  //Loop from 3rd frame of animation
 		}
 	}
+
+	void Start(){
+		rb = this.GetComponent<Rigidbody2D>();
+	}
 	
-	// Update is called once per frame
+	
 	void Update () {
 
 		///Directional Pad
@@ -32,8 +37,9 @@ public class CharacterMovement : MonoBehaviour {
 			 	(animator.GetCurrentAnimatorStateInfo(0).IsName("WalkBackwards"))){
 			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
 				animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
-				Vector3 horizontal = new Vector3(Input.GetAxis("Horizontal"), 0.0f, 0.0f);
-				transform.position = transform.position + horizontal * (0.9f);
+				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
+				rb.MovePosition(rb.position + horizontal * Time.fixedDeltaTime * 50f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+																						//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
 			}
 		}
 

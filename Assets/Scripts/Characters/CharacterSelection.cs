@@ -40,15 +40,15 @@ public class CharacterSelection : MonoBehaviour {
             case 1:
                 firstChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
                 + characterSeries + "/" + charName + "/" + charName);
-                CurrentFightStats.SetFirstCharacter(charName);break;
+                CurrentFightStats.SetSelectedCharacter(charName,0);break;
             case 2:
                 secondChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
                 + characterSeries + "/" + charName + "/" + charName);
-                CurrentFightStats.SetSecondCharacter(charName);break;
+                CurrentFightStats.SetSelectedCharacter(charName,1);break;
             case 3:
                 thirdChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
                 + characterSeries + "/" + charName + "/" + charName);
-                CurrentFightStats.SetThirdCharacter(charName);
+                CurrentFightStats.SetSelectedCharacter(charName,2);
                 nextScene.LoadByIndex(8);break;
         }
     }
