@@ -49,9 +49,4 @@ public abstract class Character
         return this.heavyKickDamage;
     }
 
-    
-
-
-
-	
 }

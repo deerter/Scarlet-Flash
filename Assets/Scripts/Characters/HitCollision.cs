@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HitCollision : MonoBehaviour {
 
-	private FightManager fightManager;
+	private CharacterFeatures rivalCharacter;
+	private CharacterFeatures currentCharacter;
 
 	void Awake(){
-		fightManager = GameObject.FindObjectOfType<FightManager>();
+		currentCharacter = gameObject.GetComponentInParent<CharacterFeatures>();
 	}
 
 	// Use this for initialization
@@ -20,17 +21,15 @@ public class HitCollision : MonoBehaviour {
 		
 	}
 
-	private void HitOpponent(string playerHit,int otherPlayer, int player){
+	private void HitOpponent(){
 		//Check if character is blocking//
-		fightManager.GetHealthBar(playerHit, otherPlayer).TakeDamage(fightManager.GetCharacter(playerHit, player).GetLightPunch());
+		rivalCharacter.GetHealthBar().TakeDamage(currentCharacter.GetCharacter().GetLightPunch());
 
 	}
 
 	private void OnTriggerEnter2D(Collider2D otherPlayer){
+		rivalCharacter = otherPlayer.gameObject.GetComponent<CharacterFeatures>();
 		string playerHit = otherPlayer.gameObject.tag;
-		switch (playerHit){
-			case "Player2": HitOpponent(playerHit, 0,0); break;
-			case "Player1": HitOpponent(playerHit, 0,0); break;
-		}
+		HitOpponent();
 	}
 }

@@ -5,7 +5,7 @@ using System;
 
 public class FightManager : MonoBehaviour {
 
-	[SerializeField] GameObject health;
+	//[SerializeField] GameObject health;
     [SerializeField] GameObject hyper;
     [SerializeField] GameObject special;
 
@@ -21,25 +21,18 @@ public class FightManager : MonoBehaviour {
 	private static HealthBar[] healthBarsPlayer2 = new HealthBar[numCharactersPlayer2];
 
 
-	private Character InitiliazeCharacter (/*Character character, int characterNumber*/){
-		string charactername = "Sakura";
-		/*switch (CurrentFightStats.GetSelectedCharacter(characterNumber)){
-			case "ryu":	character = new Ryu();break;
-			case "sakura": character = new Sakura();break;
-			case "ken": character = new Ken();break;
-			case "leona": character = new Leona();break;
-		}*/
-		var type = Type.GetType(charactername);
+	/*private Character InitiliazeCharacter (string characterName){
+		var type = Type.GetType(characterName);
 		return (Character)Activator.CreateInstance(type);
-	}
+	}*/
 
-	public Character GetCharacter(string player, int character){
+	/*public Character GetCharacter(string player, int character){
 		return player=="Player1" ? selectedCharactersPlayer1[character] : selectedCharactersPlayer2[character];
 	} 
 
 	public HealthBar GetHealthBar(string player, int character){
 		return player=="Player1" ? healthBarsPlayer1[character] : healthBarsPlayer2[character];
-	} 
+	} */
 
 	// Use this for initialization
 	void Start () {
@@ -54,13 +47,13 @@ public class FightManager : MonoBehaviour {
 		}*/
 
 		/////////////////ESTO BORRAMELO////////////////////
-		selectedCharactersPlayer1[0] = new Sakura();
+		/*selectedCharactersPlayer1[0] = new Sakura();
 		//selectedCharactersPlayer2[0] = new Sakura();
 		//InitiliazeCharacter(selectedCharactersPlayer2[0], 2);
-		selectedCharactersPlayer2[0] = InitiliazeCharacter();
+		//selectedCharactersPlayer2[0] = InitiliazeCharacter("Sakura");
 
 		healthBarsPlayer1[0] = new HealthBar(health.transform.GetChild(0).gameObject, selectedCharactersPlayer1[0].GetHealth());
-		healthBarsPlayer2[0] = new HealthBar(health.transform.GetChild(3).gameObject, selectedCharactersPlayer2[0].GetHealth());
+		healthBarsPlayer2[0] = new HealthBar(health.transform.GetChild(3).gameObject, selectedCharactersPlayer2[0].GetHealth());*/
 	}
 
 	/*void Update(){
