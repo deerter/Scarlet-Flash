@@ -3584,11 +3584,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2053421550}
   - component: {fileID: 2053421551}
-  - component: {fileID: 2053421552}
   - component: {fileID: 2053421553}
   - component: {fileID: 2053421554}
   - component: {fileID: 2053421555}
   - component: {fileID: 2053421556}
+  - component: {fileID: 2053421552}
+  - component: {fileID: 2053421557}
   m_Layer: 5
   m_Name: P1PointCharacter
   m_TagString: Player1
@@ -3665,7 +3666,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 2053421553}
 --- !u!95 &2053421553
 Animator:
   serializedVersion: 3
@@ -3675,7 +3675,7 @@ Animator:
   m_GameObject: {fileID: 2053421549}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e6bfb74efc5ee744bac2f3eefae2728, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3741,3 +3741,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1413783540}
   animator: {fileID: 2053421553}
+--- !u!114 &2053421557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2053421549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 425a69fcfb536d24680c768353a391b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

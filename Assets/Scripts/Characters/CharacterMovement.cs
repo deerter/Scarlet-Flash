@@ -5,19 +5,13 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour {
 	
 
-	public Animator animator;
+	private Animator animator;
+	private CharacterFeatures currentCharacter;
 	private Rigidbody2D rb;
 
-	//bool jump = false;
-	bool onAnimation = false;   ///Used to not enter other animations when the current one has finished and a button has been pressed during this one.
-
-	public void EndingCurrentAnimation(string action){
-		animator.SetBool(action, false);
-		onAnimation = false;
-	}
 
 	public void KeepCrouching(){
-		if (animator.GetBool("Crouching")){
+		if (currentCharacter.GetIsCrouching()){
 			animator.speed=0.7f;  //Decrease speed of animation
 			animator.Play("Crouching",0,0.29f);  //Loop from 3rd frame of animation
 		}
@@ -25,6 +19,8 @@ public class CharacterMovement : MonoBehaviour {
 
 	void Start(){
 		rb = this.GetComponent<Rigidbody2D>();
+		currentCharacter = this.GetComponent<CharacterFeatures>();
+		animator = currentCharacter.GetAnimator();
 	}
 	
 	
@@ -43,39 +39,21 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey(GameConstants.D) && onAnimation==false){
-			animator.SetBool("Crouching", true);
-			onAnimation = true;
+		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying()){
+			animator.SetBool("Crouching",true);
+			currentCharacter.SetIsCrouching(true);
+			currentCharacter.AnimationPlaying();
 		}
 
-		if (Input.GetKeyUp(GameConstants.D) && (animator.GetBool("Crouching")))
+		if (Input.GetKeyUp(GameConstants.D) && (currentCharacter.GetIsCrouching()))
         {
-			animator.SetBool("Crouching", false);
-			onAnimation = false;
+			animator.SetBool("Crouching",false);
+			currentCharacter.SetIsCrouching(false);
+			currentCharacter.AnimationEnding();
 			animator.speed = 1;
         }
 
-		///Attacks
-		if (Input.GetKeyDown(GameConstants.LP) && onAnimation==false){
-			animator.SetBool("LightPunch", true);
-			onAnimation = true;
-		}
-
-		if (Input.GetKeyDown(GameConstants.LK) && onAnimation==false){
-			animator.SetBool("LightKick", true);
-			onAnimation = true;
-		}
-
-		if (Input.GetKeyDown(GameConstants.HP) && onAnimation==false){
-			animator.SetBool("HeavyPunch", true);
-			onAnimation = true;
-		}
-
-		if (Input.GetKeyDown(GameConstants.HK) && onAnimation==false){
-			animator.SetBool("HeavyKick", true);
-			onAnimation = true;
-		}
-
+		
 		
 		
 	}

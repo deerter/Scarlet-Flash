@@ -29,7 +29,7 @@ public class HitCollision : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D otherPlayer){
 		rivalCharacter = otherPlayer.gameObject.GetComponent<CharacterFeatures>();
-		string playerHit = otherPlayer.gameObject.tag;
+		//string playerHit = otherPlayer.gameObject.tag;
 		HitOpponent();
 	}
 }
