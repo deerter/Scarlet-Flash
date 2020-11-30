@@ -21,15 +21,9 @@ public class HitCollision : MonoBehaviour {
 		
 	}
 
-	private void HitOpponent(){
-		//Check if character is blocking//
-		rivalCharacter.GetHealthBar().TakeDamage(currentCharacter.GetCharacter().GetLightPunch());
-
-	}
-
 	private void OnTriggerEnter2D(Collider2D otherPlayer){
 		rivalCharacter = otherPlayer.gameObject.GetComponent<CharacterFeatures>();
-		//string playerHit = otherPlayer.gameObject.tag;
-		HitOpponent();
+		int attackValue = currentCharacter.DoDamage();
+		rivalCharacter.TakeDamage(attackValue);
 	}
 }

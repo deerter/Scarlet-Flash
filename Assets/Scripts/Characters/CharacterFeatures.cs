@@ -8,16 +8,17 @@ public class CharacterFeatures : MonoBehaviour {
 	[SerializeField] private Animator animator;
 	private Character character;
 	private HealthBar healthBar;
-	private bool animationPlaying = false;   //Character is currently on an animation other than idle ///Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
+	private bool animationPlaying = false;   //Character is currently on an animation other than standing ///Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
+	private string animationStatus;
 	private bool isCrouching = false;
 
 
-	public HealthBar GetHealthBar (){
-		return healthBar;
-	}
-
 	public Character GetCharacter() {
 		return character;
+	}
+
+	public HealthBar GetHealthBar (){
+		return healthBar;
 	}
 
 	public Animator GetAnimator(){
@@ -28,12 +29,22 @@ public class CharacterFeatures : MonoBehaviour {
 		return animationPlaying;
 	}
 
-	public void AnimationPlaying(){
+	public void PlayAnimation(string animation){
+		animator.Play(animation);
 		animationPlaying = true;
 	}
 
-	public void AnimationEnding(){
+	public void EndAnimation(string animation){
+		animator.Play(animation);
 		animationPlaying = false;
+	}
+
+	public void SetAnimationStatus (string animationStatus){
+		this.animationStatus = animationStatus;
+	}
+
+	public string GetAnimationStatus(){
+		return animationStatus;
 	}
 
 	public bool GetIsCrouching(){
@@ -42,6 +53,14 @@ public class CharacterFeatures : MonoBehaviour {
 
 	public void SetIsCrouching(bool isCrouching){
 		this.isCrouching = isCrouching;
+	}
+
+	public void TakeDamage(int attackValue){
+		healthBar.Deplete(attackValue);
+	}
+
+	public int DoDamage(){
+		return character.GetAttackOutput(animationStatus);
 	}
 
 	// Use this for initialization

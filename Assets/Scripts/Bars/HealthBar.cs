@@ -30,7 +30,7 @@ public class HealthBar {
         health.transform.GetChild(1).localScale = new Vector3(redHealthNormalized, 1f);
     }
 
-	public bool TakeDamage(int attackValue)
+	public bool Deplete(int attackValue)
     {
         currentHealth -= attackValue / 2;
         currentRedHealth -= attackValue / 4;

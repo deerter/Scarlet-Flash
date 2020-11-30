@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Character
 {
@@ -8,6 +9,7 @@ public abstract class Character
     protected int health;
     protected int doubleJumpCount;
     protected int airDashCount;
+    protected Dictionary<string, int> attackOutput;
     protected int lightPunchDamage;
     protected int lightKickDamage;
     protected int heavyPunchDamage;
@@ -33,20 +35,8 @@ public abstract class Character
         return this.health;
     }
 
-    public int GetLightPunch(){
-        return this.lightPunchDamage;
-    }
-
-    public int GetLightKick(){
-        return this.lightKickDamage;
-    }
-
-    public int GetHeavyPunch(){
-        return this.heavyPunchDamage;
-    }
-
-    public int GetHeavyKick(){
-        return this.heavyKickDamage;
+    public int GetAttackOutput(string currentAnimation){
+        return attackOutput[currentAnimation];
     }
 
 }

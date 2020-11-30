@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Sakura : Character {
 
@@ -9,6 +10,7 @@ public class Sakura : Character {
 		this.health = 850000;
 		this.doubleJumpCount = 0;
 		this.airDashCount = 0;
+
     	this.lightPunchDamage = 40000;
     	this.lightKickDamage = 35000;
     	this.heavyPunchDamage = 75000;
@@ -21,5 +23,14 @@ public class Sakura : Character {
     	this.jumpingLightKickDamage = 40000;
     	this.jumpingHeavyPunchDamage = 80000;
     	this.jumpingHeavyKickDamage = 75000;
+
+		attackOutput = new Dictionary<string, int> {
+			{AnimationStates.LIGHT_PUNCH, this.lightPunchDamage},
+			{AnimationStates.LIGHT_KICK, this.lightKickDamage},
+			{AnimationStates.HEAVY_PUNCH, this.heavyPunchDamage},
+			{AnimationStates.HEAVY_KICK, this.heavyKickDamage}
+		};
 	}
+
+
 }

@@ -28,9 +28,9 @@ public class CharacterMovement : MonoBehaviour {
 
 		///Directional Pad
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
-		if ((animator.GetCurrentAnimatorStateInfo(0).IsName("Standing")) ||
-			 (animator.GetCurrentAnimatorStateInfo(0).IsName("WalkForwards")) || 
-			 	(animator.GetCurrentAnimatorStateInfo(0).IsName("WalkBackwards"))){
+		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
+			 (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 
+			 	(currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)){
 			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
 				animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
@@ -40,16 +40,15 @@ public class CharacterMovement : MonoBehaviour {
 		}
 
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying()){
-			animator.SetBool("Crouching",true);
+			currentCharacter.PlayAnimation(AnimationStates.CROUCHING);
+			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING);
 			currentCharacter.SetIsCrouching(true);
-			currentCharacter.AnimationPlaying();
 		}
 
 		if (Input.GetKeyUp(GameConstants.D) && (currentCharacter.GetIsCrouching()))
         {
-			animator.SetBool("Crouching",false);
 			currentCharacter.SetIsCrouching(false);
-			currentCharacter.AnimationEnding();
+			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			animator.speed = 1;
         }
 
