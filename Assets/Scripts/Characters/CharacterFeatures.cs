@@ -29,6 +29,10 @@ public class CharacterFeatures : MonoBehaviour {
 		return animationPlaying;
 	}
 
+	public void SetAnimationPlaying(bool animationPlaying){
+		this.animationPlaying = animationPlaying;
+	}
+
 	public void PlayAnimation(string animation){
 		animator.Play(animation);
 		animationPlaying = true;

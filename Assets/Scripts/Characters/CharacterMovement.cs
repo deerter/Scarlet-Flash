@@ -9,14 +9,6 @@ public class CharacterMovement : MonoBehaviour {
 	private CharacterFeatures currentCharacter;
 	private Rigidbody2D rb;
 
-
-	public void KeepCrouching(){
-		if (currentCharacter.GetIsCrouching()){
-			animator.speed=0.7f;  //Decrease speed of animation
-			animator.Play("Crouching",0,0.29f);  //Loop from 3rd frame of animation
-		}
-	}
-
 	void Start(){
 		rb = this.GetComponent<Rigidbody2D>();
 		currentCharacter = this.GetComponent<CharacterFeatures>();
@@ -39,13 +31,14 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying()){
-			currentCharacter.PlayAnimation(AnimationStates.CROUCHING);
-			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING);
+		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !(currentCharacter.GetIsCrouching())){
+			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
+			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);
+			currentCharacter.SetAnimationPlaying(false);
 		}
 
-		if (Input.GetKeyUp(GameConstants.D) && (currentCharacter.GetIsCrouching()))
+		if (Input.GetKeyUp(GameConstants.D) && (currentCharacter.GetIsCrouching()) )//&& !currentCharacter.IsAnimationPlaying())
         {
 			currentCharacter.SetIsCrouching(false);
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
