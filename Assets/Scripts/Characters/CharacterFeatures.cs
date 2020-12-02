@@ -51,6 +51,8 @@ public class CharacterFeatures : MonoBehaviour {
 		return animationStatus;
 	}
 
+	
+
 	public bool GetIsCrouching(){
 		return isCrouching;
 	}
@@ -58,6 +60,8 @@ public class CharacterFeatures : MonoBehaviour {
 	public void SetIsCrouching(bool isCrouching){
 		this.isCrouching = isCrouching;
 	}
+
+
 
 	public void TakeDamage(int attackValue){
 		healthBar.Deplete(attackValue);

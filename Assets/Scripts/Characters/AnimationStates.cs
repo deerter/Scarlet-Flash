@@ -10,8 +10,8 @@ public static class AnimationStates {
 	public const string LIGHT_KICK = "LightKick";
 	public const string HEAVY_PUNCH = "HeavyPunch";
 	public const string HEAVY_KICK = "HeavyKick";
-	public const string CROUCHING = "Crouching";
-	public const string CROUCH = "Crouch";
+	public const string CROUCHING = "Crouching"; //State in which the character stays crouched
+	public const string CROUCH = "Crouch";   //State in which the character is crouching
 	public const string CROUCHING_LIGHT_PUNCH = "CrouchingLightPunch";
 	public const string CROUCHING_LIGHT_KICK = "CrouchingLightKick";
 	public const string CROUCHING_HEAVY_PUNCH = "CrouchingHeavyPunch";

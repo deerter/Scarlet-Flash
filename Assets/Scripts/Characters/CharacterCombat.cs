@@ -12,6 +12,14 @@ public class CharacterCombat : MonoBehaviour {
 		currentCharacter = this.GetComponent<CharacterFeatures>();
 		//animator = currentCharacter.GetAnimator();
 	}
+
+	public void IsCharacterStillCrouching(){
+		if (currentCharacter.GetIsCrouching()){
+			currentCharacter.EndAnimation(AnimationStates.CROUCHING);
+		}else{
+			currentCharacter.EndAnimation(AnimationStates.STANDING);
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,22 +45,22 @@ public class CharacterCombat : MonoBehaviour {
 		}
 
 		/////Crouching Attacks
-		if (Input.GetKeyDown(GameConstants.LP) && currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.LP) && currentCharacter.GetIsCrouching() && !currentCharacter.IsAnimationPlaying()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCHING_LIGHT_PUNCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING_LIGHT_PUNCH);
 		}
 
-		if (Input.GetKeyDown(GameConstants.LK) && currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.LK) && currentCharacter.GetIsCrouching() && !currentCharacter.IsAnimationPlaying()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCHING_LIGHT_KICK);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING_LIGHT_KICK);
 		}
 
-		if (Input.GetKeyDown(GameConstants.HP) && currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.HP) && currentCharacter.GetIsCrouching() && !currentCharacter.IsAnimationPlaying()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCHING_HEAVY_PUNCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING_HEAVY_PUNCH);
 		}
 
-		if (Input.GetKeyDown(GameConstants.HK) && currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.HK) && currentCharacter.GetIsCrouching() && !currentCharacter.IsAnimationPlaying()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCHING_HEAVY_KICK);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING_HEAVY_KICK);
 		}

@@ -14,11 +14,13 @@ public class CharacterMovement : MonoBehaviour {
 		currentCharacter = this.GetComponent<CharacterFeatures>();
 		animator = currentCharacter.GetAnimator();
 	}
+
+	
 	
 	
 	void Update () {
 
-		///Directional Pad
+		///Moving
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
 		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
 			 (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 
@@ -31,6 +33,7 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
+		// Crouching
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !(currentCharacter.GetIsCrouching())){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
@@ -38,11 +41,12 @@ public class CharacterMovement : MonoBehaviour {
 			currentCharacter.SetAnimationPlaying(false);
 		}
 
-		if (Input.GetKeyUp(GameConstants.D) && (currentCharacter.GetIsCrouching()) )//&& !currentCharacter.IsAnimationPlaying())
+		if (Input.GetKeyUp(GameConstants.D))
         {
 			currentCharacter.SetIsCrouching(false);
-			currentCharacter.EndAnimation(AnimationStates.STANDING);
-			animator.speed = 1;
+			if(!currentCharacter.IsAnimationPlaying()){
+				currentCharacter.EndAnimation(AnimationStates.STANDING);
+			}
         }
 
 		
