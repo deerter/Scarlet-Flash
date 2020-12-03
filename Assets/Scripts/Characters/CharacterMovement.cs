@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour {
 	
-
-	private Animator animator;
+	
 	private CharacterFeatures currentCharacter;
-	private Rigidbody2D rb;
+	private Animator animator;
+	private Rigidbody2D rigidBody;
+	private BoxCollider2D boxCollider;
 
 	void Start(){
-		rb = this.GetComponent<Rigidbody2D>();
 		currentCharacter = this.GetComponent<CharacterFeatures>();
 		animator = currentCharacter.GetAnimator();
+		rigidBody = this.GetComponent<Rigidbody2D>();
+		boxCollider = this.GetComponent<BoxCollider2D>();
+	}
+
+	/*public void falling(){       ///////JUST IN CASE/////////////Loops last frames of falling animation
+		animator.Play(AnimationStates.JUMPING_DOWN,0,0.5f);
+	}*/
+
+	public void CharacterIsGrounded(){
+		float extraHeightText = 0.01f;
+		if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText).collider) != null){  ///Check is character collider is touching another collider
+			currentCharacter.EndAnimation(AnimationStates.STANDING);
+			currentCharacter.SetIsJumping(false);
+		}
 	}
 
 	
@@ -28,26 +42,33 @@ public class CharacterMovement : MonoBehaviour {
 			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
 				animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
-				rb.MovePosition(rb.position + horizontal * Time.fixedDeltaTime * 50f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+				rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 50f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
 																						//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
 			}
 		}
 
 		// Crouching
-		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !(currentCharacter.GetIsCrouching())){
+		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);
 			currentCharacter.SetAnimationPlaying(false);
 		}
 
-		if (Input.GetKeyUp(GameConstants.D))
+		if (Input.GetKeyUp(GameConstants.D) && !currentCharacter.GetIsJumping())
         {
 			currentCharacter.SetIsCrouching(false);
 			if(!currentCharacter.IsAnimationPlaying()){
 				currentCharacter.EndAnimation(AnimationStates.STANDING);
 			}
         }
+
+		// Jumping
+		if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
+			currentCharacter.SetIsJumping(true);
+			rigidBody.velocity = Vector2.up * 160f;   ///Force necessary to break free from gravity
+			currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
+		}
 
 		
 		

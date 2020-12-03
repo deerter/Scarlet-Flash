@@ -11,6 +11,7 @@ public class CharacterFeatures : MonoBehaviour {
 	private bool animationPlaying = false;   //Character is currently on an animation other than standing ///Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
 	private string animationStatus;
 	private bool isCrouching = false;
+	private bool isJumping = false;
 
 
 	public Character GetCharacter() {
@@ -59,6 +60,16 @@ public class CharacterFeatures : MonoBehaviour {
 
 	public void SetIsCrouching(bool isCrouching){
 		this.isCrouching = isCrouching;
+	}
+
+	
+
+	public bool GetIsJumping(){
+		return isJumping;
+	}
+
+	public void SetIsJumping(bool isJumping){
+		this.isJumping = isJumping;
 	}
 
 
