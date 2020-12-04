@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour {
 
 	public void CharacterIsGrounded(){
 		float extraHeightText = 0.01f;
-		if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText).collider) != null){  ///Check is character collider is touching another collider
+		if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText).collider) != null){  ///Check if character collider is touching another collider
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			currentCharacter.SetIsJumping(false);
 		}
@@ -67,10 +67,21 @@ public class CharacterMovement : MonoBehaviour {
 		if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.SetIsJumping(true);
 			rigidBody.velocity = Vector2.up * 160f;   ///Force necessary to break free from gravity
-			currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
+			if (Input.GetKey(GameConstants.R)){
+				rigidBody.velocity += Vector2.right * 50f;
+				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
+				currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
+			}
+			else if(Input.GetKey(GameConstants.L)){
+				rigidBody.velocity += Vector2.left * 50f;
+				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
+				currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
+			}
+			else{
+				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
+				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
+			}	
 		}
-
-		
 		
 		
 	}

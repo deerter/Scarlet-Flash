@@ -18,5 +18,7 @@ public static class AnimationStates {
 	public const string CROUCHING_HEAVY_KICK = "CrouchingHeavyKick";
 	public const string JUMPING_UP = "JumpingUp";
 	public const string JUMPING_DOWN = "JumpingDown";
+	public const string JUMPING_FORWARDS = "JumpingForwards";
+	public const string JUMPING_BACKWARDS = "JumpingBackwards";
 	
 }
