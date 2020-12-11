@@ -32,7 +32,8 @@ public class Sakura : Character {
 			{AnimationStates.CROUCHING_LIGHT_PUNCH, this.crouchingLightPunchDamage},
 			{AnimationStates.CROUCHING_LIGHT_KICK, this.crouchingLightKickDamage},
 			{AnimationStates.CROUCHING_HEAVY_PUNCH, this.crouchingHeavyPunchDamage},
-			{AnimationStates.CROUCHING_HEAVY_KICK, this.crouchingHeavyKickDamage}
+			{AnimationStates.CROUCHING_HEAVY_KICK, this.crouchingHeavyKickDamage},
+			{AnimationStates.JUMPING_LIGHT_PUNCH, this.jumpingLightPunchDamage}
 		};
 	}
 

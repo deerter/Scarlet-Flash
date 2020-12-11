@@ -24,22 +24,22 @@ public class CharacterCombat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		///Standing Attacks
-		if (Input.GetKeyDown(GameConstants.LP) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.LP) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.PlayAnimation(AnimationStates.LIGHT_PUNCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.LIGHT_PUNCH);
 		}
 
-		if (Input.GetKeyDown(GameConstants.LK) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.LK) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.PlayAnimation(AnimationStates.LIGHT_KICK);
 			currentCharacter.SetAnimationStatus(AnimationStates.LIGHT_KICK);
 		}
 
-		if (Input.GetKeyDown(GameConstants.HP) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.HP) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.PlayAnimation(AnimationStates.HEAVY_PUNCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.HEAVY_PUNCH);
 		}
 
-		if (Input.GetKeyDown(GameConstants.HK) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching()){
+		if (Input.GetKeyDown(GameConstants.HK) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.PlayAnimation(AnimationStates.HEAVY_KICK);
 			currentCharacter.SetAnimationStatus(AnimationStates.HEAVY_KICK);
 		}
@@ -63,6 +63,27 @@ public class CharacterCombat : MonoBehaviour {
 		if (Input.GetKeyDown(GameConstants.HK) && currentCharacter.GetIsCrouching() && !currentCharacter.IsAnimationPlaying()){
 			currentCharacter.PlayAnimation(AnimationStates.CROUCHING_HEAVY_KICK);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCHING_HEAVY_KICK);
+		}
+
+		//////Jumping Attacks
+		if (Input.GetKeyDown(GameConstants.LP) && currentCharacter.GetIsJumping() && !currentCharacter.IsAnimationPlaying()){
+			currentCharacter.PlayAnimation(AnimationStates.JUMPING_LIGHT_PUNCH);
+			currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_LIGHT_PUNCH);
+		}
+
+		if (Input.GetKeyDown(GameConstants.LK) && currentCharacter.GetIsJumping() && !currentCharacter.IsAnimationPlaying()){
+			currentCharacter.PlayAnimation(AnimationStates.JUMPING_LIGHT_KICK);
+			currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_LIGHT_KICK);
+		}
+
+		if (Input.GetKeyDown(GameConstants.HP) && currentCharacter.GetIsJumping() && !currentCharacter.IsAnimationPlaying()){
+			currentCharacter.PlayAnimation(AnimationStates.JUMPING_HEAVY_PUNCH);
+			currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_HEAVY_PUNCH);
+		}
+
+		if (Input.GetKeyDown(GameConstants.HK) && currentCharacter.GetIsJumping() && !currentCharacter.IsAnimationPlaying()){
+			currentCharacter.PlayAnimation(AnimationStates.JUMPING_HEAVY_KICK);
+			currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_HEAVY_KICK);
 		}
 
 

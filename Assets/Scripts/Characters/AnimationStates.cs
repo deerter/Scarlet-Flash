@@ -20,5 +20,9 @@ public static class AnimationStates {
 	public const string JUMPING_DOWN = "JumpingDown";
 	public const string JUMPING_FORWARDS = "JumpingForwards";
 	public const string JUMPING_BACKWARDS = "JumpingBackwards";
+	public const string JUMPING_LIGHT_PUNCH = "JumpingLightPunch";
+	public const string JUMPING_LIGHT_KICK = "JumpingLightKick";
+	public const string JUMPING_HEAVY_PUNCH = "JumpingHeavyPunch";
+	public const string JUMPING_HEAVY_KICK = "JumpingHeavyKick";
 	
 }

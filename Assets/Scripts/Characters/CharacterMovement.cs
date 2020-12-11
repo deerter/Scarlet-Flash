@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour {
 	
 	
+	[SerializeField] private LayerMask groundLayerMask;
 	private CharacterFeatures currentCharacter;
 	private Animator animator;
 	private Rigidbody2D rigidBody;
@@ -22,11 +23,17 @@ public class CharacterMovement : MonoBehaviour {
 	}*/
 
 	public void CharacterIsGrounded(){
-		float extraHeightText = 0.01f;
-		if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText).collider) != null){  ///Check if character collider is touching another collider
+		float extraHeightText = 0.0f;
+		/*if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText, groundLayerMask).collider) != null){  ///Check if character collider is touching another collider
+			currentCharacter.EndAnimation(AnimationStates.STANDING);
+			currentCharacter.SetIsJumping(false);
+		}*/
+		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			currentCharacter.SetIsJumping(false);
 		}
+		Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeightText));
+		Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeightText), Vector2.right * (boxCollider.bounds.extents.y));
 	}
 
 	
@@ -66,7 +73,7 @@ public class CharacterMovement : MonoBehaviour {
 		// Jumping
 		if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.SetIsJumping(true);
-			rigidBody.velocity = Vector2.up * 160f;   ///Force necessary to break free from gravity
+			rigidBody.velocity = Vector2.up * 180f;   ///Force necessary to break free from gravity
 			if (Input.GetKey(GameConstants.R)){
 				rigidBody.velocity += Vector2.right * 50f;
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
@@ -81,6 +88,7 @@ public class CharacterMovement : MonoBehaviour {
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
 			}	
+			currentCharacter.SetAnimationPlaying(false);
 		}
 		
 		
