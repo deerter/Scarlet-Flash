@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour {
 	}*/
 
 	public void CharacterIsGrounded(){
-		float extraHeightText = 0.0f;
+		float extraHeightText = 1.0f;
 		/*if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText, groundLayerMask).collider) != null){  ///Check if character collider is touching another collider
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			currentCharacter.SetIsJumping(false);
@@ -31,9 +31,10 @@ public class CharacterMovement : MonoBehaviour {
 		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			currentCharacter.SetIsJumping(false);
+			transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);   ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
 		}
-		Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeightText));
-		Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeightText), Vector2.right * (boxCollider.bounds.extents.y));
+		/*Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeightText));
+		Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeightText), Vector2.right * (boxCollider.bounds.extents.y));*/  ////Debug to check if the boxcast touches the ground
 	}
 
 	
@@ -42,6 +43,7 @@ public class CharacterMovement : MonoBehaviour {
 	void Update () {
 
 		///Moving
+		
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
 		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
 			 (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 

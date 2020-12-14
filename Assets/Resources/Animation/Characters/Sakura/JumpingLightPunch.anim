@@ -736,15 +736,15 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.28
-    functionName: EndAnimation
-    data: JumpingDown
+    functionName: CharacterIsGrounded
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.28
-    functionName: CharacterIsGrounded
-    data: 
+  - time: 0.32
+    functionName: EndAnimation
+    data: JumpingDown
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
