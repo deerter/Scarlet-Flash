@@ -24,5 +24,6 @@ public static class AnimationStates {
 	public const string JUMPING_LIGHT_KICK = "JumpingLightKick";
 	public const string JUMPING_HEAVY_PUNCH = "JumpingHeavyPunch";
 	public const string JUMPING_HEAVY_KICK = "JumpingHeavyKick";
+	public const string LANDING = "Landing";
 	
 }

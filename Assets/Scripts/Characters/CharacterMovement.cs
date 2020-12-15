@@ -29,12 +29,15 @@ public class CharacterMovement : MonoBehaviour {
 			currentCharacter.SetIsJumping(false);
 		}*/
 		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
-			currentCharacter.EndAnimation(AnimationStates.STANDING);
+			currentCharacter.EndAnimation(AnimationStates.LANDING);
 			currentCharacter.SetIsJumping(false);
-			transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);   ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
 		}
 		/*Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeightText));
 		Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeightText), Vector2.right * (boxCollider.bounds.extents.y));*/  ////Debug to check if the boxcast touches the ground
+	}
+
+	public void SetCoordinatesWhenLanding(){ ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
+		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
 	}
 
 	
