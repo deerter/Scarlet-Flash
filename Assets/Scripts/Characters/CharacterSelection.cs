@@ -21,7 +21,9 @@ public class CharacterSelection : MonoBehaviour {
     private int chosenChars = 0;
 
     private CharacterSelectionMapping characterMapping = new CharacterSelectionMapping();
-    private LoadSceneonClick nextScene = new LoadSceneonClick();
+    private LoadSceneonClick loadScene = new LoadSceneonClick();
+    private PopUpWindow popUp;
+    private bool isOnPopUp = false;
 
     private void DisplayCharacterSelected(string charName)
     {
@@ -39,17 +41,17 @@ public class CharacterSelection : MonoBehaviour {
         {
             case 1:
                 firstChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + charName);
+                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
                 CurrentFightStats.SetSelectedCharacterPlayer1(charName,0);break;
             case 2:
                 secondChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + charName);
+                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
                 CurrentFightStats.SetSelectedCharacterPlayer1(charName,1);break;
             case 3:
                 thirdChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + charName);
+                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
                 CurrentFightStats.SetSelectedCharacterPlayer1(charName,2);
-                nextScene.LoadByIndex(8);break;
+                loadScene.LoadByIndex(8);break;
         }
     }
 
@@ -71,25 +73,38 @@ public class CharacterSelection : MonoBehaviour {
 	void Start () {
         //First character selected
         name = characterName.GetComponent<Text>();
+        popUp = this.GetComponent<PopUpWindow>();
         characterSeries = "SF";
         artwork.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/Ryu");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/SF_logo");
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        name.text = EventSystem.current.currentSelectedGameObject.name;
-        if (Input.GetKeyDown(GameConstants.U)||(Input.GetKeyDown(GameConstants.D))|| Input.GetKeyDown(GameConstants.L)|| Input.GetKeyDown(GameConstants.R))
-        {
-            DisplayCharacterSelected(name.text);
+        if (!isOnPopUp){
+            name.text = EventSystem.current.currentSelectedGameObject.name;
+            if ((Input.GetKeyDown(GameConstants.U)||(Input.GetKeyDown(GameConstants.D))|| Input.GetKeyDown(GameConstants.L)|| Input.GetKeyDown(GameConstants.R)))
+            {
+                DisplayCharacterSelected(name.text);
+            }
+            if (Input.GetKeyDown(GameConstants.ACCEPT) && (chosenChars<maxChars))
+            {
+                ChooseCharacter(name.text);
+            }
+            if (Input.GetKeyDown(GameConstants.BACK))
+            {
+                if (chosenChars > 0){
+                    UnchooseCharacter();
+                }else{
+                    popUp.PopUp();
+                    isOnPopUp = true;
+            }
         }
-        if (Input.GetKeyDown(GameConstants.ACCEPT) && (chosenChars<maxChars))
-        {
-            ChooseCharacter(name.text);
-        }
-        if (Input.GetKeyDown(GameConstants.BACK) && (chosenChars > 0))
-        {
-            UnchooseCharacter();
+        }else{
+            if (Input.GetKeyDown(GameConstants.ACCEPT)){
+                isOnPopUp = false;
+            }
         }
     }
 }

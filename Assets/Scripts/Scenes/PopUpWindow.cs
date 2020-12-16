@@ -10,20 +10,22 @@ public class PopUpWindow : MonoBehaviour {
     public GameObject selectedObject;
     public Image image;
     EventSystem myEventSystem;
+    static GameObject previouslySelectedObject;
 
     public void PopUp()
     {
         popUpWindow.SetActive(true);
         myEventSystem = EventSystem.current;
+        previouslySelectedObject = myEventSystem.currentSelectedGameObject;
         myEventSystem.SetSelectedGameObject(selectedObject);
-        image.color = new Color(image.color.r, image.color.g, image.color.b, 0.4f);
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 0.6f);
     }
 
     public void ClosePopUp()
     {
         popUpWindow.SetActive(false);
         myEventSystem = EventSystem.current;
-        myEventSystem.SetSelectedGameObject(selectedObject);
+        myEventSystem.SetSelectedGameObject(previouslySelectedObject);
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
     }
 }

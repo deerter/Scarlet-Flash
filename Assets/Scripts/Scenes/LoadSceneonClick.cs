@@ -13,14 +13,12 @@ public class LoadSceneonClick : MonoBehaviour {
     {
         Scene currentScene = SceneManager.GetActiveScene();
 
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown(GameConstants.BACK))
         {
             switch (currentScene.buildIndex)
             {
-                case 2: case 6: LoadByIndex(1); break;
-                case 3: case 4: case 5: LoadByIndex(2); break;
-                case 7: LoadByIndex(2);break;
-                
+                case 2: case 6: LoadByIndex(1); break;             ///Versus and Options
+                case 3: case 4: case 5: LoadByIndex(2); break;     ///VSCPU, CPUVSCPU, PVP 
             }
         }
     }
