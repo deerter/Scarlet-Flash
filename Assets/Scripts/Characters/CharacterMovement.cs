@@ -24,10 +24,11 @@ public class CharacterMovement : MonoBehaviour {
 
 	public void CharacterIsGrounded(){
 		float extraHeightText = 1.0f;
-		/*if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText, groundLayerMask).collider) != null){  ///Check if character collider is touching another collider
+		/*if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText, groundLayerMask).collider) != null){  
 			currentCharacter.EndAnimation(AnimationStates.STANDING);
 			currentCharacter.SetIsJumping(false);
 		}*/
+		///Check if character collider is touching another collider
 		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
 			currentCharacter.EndAnimation(AnimationStates.LANDING);
 			currentCharacter.SetIsJumping(false);
