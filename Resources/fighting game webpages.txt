@@ -27,3 +27,4 @@ http://hyperwyrm.co.uk/mangafonts
 
 //Unity resources
 https://unity3d.com/es/learn/tutorials/topics/user-interface-ui/creating-main-menu?playlist=17111
+https://generalistprogrammer.com/unity/unity-2d-how-to-make-camera-follow-player/

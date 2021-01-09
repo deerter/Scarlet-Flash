@@ -24,11 +24,10 @@ public class CameraMovementFight : MonoBehaviour {
 		yMax = ceiling.bounds.max.y;
 		mainCam = GetComponent<Camera>();
 		camOrthSize = mainCam.orthographicSize;
-		cameraRatio = (xMax + camOrthSize) / 2.0f - 6;   /////Needs and offset to hit the correct boundaries of X.
+		cameraRatio = (xMax + camOrthSize) / 2.0f - 6;   /////Needs an offset to hit the correct boundaries of X.
 	}
 
 	void FixedUpdate(){
-		//camY = Mathf.Clamp(followTransform.position.y - offsetY, yMin + camOrthSize, yMax - camOrthSize);
 		camY = Mathf.Clamp(followTransform.position.y - offsetY, yMin + camOrthSize - 7, yMax - camOrthSize);
 		camX = Mathf.Clamp(followTransform.position.x + offsetX, xMin + cameraRatio, xMax - cameraRatio);
 		this.transform.position = new Vector3(camX, camY, this.transform.position.z);

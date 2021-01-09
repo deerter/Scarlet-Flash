@@ -41,6 +41,9 @@ public class CharacterMovement : MonoBehaviour {
 		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
 	}
 
+	private void jumpingOverCharacter(){
+		
+	}
 	
 	
 	
