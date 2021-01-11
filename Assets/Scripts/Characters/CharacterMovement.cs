@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +6,12 @@ public class CharacterMovement : MonoBehaviour {
 	
 	
 	[SerializeField] private LayerMask groundLayerMask;
+	public GameObject rivalCharacter;
 	private CharacterFeatures currentCharacter;
 	private Animator animator;
 	private Rigidbody2D rigidBody;
 	private BoxCollider2D boxCollider;
+
 
 	void Start(){
 		currentCharacter = this.GetComponent<CharacterFeatures>();
@@ -41,14 +43,40 @@ public class CharacterMovement : MonoBehaviour {
 		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
 	}
 
-	private void jumpingOverCharacter(){
+	private void jumpingOverCharacter(Collision2D col){
+		BoxCollider2D rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();  ////Not necessary for the moment
+		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
+		Vector3 contactPoint = col.contacts[0].point;
+        Vector3 center = col.collider.bounds.center;
+		Vector3 sides = col.collider.bounds.extents;
+		if (contactPoint.x > center.x){
+			print("cobrar");
+		}else {
+			float distance = contactPoint.x - (center.x - sides.x);
+
+			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
+			Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
+
+			rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 37));
+			rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 37));
+
+		}
+		//currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);   
 		
+		//Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider);
 	}
-	
-	
+
+
+
+	void OnCollisionEnter2D(Collision2D col) {
+		if (currentCharacter.GetIsJumping()){
+			if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2"){
+				jumpingOverCharacter(col);
+			}
+		}
+ 	}
 	
 	void Update () {
-
 		///Moving
 		
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
@@ -58,7 +86,7 @@ public class CharacterMovement : MonoBehaviour {
 			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
 				animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
-				rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 50f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+				rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
 																						//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
 			}
 		}
@@ -84,12 +112,12 @@ public class CharacterMovement : MonoBehaviour {
 			currentCharacter.SetIsJumping(true);
 			rigidBody.velocity = Vector2.up * 180f;   ///Force necessary to break free from gravity
 			if (Input.GetKey(GameConstants.R)){
-				rigidBody.velocity += Vector2.right * 50f;
+				rigidBody.velocity += Vector2.right * 70f;
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
 			}
 			else if(Input.GetKey(GameConstants.L)){
-				rigidBody.velocity += Vector2.left * 50f;
+				rigidBody.velocity += Vector2.left * 70f;
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
 			}
@@ -99,9 +127,6 @@ public class CharacterMovement : MonoBehaviour {
 			}	
 			currentCharacter.SetAnimationPlaying(false);
 		}
-		
-		
 	}
 
-	
 }
