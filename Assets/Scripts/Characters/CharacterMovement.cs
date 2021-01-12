@@ -11,6 +11,7 @@ public class CharacterMovement : MonoBehaviour {
 	private Animator animator;
 	private Rigidbody2D rigidBody;
 	private BoxCollider2D boxCollider;
+	private BoxCollider2D rivalBoxCollider;
 
 
 	void Start(){
@@ -34,6 +35,7 @@ public class CharacterMovement : MonoBehaviour {
 		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
 			currentCharacter.EndAnimation(AnimationStates.LANDING);
 			currentCharacter.SetIsJumping(false);
+			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);   //In the case the character collisions with its rival during jumping, the collision is ignored. This sets collisions as not ignored again.
 		}
 		/*Debug.DrawRay(boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x, 0), Vector2.down * (boxCollider.bounds.extents.y + extraHeightText));
 		Debug.DrawRay(boxCollider.bounds.center - new Vector3(boxCollider.bounds.extents.x, boxCollider.bounds.extents.y + extraHeightText), Vector2.right * (boxCollider.bounds.extents.y));*/  ////Debug to check if the boxcast touches the ground
@@ -43,27 +45,43 @@ public class CharacterMovement : MonoBehaviour {
 		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
 	}
 
-	private void jumpingOverCharacter(Collision2D col){
-		BoxCollider2D rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();  ////Not necessary for the moment
+	private void JumpingOverCharacter(Collision2D col){
+		currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);
+
+		rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();  
 		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = col.collider.bounds.center;
-		Vector3 sides = col.collider.bounds.extents;
+		//Vector3 sides = col.collider.bounds.extents;
 		if (contactPoint.x > center.x){
 			print("cobrar");
+
 		}else {
-			float distance = contactPoint.x - (center.x - sides.x);
+			float distance = col.collider.bounds.size.x/2;
+
+			
 
 			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
 			Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
 
-			rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 37));
-			rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 37));
 
+			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+
+			//rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 40));  //37
+			//rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 40));
+			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 		}
 		//currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);   
-		
-		//Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider);
+	}
+
+	IEnumerator LerpPosition(Vector2 startPosition, Vector2 toPosition, float duration, Rigidbody2D rigidBody){
+
+		float time = 0;
+		while (time < duration){
+			rigidBody.MovePosition (Vector2.Lerp(startPosition, toPosition, time / duration));
+			time += Time.deltaTime;
+			yield return null;
+		}
 	}
 
 
@@ -71,7 +89,7 @@ public class CharacterMovement : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		if (currentCharacter.GetIsJumping()){
 			if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2"){
-				jumpingOverCharacter(col);
+				JumpingOverCharacter(col);
 			}
 		}
  	}
