@@ -13,6 +13,8 @@ public class CharacterMovement : MonoBehaviour {
 	private BoxCollider2D boxCollider;
 	private BoxCollider2D rivalBoxCollider;
 
+	private float characterJumpFinalPosition;  ///Needed to assess the final position of a jump
+
 
 	void Start(){
 		currentCharacter = this.GetComponent<CharacterFeatures>();
@@ -25,6 +27,7 @@ public class CharacterMovement : MonoBehaviour {
 		animator.Play(AnimationStates.JUMPING_DOWN,0,0.5f);
 	}*/
 
+	///////Character landing////////
 	public void CharacterIsGrounded(){
 		float extraHeightText = 1.0f;
 		/*if ((Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + extraHeightText, groundLayerMask).collider) != null){  
@@ -44,7 +47,17 @@ public class CharacterMovement : MonoBehaviour {
 	public void SetCoordinatesWhenLanding(){ ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
 		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
 	}
+	/////////////////////////////////
 
+	////Get final position of a jump//////////
+	private void CalculateJumpingDestination(float jumpOriginPosition){
+
+		////74.45º is the angle of jump (is in degrees, must be converted to radians)///////
+		characterJumpFinalPosition = ((Mathf.Pow(rigidBody.velocity.x, 2)*Mathf.Sin(2*(74.45f * Mathf.PI)/180))/rigidBody.gravityScale) + jumpOriginPosition;
+		
+	}
+
+	///////Character collision when jumping ////////
 	private void JumpingOverCharacter(Collision2D col){
 		currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);
 
@@ -57,7 +70,8 @@ public class CharacterMovement : MonoBehaviour {
 			print("cobrar");
 
 		}else {
-			float distance = col.collider.bounds.size.x/2;
+			float distance = Mathf.Abs(characterJumpFinalPosition - transform.position.x);
+			print (distance);
 
 			
 
@@ -65,7 +79,7 @@ public class CharacterMovement : MonoBehaviour {
 			Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
 
 
-			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));  //0.17
 
 			//rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 40));  //37
 			//rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 40));
@@ -84,8 +98,6 @@ public class CharacterMovement : MonoBehaviour {
 		}
 	}
 
-
-
 	void OnCollisionEnter2D(Collision2D col) {
 		if (currentCharacter.GetIsJumping()){
 			if (col.gameObject.tag == "Player1" || col.gameObject.tag == "Player2"){
@@ -93,10 +105,11 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
  	}
+	/////////////////
 	
 	void Update () {
+
 		///Moving
-		
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
 		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
 			 (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 
@@ -104,13 +117,17 @@ public class CharacterMovement : MonoBehaviour {
 			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
 				animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
-				rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+				rigidBody.velocity = horizontal * 3500f * Time.fixedDeltaTime;
+				//rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
 																						//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
+			}else{
+				rigidBody.velocity = new Vector2(0,0);
 			}
 		}
 
 		// Crouching
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
+			rigidBody.velocity = new Vector2(0,0);  //In case the animation goes from walking to crouching directly, prevents from sliding behaviour
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);
@@ -142,7 +159,8 @@ public class CharacterMovement : MonoBehaviour {
 			else{
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
-			}	
+			}
+			CalculateJumpingDestination(transform.position.x);
 			currentCharacter.SetAnimationPlaying(false);
 		}
 	}

@@ -3700,6 +3700,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  rivalCharacter: {fileID: 0}
 --- !u!95 &2053421553
 Animator:
   serializedVersion: 3
