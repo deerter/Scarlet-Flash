@@ -65,27 +65,31 @@ public class CharacterMovement : MonoBehaviour {
 		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = col.collider.bounds.center;
-		//Vector3 sides = col.collider.bounds.extents;
-		if (contactPoint.x > center.x){
-			print("cobrar");
+		Vector3 sides = col.collider.bounds.extents;
+		if (contactPoint.x > (center.x - 0.5f)){
+			//float distance = Mathf.Abs((contactPoint.x - (center.x - sides.x))) - offset;
+
+			float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
+			
+			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x - distance, col.gameObject.transform.position.y);
+
+			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+
+			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 		}else {
-			float distance = Mathf.Abs(characterJumpFinalPosition - transform.position.x);
-			print (distance);
-
-			
+			float offset = 0.35f;
+			float distance = Mathf.Abs((characterJumpFinalPosition - (center.x - sides.x)) + (contactPoint.x - (center.x - sides.x))) + offset;
 
 			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
-			Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
+			//Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
 
-
-			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));  //0.17
+			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
 
 			//rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 40));  //37
 			//rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 40));
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
-		}
-		//currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);   
+		} 
 	}
 
 	IEnumerator LerpPosition(Vector2 startPosition, Vector2 toPosition, float duration, Rigidbody2D rigidBody){
@@ -109,6 +113,10 @@ public class CharacterMovement : MonoBehaviour {
 	
 	void Update () {
 
+		if (currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping()){ //In case the animation goes from walking to other animation, prevents from sliding behaviour
+			rigidBody.velocity = new Vector2(0,0);
+		}
+
 		///Moving
 		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
 		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
@@ -127,7 +135,7 @@ public class CharacterMovement : MonoBehaviour {
 
 		// Crouching
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
-			rigidBody.velocity = new Vector2(0,0);  //In case the animation goes from walking to crouching directly, prevents from sliding behaviour
+			rigidBody.velocity = new Vector2(0,0); //Prevents from sliding
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);
