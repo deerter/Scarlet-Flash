@@ -12,6 +12,9 @@ public class CharacterFeatures : MonoBehaviour {
 	private string animationStatus;
 	private bool isCrouching = false;
 	private bool isJumping = false;
+	private bool isBlocking = false;
+	private bool isHit = false;
+	private bool isWinner = false;
 
 
 	public Character GetCharacter() {
@@ -52,7 +55,7 @@ public class CharacterFeatures : MonoBehaviour {
 		return animationStatus;
 	}
 
-	
+
 
 	public bool GetIsCrouching(){
 		return isCrouching;
@@ -73,6 +76,39 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 
+	public bool GetIsBlocking(){
+		return isBlocking;
+	}
+
+	public void SetIsBlocking(bool isBlocking){
+		this.isBlocking = isBlocking;
+	}
+
+
+	public bool GetIsHit(){
+		return isHit;
+	}
+
+	public void HitDone(){
+		this.isHit = true;
+	}
+
+	public void HitEnding (){
+		this.isHit = false;
+	}
+
+
+
+	public void SetIsWinner(){
+		isWinner = true;
+	}
+
+
+	public void CharacterIsDead(){
+		gameObject.GetComponent<Animator>().enabled = false;
+	}
+
+
 
 	public void TakeDamage(int attackValue){
 		healthBar.Deplete(attackValue);
@@ -80,6 +116,12 @@ public class CharacterFeatures : MonoBehaviour {
 
 	public int DoDamage(){
 		return character.GetAttackOutput(animationStatus);
+	}
+
+	IEnumerator VictoryDance(){
+		yield return new WaitForSeconds(5);
+		SetAnimationStatus(AnimationStates.VICTORY);
+		PlayAnimation(AnimationStates.VICTORY);
 	}
 
 	// Use this for initialization
@@ -94,6 +136,18 @@ public class CharacterFeatures : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (healthBar.getHP() == 0 && !GetIsJumping()){
+			//GetComponent<CharacterMovement>().enabled = false;  /////Use these commands if the rival character is not AI
+			//GetComponent<CharacterCombat>().enabled = false;
+
+			/*GetComponent<Rigidbody2D>().isKinematic = true;
+			GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position);
+			GetComponent<BoxCollider2D>().enabled = false;*/
+			PlayAnimation(AnimationStates.KO);
+		}
+		if (isWinner && !GetIsJumping()){
+			StartCoroutine(VictoryDance());
+		}
 		
 	}
 }

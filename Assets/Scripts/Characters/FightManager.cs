@@ -9,16 +9,14 @@ public class FightManager : MonoBehaviour {
     [SerializeField] GameObject hyper;
     [SerializeField] GameObject special;
 
+	[SerializeField] GameObject player1;
+	[SerializeField] GameObject player2;
+
 	public static int numCharactersPlayer1 = 3;
 	public static int numCharactersPlayer2 = 3;
 
-	// First 3 -> Player 1, Second 3 -> Player 2
-	private static Character[] selectedCharactersPlayer1 = new Character[numCharactersPlayer1];
-	private static Character[] selectedCharactersPlayer2 = new Character[numCharactersPlayer2];
-
-	// First 3 -> Player 1, Second 3 -> Player 2
-	private static HealthBar[] healthBarsPlayer1 = new HealthBar[numCharactersPlayer1];
-	private static HealthBar[] healthBarsPlayer2 = new HealthBar[numCharactersPlayer2];
+	private CharacterFeatures player1Features;
+	private CharacterFeatures player2Features;
 
 
 	/*private Character InitiliazeCharacter (string characterName){
@@ -36,6 +34,8 @@ public class FightManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		player1Features = player1.GetComponent<CharacterFeatures>();
+		player2Features = player2.GetComponent<CharacterFeatures>();
 		//Initiliaze characters
 		/*for (int i=0; i < selectedCharacters.Length; i++){
 			InitiliazeCharacter(selectedCharactersPlayer1[i], i);
@@ -56,13 +56,16 @@ public class FightManager : MonoBehaviour {
 		healthBarsPlayer2[0] = new HealthBar(health.transform.GetChild(3).gameObject, selectedCharactersPlayer2[0].GetHealth());*/
 	}
 
-	/*void Update(){
-		if (Input.GetKeyDown(GameConstants.LP))
+	void Update(){
+		if (player1Features.GetHealthBar().getHP() == 0) player2Features.SetIsWinner();
+		if (player2Features.GetHealthBar().getHP() == 0) player1Features.SetIsWinner();
+		/*if (Input.GetKeyDown(GameConstants.LP))
         {
 			print("entrando");
             healthBars[3].TakeDamage(45000);
-        }
-	}*/
+        }*/
+
+	}
 
 	
 

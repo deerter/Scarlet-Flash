@@ -16,9 +16,13 @@ public class HealthBar {
 		this.currentRedHealth = maxHealth;
 	}
 
-	public int getHP(){
+	public int getMaxHP(){
 		return this.maxHealth;
 	}
+
+    public int getHP(){
+        return this.currentHealth;
+    }
 
 	public void SetHP(float hpNormalized)
     {
@@ -38,6 +42,7 @@ public class HealthBar {
 
         if (currentHealth <= 0)
         {
+            this.currentHealth = 0;
             SetHP(0);
             SetRedHealth(0);
             return true;

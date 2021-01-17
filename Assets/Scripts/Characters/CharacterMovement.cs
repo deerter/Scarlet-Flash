@@ -67,7 +67,6 @@ public class CharacterMovement : MonoBehaviour {
         Vector3 center = col.collider.bounds.center;
 		Vector3 sides = col.collider.bounds.extents;
 		if (contactPoint.x > (center.x - 0.5f)){
-			//float distance = Mathf.Abs((contactPoint.x - (center.x - sides.x))) - offset;
 
 			float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
 			
@@ -78,8 +77,7 @@ public class CharacterMovement : MonoBehaviour {
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 		}else {
-			float offset = 0.35f;
-			float distance = Mathf.Abs((characterJumpFinalPosition - (center.x - sides.x)) + (contactPoint.x - (center.x - sides.x))) + offset;
+			float distance = Mathf.Abs((boxCollider.bounds.extents.x + characterJumpFinalPosition) - (center.x - sides.x));
 
 			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
 			//Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
@@ -93,7 +91,6 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	IEnumerator LerpPosition(Vector2 startPosition, Vector2 toPosition, float duration, Rigidbody2D rigidBody){
-
 		float time = 0;
 		while (time < duration){
 			rigidBody.MovePosition (Vector2.Lerp(startPosition, toPosition, time / duration));
@@ -113,7 +110,7 @@ public class CharacterMovement : MonoBehaviour {
 	
 	void Update () {
 
-		if (currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping()){ //In case the animation goes from walking to other animation, prevents from sliding behaviour
+		if (currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit()){ //In case the animation goes from walking to other animation, prevents from sliding behaviour
 			rigidBody.velocity = new Vector2(0,0);
 		}
 
@@ -133,9 +130,17 @@ public class CharacterMovement : MonoBehaviour {
 			}
 		}
 
+		//Blocking
+		if (Input.GetKey(GameConstants.L)){
+			currentCharacter.SetIsBlocking(true);
+		}else{
+			currentCharacter.SetIsBlocking(false);
+		}
+
 		// Crouching
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			rigidBody.velocity = new Vector2(0,0); //Prevents from sliding
+			SetCoordinatesWhenLanding(); //Prevents from phasing through the ground if the down button is pressed when the character touches the ground after a jump.
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);

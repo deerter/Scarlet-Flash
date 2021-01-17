@@ -25,5 +25,14 @@ public static class AnimationStates {
 	public const string JUMPING_HEAVY_PUNCH = "JumpingHeavyPunch";
 	public const string JUMPING_HEAVY_KICK = "JumpingHeavyKick";
 	public const string LANDING = "Landing";
+	public const string TAKING_DAMAGE = "TakingDamage";
+	public const string TAKING_DAMAGE_CROUCHING = "TakingDamageCrouching";
+	public const string TAKING_DAMAGE_JUMPING = "TakingDamageJumping";
+	public const string BLOCKING = "Blocking";
+	public const string BLOCKING_CROUCHING = "BlockingCrouching";
+	public const string BLOCKING_JUMPING = "BlockingJumping";
+	public const string KO = "KO";
+	public const string VICTORY = "Victory";
+	public const string INTRO = "Intro";
 	
 }
