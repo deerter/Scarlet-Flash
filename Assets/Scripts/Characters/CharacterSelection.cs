@@ -21,37 +21,48 @@ public class CharacterSelection : MonoBehaviour {
     private int chosenChars = 0;
 
     private CharacterSelectionMapping characterMapping = new CharacterSelectionMapping();
-    private LoadSceneonClick loadScene = new LoadSceneonClick();
+    private LoadSceneonClick loadScene;
     private PopUpWindow popUp;
     private bool isOnPopUp = false;
 
     private void DisplayCharacterSelected(string charName)
     {
         characterSeries = characterMapping.GetCharacterSeries(charName);
-        artwork.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/" 
-            + characterSeries + "/" + charName + "/" + charName);
+        artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/" 
+            + characterSeries + "/" + charName + "/" + charName + "PortraitSelection");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
             + characterSeries + "/" + characterSeries + "_logo");
     }
 
+    private bool CharacterAlreadyChosen(string charName){
+        for (int i = 0; i < chosenChars; i++){
+            if (charName == CurrentFightStats.GetSelectedCharacter(i, "Player1")){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void ChooseCharacter(string charName)
     {
-        chosenChars++;
-        switch (chosenChars)
-        {
-            case 1:
-                firstChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
-                CurrentFightStats.SetSelectedCharacterPlayer1(charName,0);break;
-            case 2:
-                secondChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
-                CurrentFightStats.SetSelectedCharacterPlayer1(charName,1);break;
-            case 3:
-                thirdChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
-                + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
-                CurrentFightStats.SetSelectedCharacterPlayer1(charName,2);
-                loadScene.LoadByIndex(8);break;
+        if (!CharacterAlreadyChosen(charName)){
+            chosenChars++;
+            switch (chosenChars)
+            {
+                case 1:
+                    firstChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
+                    + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
+                    CurrentFightStats.SetSelectedCharacterPlayer1(charName,0);break;
+                case 2:
+                    secondChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
+                    + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
+                    CurrentFightStats.SetSelectedCharacterPlayer1(charName,1);break;
+                case 3:
+                    thirdChosenCharacter.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
+                    + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
+                    CurrentFightStats.SetSelectedCharacterPlayer1(charName,2);
+                    loadScene.LoadByIndex(8);break;
+            }
         }
     }
 
@@ -75,15 +86,17 @@ public class CharacterSelection : MonoBehaviour {
         name = characterName.GetComponent<Text>();
         popUp = this.GetComponent<PopUpWindow>();
         characterSeries = "SF";
-        artwork.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/Ryu");
+        artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/Ryu");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/SF_logo");
+
+        loadScene = EventSystem.current.GetComponent<LoadSceneonClick>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (!isOnPopUp){
             name.text = EventSystem.current.currentSelectedGameObject.name;
-            if ((Input.GetKeyDown(GameConstants.U)||(Input.GetKeyDown(GameConstants.D))|| Input.GetKeyDown(GameConstants.L)|| Input.GetKeyDown(GameConstants.R)))
+            if ((Input.GetKey(GameConstants.U)||(Input.GetKey(GameConstants.D))|| Input.GetKey(GameConstants.L)|| Input.GetKey(GameConstants.R)))
             {
                 DisplayCharacterSelected(name.text);
             }
