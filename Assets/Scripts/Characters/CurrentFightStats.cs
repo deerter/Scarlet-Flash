@@ -9,6 +9,8 @@ public static class CurrentFightStats{
 	private static string[] selectedCharactersPlayer1 = new string[numCharactersPlayer1];   //////Set number of characters
 	private static string[] selectedCharactersPlayer2 = new string[numCharactersPlayer2];
 
+	private static bool timerActive = true;
+
 	/*public static string GetSelectedCharacterPlayer1(int characterNumber){
 		return selectedCharactersPlayer1[characterNumber];
 	}
@@ -33,5 +35,19 @@ public static class CurrentFightStats{
 	public static void SetSelectedCharacterPlayer2(string character, int characterNumber){
 		selectedCharactersPlayer2[characterNumber] = character;
 	}
+
+	public static bool GetTimerActive(){
+		return timerActive;
+	}
+
+	/*public static void SetTimer(bool timeLimit){
+		timer = timeLimit ? 100 : -1;
+	}*/
+
+	/*public static void UpdateTimer(){
+		timer--;
+	}*/
+
+
 
 }

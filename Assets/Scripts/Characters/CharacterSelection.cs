@@ -77,7 +77,6 @@ public class CharacterSelection : MonoBehaviour {
         characterSeries = "SF";
         artwork.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/Ryu");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/SF_logo");
-
     }
 	
 	// Update is called once per frame

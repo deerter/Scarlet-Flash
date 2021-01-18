@@ -119,6 +119,7 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 	IEnumerator VictoryDance(){
+
 		yield return new WaitForSeconds(5);
 		SetAnimationStatus(AnimationStates.VICTORY);
 		PlayAnimation(AnimationStates.VICTORY);
