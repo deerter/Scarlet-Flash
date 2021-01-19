@@ -86,7 +86,7 @@ public class CharacterSelection : MonoBehaviour {
         name = characterName.GetComponent<Text>();
         popUp = this.GetComponent<PopUpWindow>();
         characterSeries = "SF";
-        artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/Ryu");
+        artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/Ryu/RyuPortraitSelection");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/SF_logo");
 
         loadScene = EventSystem.current.GetComponent<LoadSceneonClick>();
