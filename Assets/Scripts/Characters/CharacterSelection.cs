@@ -34,6 +34,11 @@ public class CharacterSelection : MonoBehaviour {
             + characterSeries + "/" + characterSeries + "_logo");
     }
 
+    private void DisplayRandom(){
+        artwork.GetComponent<SpriteRenderer>().sprite = null;
+        series.GetComponent<Image>().sprite = null;
+    }
+
     private bool CharacterAlreadyChosen(string charName){
         for (int i = 0; i < chosenChars; i++){
             if (charName == CurrentFightStats.GetSelectedCharacter(i, "Player1")){
@@ -43,7 +48,7 @@ public class CharacterSelection : MonoBehaviour {
         return false;
     }
 
-    private void ChooseCharacter(string charName)
+    private bool ChooseCharacter(string charName)
     {
         if (!CharacterAlreadyChosen(charName)){
             chosenChars++;
@@ -63,6 +68,32 @@ public class CharacterSelection : MonoBehaviour {
                     CurrentFightStats.SetSelectedCharacterPlayer1(charName,2);
                     loadScene.LoadByIndex(8);break;
             }
+            return true;
+        }
+        return false;
+    }
+
+    private void ChooseRandom(string randomType){
+        switch(randomType){
+            case "Random": ChooseOneRandom();break;
+            case "Random3": ChooseThreeRandom();break;
+        }
+    }
+
+    private void ChooseOneRandom (){
+        string charName = "";
+        do{
+            charName = characterMapping.GetCharacter(Random.Range(0,4));
+            characterSeries = characterMapping.GetCharacterSeries(charName);
+        }
+        while(!ChooseCharacter(charName));
+    }
+
+    private void ChooseThreeRandom(){
+        int randomSelection = 3;
+        while (randomSelection > 0){
+            ChooseOneRandom();
+            randomSelection--;
         }
     }
 
@@ -98,11 +129,19 @@ public class CharacterSelection : MonoBehaviour {
             name.text = EventSystem.current.currentSelectedGameObject.name;
             if ((Input.GetKey(GameConstants.U)||(Input.GetKey(GameConstants.D))|| Input.GetKey(GameConstants.L)|| Input.GetKey(GameConstants.R)))
             {
-                DisplayCharacterSelected(name.text);
+                if (name.text != "Random" && name.text != "Random3"){
+                    DisplayCharacterSelected(name.text);
+                }else{
+                    DisplayRandom();
+                }
             }
             if (Input.GetKeyDown(GameConstants.ACCEPT) && (chosenChars<maxChars))
             {
-                ChooseCharacter(name.text);
+                if (name.text != "Random" && name.text != "Random3"){
+                    ChooseCharacter(name.text);
+                }else{
+                    ChooseRandom(name.text);
+                }
             }
             if (Input.GetKeyDown(GameConstants.BACK))
             {

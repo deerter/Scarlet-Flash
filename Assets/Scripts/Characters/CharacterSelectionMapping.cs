@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSelectionMapping {
+    private const int totalCharacterNum = 16;
+
     public static Dictionary<string, string> characterSeries = new Dictionary<string, string> {
         // SF = Street Fighter //
          {"Ryu", "SF"},
@@ -33,7 +35,15 @@ public class CharacterSelectionMapping {
          {"Mii","JDI"}
     };
 
+    public static string[] characters = new string[totalCharacterNum]{
+        "Ryu", "Ken", "Sakura", "Leona", "Naruto", "Ichigo", "Rukia", "Luffy", "Morrigan", "Yugi", "Kaiba", "Medaka", "Regina", "Lina", "Naga", "Mii"
+    };
+
     public string GetCharacterSeries(string character){
         return characterSeries[character];
+    }
+
+    public string GetCharacter(int num){
+        return characters[num];
     }
 }
