@@ -27,6 +27,7 @@ public class CharacterSelection : MonoBehaviour {
 
     private void DisplayCharacterSelected(string charName)
     {
+        artwork.GetComponent<SpriteRenderer>().flipX = true;
         characterSeries = characterMapping.GetCharacterSeries(charName);
         artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/" 
             + characterSeries + "/" + charName + "/" + charName + "PortraitSelection");
@@ -35,7 +36,9 @@ public class CharacterSelection : MonoBehaviour {
     }
 
     private void DisplayRandom(){
-        artwork.GetComponent<SpriteRenderer>().sprite = null;
+        artwork.GetComponent<SpriteRenderer>().flipX = false;
+        artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/Random" 
+            + "/" + name.text + "PortraitSelection");
         series.GetComponent<Image>().sprite = null;
     }
 
@@ -90,10 +93,8 @@ public class CharacterSelection : MonoBehaviour {
     }
 
     private void ChooseThreeRandom(){
-        int randomSelection = 3;
-        while (randomSelection > 0){
+        while (chosenChars < 3){
             ChooseOneRandom();
-            randomSelection--;
         }
     }
 
