@@ -17,7 +17,7 @@ public class LoadSceneonClick : MonoBehaviour {
         {
             switch (currentScene.buildIndex)
             {
-                case 2: case 6: LoadByIndex(1); break;             ///Versus and Options
+                case 2: LoadByIndex(1); break;             ///Versus and Options
                 case 3: case 4: case 5: LoadByIndex(2); break;     ///VSCPU, CPUVSCPU, PVP 
             }
         }
