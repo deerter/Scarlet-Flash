@@ -8,22 +8,21 @@ public class OptionsManager : MonoBehaviour {
 	private LoadSceneonClick loadScene;
 	public enum PopUp {None = 0, Controls = 1, Language = 2, Version = 3};
 	public PopUp currentPopUp;
-	EventSystem myEventSystem;
+	private GameObject optionPressed;
 
 	public void PopUpActive (int currentPopUp){
 		this.currentPopUp = (PopUp) currentPopUp;
-		myEventSystem = EventSystem.current;
+		optionPressed = EventSystem.current.currentSelectedGameObject;
 	}
 
 	private void PopUpInactive (){
 		this.currentPopUp = PopUp.None;
-		myEventSystem.currentSelectedGameObject.GetComponent<PopUpWindow>().ClosePopUp();
+		optionPressed.GetComponent<PopUpWindow>().ClosePopUp();
 	}
 
 	// Use this for initialization
 	void Start () {
 		loadScene = GetComponent<LoadSceneonClick>();
-		myEventSystem = EventSystem.current;
 	}
 	
 	// Update is called once per frame
