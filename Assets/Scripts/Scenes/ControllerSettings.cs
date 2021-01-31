@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using UnityEngine.EventSystems;
 
 public class ControllerSettings : MonoBehaviour {
 
@@ -16,32 +18,75 @@ public class ControllerSettings : MonoBehaviour {
 	[SerializeField] Text leftButton;
 	[SerializeField] Text rightButton;
 
-	public void changeButton(){
-		typeof(GameConstants).GetField("U").SetValue(null, "moon");
-		showButtons();
+	KeyCode tempKeyCode;
+	private bool waitForInput = false;
+	private string buttonToChange;
+	private GameObject currentButtonSelected;
+
+	public void ChangeButton(string key){
+		buttonToChange = key;
+		currentButtonSelected = EventSystem.current.currentSelectedGameObject;
+		currentButtonSelected.GetComponent<Button>().interactable = false;
+		typeof(GameConstants).GetField(buttonToChange).SetValue(null, null);
+		waitForInput = true;
+		ShowButtons();
 	}
 
-	private void showButtons(){
-		lightPunchButton.text = GameConstants.LP;
-		lightKickButton.text = GameConstants.LK;
-		heavyPunchButton.text = GameConstants.HP;
-		heavyKickButton.text = GameConstants.HK;
-		assist1Button.text = GameConstants.A1;
-		assist2Button.text = GameConstants.A2;
-		upButton.text = GameConstants.U;
-		downButton.text = GameConstants.D;
-		leftButton.text = GameConstants.L;
-		rightButton.text = GameConstants.R;
+	private void ResetControls(){
+		typeof(GameConstants).GetField("LP").SetValue(null, KeyCode.A);
+		typeof(GameConstants).GetField("LK").SetValue(null, KeyCode.Z);
+		typeof(GameConstants).GetField("HP").SetValue(null, KeyCode.S);
+		typeof(GameConstants).GetField("HK").SetValue(null, KeyCode.X);
+		typeof(GameConstants).GetField("A1").SetValue(null, KeyCode.D);
+		typeof(GameConstants).GetField("A2").SetValue(null, KeyCode.C);
+		typeof(GameConstants).GetField("U").SetValue(null, KeyCode.UpArrow);
+		typeof(GameConstants).GetField("D").SetValue(null, KeyCode.DownArrow);
+		typeof(GameConstants).GetField("L").SetValue(null, KeyCode.LeftArrow);
+		typeof(GameConstants).GetField("R").SetValue(null, KeyCode.RightArrow);
 	}
+
+	 
+
+	private void ShowButtons(){
+		lightPunchButton.text = GameConstants.LP.ToString();
+		lightKickButton.text = GameConstants.LK.ToString();
+		heavyPunchButton.text = GameConstants.HP.ToString();
+		heavyKickButton.text = GameConstants.HK.ToString();
+		assist1Button.text = GameConstants.A1.ToString();
+		assist2Button.text = GameConstants.A2.ToString();
+		upButton.text = GameConstants.U.ToString();
+		downButton.text = GameConstants.D.ToString();
+		leftButton.text = GameConstants.L.ToString();
+		rightButton.text = GameConstants.R.ToString();
+	}
+
+	void OnGUI(){
+        Event e = Event.current;
+		if (e.isKey && waitForInput && e.keyCode != KeyCode.Return && e.keyCode != KeyCode.Escape && e.keyCode != KeyCode.None){  //None must be checked because when the key is lifted, it sends a None event.//
+			bool buttonAssigned;
+			buttonAssigned = GameConstants.CheckButtonExists(e.keyCode);
+			print(e.keyCode);
+			if (buttonAssigned == false){
+				typeof(GameConstants).GetField(buttonToChange).SetValue(null, e.keyCode);
+				GameConstants.ReloadButtonsAsigned();
+				currentButtonSelected.GetComponent<Button>().interactable = true;
+				EventSystem.current.SetSelectedGameObject(currentButtonSelected);
+				waitForInput = false;
+				ShowButtons();
+			}
+		}
+    }
 
 
 	// Use this for initialization
 	void Start () {
-		showButtons();
+		ShowButtons();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*if (Input.GetKeyDown(GameConstants.BACK)){
+			ResetControls();
+		}*/
 	}
 }

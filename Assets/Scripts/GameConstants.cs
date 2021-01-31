@@ -3,21 +3,40 @@ using System.Collections;
 
 public static class GameConstants
 {
-	public static string U = "up";
-	public static string D = "down";
-	public static string L = "left";
-	public static string R = "right";
-	public static string DL = "down left";
+
+	///All this should be a dictionary///
+	public static KeyCode U = KeyCode.UpArrow;
+	public static KeyCode D = KeyCode.DownArrow;
+	public static KeyCode L = KeyCode.LeftArrow;
+	public static KeyCode R = KeyCode.RightArrow;
+	public static KeyCode LP = KeyCode.A;   //Light punch
+	public static KeyCode LK = KeyCode.Z;   //Light kick
+	public static KeyCode HP = KeyCode.S;   //Heavy punch
+	public static KeyCode HK = KeyCode.X;   //Heavy kick
+	public static KeyCode A1 = KeyCode.D;   //Assist 1
+	public static KeyCode A2 = KeyCode.C;   //Assist 2
+    public const KeyCode ACCEPT = KeyCode.Return;
+    public const KeyCode BACK = KeyCode.Escape;
+
+	private static KeyCode[] buttonsAssigned = new KeyCode[]{U,D,L,R,LP,LK,HP,HK,A1,A2,ACCEPT,BACK};
+
+	//Keys used for special attacks///
+	/*public static string DL = "down left";
 	public static string DR = "down right";
 	public static string UL = "up left";
-	public static string UR = "up right";
-	public static string LP = "a";   //Light punch
-	public static string LK = "z";   //Light kick
-	public static string HP = "s";   //Heavy punch
-	public static string HK = "x";   //Heavy kick
-	public static string A1 = "d";   //Assist 1
-	public static string A2 = "c";   //Assist 2
-    public const string ACCEPT = "return";
-    public const string BACK = "escape";
+	public static string UR = "up right";*/
+
+	public static bool CheckButtonExists(KeyCode button){
+		for (int i = 0; i < buttonsAssigned.Length; i++){
+			if (button == buttonsAssigned[i]){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static void ReloadButtonsAsigned(){
+		buttonsAssigned = new KeyCode[]{U,D,L,R,LP,LK,HP,HK,A1,A2,ACCEPT,BACK};
+	}
 }
 
