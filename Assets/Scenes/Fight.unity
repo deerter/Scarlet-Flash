@@ -3638,7 +3638,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 5.12}
+    oldSize: {x: 3.27, y: 1.62}
     newSize: {x: 13.31, y: 7.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4780,8 +4780,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053421549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -419.01196, y: 282.008, z: 0}
-  m_LocalScale: {x: 347.1823, y: 552.11346, z: 1.0000286}
+  m_LocalPosition: {x: -359, y: 86, z: 0}
+  m_LocalScale: {x: 470, y: 470, z: 1.0000286}
   m_Children:
   - {fileID: 1723508393}
   m_Father: {fileID: 746265496}
@@ -4899,7 +4899,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.4, y: 5.12}
+    oldSize: {x: 3.27, y: 1.62}
     newSize: {x: 6.4, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
