@@ -39,4 +39,6 @@ public abstract class Character
         return attackOutput[currentAnimation];
     }
 
+    
+
 }
