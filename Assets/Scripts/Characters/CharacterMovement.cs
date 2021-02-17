@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	public void SetCoordinatesWhenLanding(){ ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
-		transform.position = new Vector3(transform.position.x, 19.21687f, transform.position.z);
+		transform.position = new Vector3(transform.position.x, -8.60f, transform.position.z);
 	}
 	/////////////////////////////////
 
@@ -61,7 +61,7 @@ public class CharacterMovement : MonoBehaviour {
 	private void JumpingOverCharacter(Collision2D col){
 		currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);
 
-		rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();  
+		rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();
 		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = col.collider.bounds.center;
