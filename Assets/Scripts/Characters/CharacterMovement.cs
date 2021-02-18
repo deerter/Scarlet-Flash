@@ -53,7 +53,7 @@ public class CharacterMovement : MonoBehaviour {
 	private void CalculateJumpingDestination(float jumpOriginPosition){
 
 		////74.45º is the angle of jump (is in degrees, must be converted to radians)///////
-		characterJumpFinalPosition = ((Mathf.Pow(rigidBody.velocity.x, 2)*Mathf.Sin(2*(74.45f * Mathf.PI)/180))/rigidBody.gravityScale) + jumpOriginPosition;
+		characterJumpFinalPosition = ((Mathf.Pow(rigidBody.velocity.x, 2)*Mathf.Sin(2*(74.75f * Mathf.PI)/180))/rigidBody.gravityScale) + jumpOriginPosition;
 		
 	}
 
@@ -64,28 +64,32 @@ public class CharacterMovement : MonoBehaviour {
 		rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();
 		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
 		Vector3 contactPoint = col.contacts[0].point;
-        Vector3 center = col.collider.bounds.center;
-		Vector3 sides = col.collider.bounds.extents;
+        Vector3 center = rivalBoxCollider.bounds.center;
+		Vector3 sides = rivalBoxCollider.bounds.extents;
+		print(center);
+		print(transform.position.x);
 		if (contactPoint.x > (center.x - 0.5f)){
 
 			float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
 			
-			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x - distance, col.gameObject.transform.position.y);
+			//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x - distance, col.gameObject.transform.position.y);
+			Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
 
-			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+			//StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+			StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
 
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 		}else {
 			float distance = Mathf.Abs((boxCollider.bounds.extents.x + characterJumpFinalPosition) - (center.x - sides.x));
 
-			Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
-			//Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);
+			//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
+			Vector2 rivalToPosition = new Vector2(center.x + distance, center.y);
+			//Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);  /////To move the character that jumps as well
 
-			StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+			//StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
+			StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
 
-			//rigidBody.MovePosition (Vector2.Lerp(gameObject.transform.position,toPosition,Time.fixedDeltaTime * 40));  //37
-			//rivalRigidBody.MovePosition (Vector2.Lerp(col.gameObject.transform.position,rivalToPosition,Time.fixedDeltaTime * 40));
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 		} 
 	}
@@ -173,7 +177,8 @@ public class CharacterMovement : MonoBehaviour {
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
 			}
-			CalculateJumpingDestination(transform.position.x);
+			//CalculateJumpingDestination(transform.position.x);
+			CalculateJumpingDestination(boxCollider.bounds.center.x);
 			currentCharacter.SetAnimationPlaying(false);
 		}
 	}
