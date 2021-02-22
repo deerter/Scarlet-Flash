@@ -45,7 +45,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	public void SetCoordinatesWhenLanding(){ ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
-		transform.position = new Vector3(transform.position.x, -8.60f, transform.position.z);
+		transform.position = new Vector3(transform.position.x, -12.58f, transform.position.z);
 	}
 	/////////////////////////////////
 
@@ -113,7 +113,6 @@ public class CharacterMovement : MonoBehaviour {
 	/////////////////
 	
 	void Update () {
-
 		if (currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit()){ //In case the animation goes from walking to other animation, prevents from sliding behaviour
 			rigidBody.velocity = new Vector2(0,0);
 		}
@@ -144,7 +143,7 @@ public class CharacterMovement : MonoBehaviour {
 		// Crouching
 		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			rigidBody.velocity = new Vector2(0,0); //Prevents from sliding
-			SetCoordinatesWhenLanding(); //Prevents from phasing through the ground if the down button is pressed when the character touches the ground after a jump.
+			//SetCoordinatesWhenLanding(); //Prevents from phasing through the ground if the down button is pressed when the character touches the ground after a jump.
 			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
 			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
 			currentCharacter.SetIsCrouching(true);
@@ -153,6 +152,7 @@ public class CharacterMovement : MonoBehaviour {
 
 		if (Input.GetKeyUp(GameConstants.D) && !currentCharacter.GetIsJumping())
         {
+			SetCoordinatesWhenLanding();
 			currentCharacter.SetIsCrouching(false);
 			if(!currentCharacter.IsAnimationPlaying()){
 				currentCharacter.EndAnimation(AnimationStates.STANDING);
