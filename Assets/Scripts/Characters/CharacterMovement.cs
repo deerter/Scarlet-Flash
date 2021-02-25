@@ -66,8 +66,6 @@ public class CharacterMovement : MonoBehaviour {
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = rivalBoxCollider.bounds.center;
 		Vector3 sides = rivalBoxCollider.bounds.extents;
-		print(center);
-		print(transform.position.x);
 		if (contactPoint.x > (center.x - 0.5f)){
 
 			float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
