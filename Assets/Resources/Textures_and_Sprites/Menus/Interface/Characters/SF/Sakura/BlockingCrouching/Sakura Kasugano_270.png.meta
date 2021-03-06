@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 357021f0d192538488cf15ff2d857011
-timeCreated: 1613932625
+timeCreated: 1614964931
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -32,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -86,8 +86,8 @@ TextureImporter:
         y: 16
         width: 113
         height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.43, y: 0.8}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
