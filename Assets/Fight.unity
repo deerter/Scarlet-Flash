@@ -3552,8 +3552,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601747125}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 469, y: -180, z: 0}
-  m_LocalScale: {x: 470, y: 470, z: 1.0000114}
+  m_LocalPosition: {x: 469, y: -183, z: 0}
+  m_LocalScale: {x: 470, y: 470, z: 1.000029}
   m_Children: []
   m_Father: {fileID: 1592446731}
   m_RootOrder: 0
@@ -3634,7 +3634,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5075921, y: -0.10730559}
+  m_Offset: {x: -0.01581874, y: 0.01840267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3645,7 +3645,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8572197, y: 1.0278008}
+  m_Size: {x: 0.7807513, y: 1.042067}
   m_EdgeRadius: 0
 --- !u!114 &1601747130
 MonoBehaviour:
@@ -4845,7 +4845,7 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  rivalCharacter: {fileID: 0}
+  rivalCharacter: {fileID: 1601747125}
 --- !u!95 &2053421553
 Animator:
   serializedVersion: 3
@@ -4891,7 +4891,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2053421549}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 64190d19a4d21db41a6026a743d8906a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

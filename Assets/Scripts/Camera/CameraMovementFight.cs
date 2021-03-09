@@ -9,7 +9,7 @@ public class CameraMovementFight : MonoBehaviour {
 	public EdgeCollider2D wallRight;
 	public EdgeCollider2D wallLeft;
 	public EdgeCollider2D ceiling;
-	float offsetX = 25.3f;
+	float offsetX = 34.5f;
 	float offsetY = 19.2f;
 	private float xMin, xMax, yMin, yMax;
 	private float camY, camX;

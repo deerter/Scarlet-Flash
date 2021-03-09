@@ -150,7 +150,7 @@ public class CharacterMovement : MonoBehaviour {
 
 		if (Input.GetKeyUp(GameConstants.D) && !currentCharacter.GetIsJumping())
         {
-			SetCoordinatesWhenLanding();
+			//SetCoordinatesWhenLanding();
 			currentCharacter.SetIsCrouching(false);
 			if(!currentCharacter.IsAnimationPlaying()){
 				currentCharacter.EndAnimation(AnimationStates.STANDING);
@@ -160,7 +160,7 @@ public class CharacterMovement : MonoBehaviour {
 		// Jumping
 		if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
 			currentCharacter.SetIsJumping(true);
-			rigidBody.velocity = Vector2.up * 180f;   ///Force necessary to break free from gravity
+			rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
 			if (Input.GetKey(GameConstants.R)){
 				rigidBody.velocity += Vector2.right * 70f;
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
