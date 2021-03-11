@@ -51,9 +51,8 @@ public class CharacterMovement : MonoBehaviour {
 
 	////Get final position of a jump//////////
 	private void CalculateJumpingDestination(float jumpOriginPosition){
-
-		////74.45º is the angle of jump (is in degrees, must be converted to radians)///////
-		characterJumpFinalPosition = ((Mathf.Pow(rigidBody.velocity.x, 2)*Mathf.Sin(2*(74.75f * Mathf.PI)/180))/rigidBody.gravityScale) + jumpOriginPosition;
+		////75.89º is the angle of jump (is in degrees, must be converted to radians)///////
+		characterJumpFinalPosition = ((Mathf.Pow(rigidBody.velocity.x, 2)*Mathf.Sin(2*(75.89f * Mathf.PI)/180))/rigidBody.gravityScale) + jumpOriginPosition;
 		
 	}
 
@@ -66,9 +65,11 @@ public class CharacterMovement : MonoBehaviour {
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = rivalBoxCollider.bounds.center;
 		Vector3 sides = rivalBoxCollider.bounds.extents;
-		if (contactPoint.x > (center.x - 0.5f)){
+		if (contactPoint.x > (center.x - 4f)){
 
-			float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
+			print(sides.x);
+			//float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
+			float distance = Mathf.Abs(center.x - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
 			
 			//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x - distance, col.gameObject.transform.position.y);
 			Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
@@ -79,6 +80,7 @@ public class CharacterMovement : MonoBehaviour {
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 		}else {
+			//float distance = Mathf.Abs((boxCollider.bounds.extents.x + characterJumpFinalPosition) - (center.x - sides.x));
 			float distance = Mathf.Abs((boxCollider.bounds.extents.x + characterJumpFinalPosition) - (center.x - sides.x));
 
 			//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
@@ -175,7 +177,6 @@ public class CharacterMovement : MonoBehaviour {
 				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
 				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
 			}
-			//CalculateJumpingDestination(transform.position.x);
 			CalculateJumpingDestination(boxCollider.bounds.center.x);
 			currentCharacter.SetAnimationPlaying(false);
 		}
