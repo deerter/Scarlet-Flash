@@ -17,9 +17,11 @@ public class FlipSprite : MonoBehaviour {
 		if(gameObject.GetComponent<BoxCollider2D>().bounds.center.x < rivalCharacter.GetComponent<BoxCollider2D>().bounds.center.x){
 			gameObject.transform.localScale = new Vector3(Mathf.Abs(gameObject.transform.localScale.x), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
 			//characterSpriteRenderer.flipX = true;
+			gameObject.GetComponent<CharacterFeatures>().SetIsFlipped(false);
         }else{
 			gameObject.transform.localScale = new Vector3(- Mathf.Abs(gameObject.transform.localScale.x), gameObject.transform.localScale.y, gameObject.transform.localScale.z);
 			//characterSpriteRenderer.flipX = false;
+			gameObject.GetComponent<CharacterFeatures>().SetIsFlipped(true);
 		}
 		
 	}

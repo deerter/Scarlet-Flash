@@ -29,7 +29,13 @@ public class HitCollision : MonoBehaviour {
 			int attackValue = currentCharacter.DoDamage();
 			///Moves hit character
 			rivalCharacter.HitDone();
-			otherPlayer.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.right * 40f;
+			switch(currentCharacter.GetIsFlipped()){
+				case true: otherPlayer.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.left * 40f;
+							break;
+				case false: otherPlayer.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.right * 40f;
+							break;
+			}
+			
 			if(rivalCharacter.GetIsBlocking()){
 				rivalCharacter.TakeDamage(attackValue/4);
 				PlayBlockAnimation();

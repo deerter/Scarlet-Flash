@@ -8,13 +8,14 @@ public class CharacterFeatures : MonoBehaviour {
 	[SerializeField] private Animator animator;
 	private Character character;
 	private HealthBar healthBar;
-	private bool animationPlaying = false;   //Character is currently on an animation other than standing ///Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
+	private bool animationPlaying = false;   //Character is currently on an animation other than standing /// Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
 	private string animationStatus;
 	private bool isCrouching = false;
 	private bool isJumping = false;
 	private bool isBlocking = false;
 	private bool isHit = false;
 	private bool isWinner = false;
+	private bool isFlipped;  /// False - Facing Right ; True - Facing Left ////
 
 
 	public Character GetCharacter() {
@@ -29,6 +30,8 @@ public class CharacterFeatures : MonoBehaviour {
 		return animator;
 	}
 
+
+	/// Play animations and Set its status ///
 	public bool IsAnimationPlaying(){
 		return animationPlaying;
 	}
@@ -56,7 +59,7 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 
-
+	/// Is Crouching ///
 	public bool GetIsCrouching(){
 		return isCrouching;
 	}
@@ -65,8 +68,8 @@ public class CharacterFeatures : MonoBehaviour {
 		this.isCrouching = isCrouching;
 	}
 
-	
 
+	/// Is Jumping ///	
 	public bool GetIsJumping(){
 		return isJumping;
 	}
@@ -76,6 +79,7 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 
+	/// Is Blocking ///
 	public bool GetIsBlocking(){
 		return isBlocking;
 	}
@@ -85,6 +89,7 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 
+	/// Is Hit ///
 	public bool GetIsHit(){
 		return isHit;
 	}
@@ -98,18 +103,29 @@ public class CharacterFeatures : MonoBehaviour {
 	}
 
 
-
+	/// Is Winner ///
 	public void SetIsWinner(){
 		isWinner = true;
 	}
 
 
+	/// Is Flipped ///
+	public bool GetIsFlipped(){
+		return isFlipped;
+	}
+
+	public void SetIsFlipped(bool flip){
+		this.isFlipped = flip;
+	}
+
+
+	/// Character Dies ///
 	public void CharacterIsDead(){
 		gameObject.GetComponent<Animator>().enabled = false;
 	}
 
 
-
+	/// Character Takes or Does damage ///
 	public void TakeDamage(int attackValue){
 		healthBar.Deplete(attackValue);
 	}
@@ -118,6 +134,8 @@ public class CharacterFeatures : MonoBehaviour {
 		return character.GetAttackOutput(animationStatus);
 	}
 
+
+	/// Character celebrates victory ///
 	IEnumerator VictoryDance(){
 
 		yield return new WaitForSeconds(5);
