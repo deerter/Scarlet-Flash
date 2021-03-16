@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: bdcd887264f91734a8fb318b7dcec979
-timeCreated: 1613323492
+timeCreated: 1615926000
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MoveForwards_5
+    21300002: MoveForwards_4
+    21300004: MoveForwards_3
+    21300006: MoveForwards_2
+    21300008: MoveForwards_1
+    21300010: MoveForwards_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -31,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -40,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 75
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -57,7 +63,16 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -67,7 +82,91 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MoveForwards_5
+      rect:
+        serializedVersion: 2
+        x: 1063
+        y: 5162
+        width: 56
+        height: 93
+      alignment: 9
+      pivot: {x: 0.584, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveForwards_4
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 5162
+        width: 54
+        height: 94
+      alignment: 9
+      pivot: {x: 0.607, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveForwards_3
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 5162
+        width: 59
+        height: 95
+      alignment: 9
+      pivot: {x: 0.555, y: 0.446}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveForwards_2
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 5161
+        width: 68
+        height: 95
+      alignment: 9
+      pivot: {x: 0.485, y: 0.447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveForwards_1
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 5162
+        width: 70
+        height: 93
+      alignment: 9
+      pivot: {x: 0.47, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveForwards_0
+      rect:
+        serializedVersion: 2
+        x: 1410
+        y: 5161
+        width: 63
+        height: 89
+      alignment: 9
+      pivot: {x: 0.52, y: 0.475}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 

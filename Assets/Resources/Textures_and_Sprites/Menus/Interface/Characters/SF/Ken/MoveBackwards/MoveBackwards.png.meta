@@ -1,9 +1,15 @@
 fileFormatVersion: 2
 guid: 70af6bd257880a04e8335debb9301659
-timeCreated: 1613323481
+timeCreated: 1615919016
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MoveBackwards_5
+    21300002: MoveBackwards_4
+    21300004: MoveBackwards_3
+    21300006: MoveBackwards_2
+    21300008: MoveBackwards_1
+    21300010: MoveBackwards_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -31,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -40,13 +46,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 75
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -57,7 +63,16 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -67,7 +82,91 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MoveBackwards_5
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 5162
+        width: 63
+        height: 93
+      alignment: 9
+      pivot: {x: 0.52, y: 0.463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveBackwards_4
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 5161
+        width: 61
+        height: 95
+      alignment: 9
+      pivot: {x: 0.54, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveBackwards_3
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 5162
+        width: 54
+        height: 95
+      alignment: 9
+      pivot: {x: 0.61, y: 0.453}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveBackwards_2
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 5162
+        width: 54
+        height: 94
+      alignment: 9
+      pivot: {x: 0.605, y: 0.46}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveBackwards_1
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 5162
+        width: 61
+        height: 93
+      alignment: 9
+      pivot: {x: 0.537, y: 0.463}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MoveBackwards_0
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 5160
+        width: 63
+        height: 89
+      alignment: 9
+      pivot: {x: 0.52, y: 0.485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
