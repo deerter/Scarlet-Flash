@@ -1,9 +1,18 @@
 fileFormatVersion: 2
 guid: 18370e42351bf3644a7b57013bd34f0e
-timeCreated: 1613323469
+timeCreated: 1616350066
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Victory_8
+    21300002: Victory_7
+    21300004: Victory_6
+    21300006: Victory_5
+    21300008: Victory_4
+    21300010: Victory_3
+    21300012: Victory_2
+    21300014: Victory_1
+    21300016: Victory_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -31,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -40,13 +49,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 75
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -57,7 +66,16 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -67,7 +85,133 @@ TextureImporter:
     overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Victory_8
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1136
+        width: 70
+        height: 102
+      alignment: 9
+      pivot: {x: 0.388, y: 0.413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_7
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 1136
+        width: 70
+        height: 122
+      alignment: 9
+      pivot: {x: 0.388, y: 0.345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_6
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 1136
+        width: 70
+        height: 122
+      alignment: 9
+      pivot: {x: 0.388, y: 0.345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_5
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 1136
+        width: 70
+        height: 122
+      alignment: 9
+      pivot: {x: 0.388, y: 0.345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_4
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 1136
+        width: 70
+        height: 122
+      alignment: 9
+      pivot: {x: 0.388, y: 0.345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_3
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 1136
+        width: 73
+        height: 117
+      alignment: 9
+      pivot: {x: 0.4, y: 0.36}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_2
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 1137
+        width: 64
+        height: 96
+      alignment: 9
+      pivot: {x: 0.41, y: 0.429}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_1
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 1136
+        width: 64
+        height: 94
+      alignment: 9
+      pivot: {x: 0.467, y: 0.438}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Victory_0
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1136
+        width: 67
+        height: 96
+      alignment: 9
+      pivot: {x: 0.49, y: 0.429}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
