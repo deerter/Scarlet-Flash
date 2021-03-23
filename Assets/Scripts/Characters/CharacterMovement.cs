@@ -64,7 +64,6 @@ public class CharacterMovement : MonoBehaviour {
 						break;
 		}
 			
-		print(characterJumpFinalPosition);
 		
 	}
 
