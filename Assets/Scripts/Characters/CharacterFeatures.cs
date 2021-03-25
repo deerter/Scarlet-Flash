@@ -16,6 +16,7 @@ public class CharacterFeatures : MonoBehaviour {
 	private bool isHit = false;
 	private bool isWinner = false;
 	private bool isFlipped;  /// False - Facing Right ; True - Facing Left ////
+	private bool isDead = false;
 
 
 	public Character GetCharacter() {
@@ -118,6 +119,10 @@ public class CharacterFeatures : MonoBehaviour {
 		this.isFlipped = flip;
 	}
 
+	/// Check if character is dead ///
+	public bool GetIsDead(){
+		return isDead;
+	}
 
 	/// Character Dies ///
 	public void CharacterIsDead(){
@@ -145,8 +150,8 @@ public class CharacterFeatures : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);     ESTA ES LA FORMA ADECUADA
-		string characterName = "Ken";
+		string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);     //THIS IS THE CORRECT WAY
+		//string characterName = "Ken";  //For testing
 		var type = Type.GetType(characterName);
 		character = (Character)Activator.CreateInstance(type);
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth());
@@ -155,14 +160,17 @@ public class CharacterFeatures : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (healthBar.getHP() == 0 && !GetIsJumping()){
+		if (healthBar.getHP() == 0){
 			//GetComponent<CharacterMovement>().enabled = false;  /////Use these commands if the rival character is not AI
 			//GetComponent<CharacterCombat>().enabled = false;
 
 			/*GetComponent<Rigidbody2D>().isKinematic = true;
 			GetComponent<Rigidbody2D>().MovePosition(GetComponent<Rigidbody2D>().position);
 			GetComponent<BoxCollider2D>().enabled = false;*/
-			PlayAnimation(AnimationStates.KO);
+			isDead = true;
+			if (!GetIsJumping()){
+				PlayAnimation(AnimationStates.KO);
+			}
 		}
 		if (isWinner && !GetIsJumping()){
 			StartCoroutine(VictoryDance());

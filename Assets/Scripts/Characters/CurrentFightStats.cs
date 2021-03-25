@@ -18,8 +18,17 @@ public static class CurrentFightStats{
 	public static string GetSelectedCharacterPlayer2(int characterNumber){
 		return selectedCharactersPlayer2[characterNumber];
 	}*/
-
+	
 	public static string GetSelectedCharacter(int characterNumber, string player){
+		selectedCharactersPlayer1[0] = "Ken";  ////////Get rid of these lines after testing
+		selectedCharactersPlayer1[1] = "Sakura";
+		selectedCharactersPlayer1[2] = "Ken";
+
+		selectedCharactersPlayer2[0] = "Sakura";
+		selectedCharactersPlayer1[1] = "Ken";
+		selectedCharactersPlayer1[2] = "Sakura";
+		
+
 		string charName = "";
 		switch(player){
 			case "Player1": charName = selectedCharactersPlayer1[characterNumber];break;

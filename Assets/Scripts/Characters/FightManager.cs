@@ -16,11 +16,9 @@ public class FightManager : MonoBehaviour {
 
 	[SerializeField] GameObject timerCounter;
 
-	private CharacterFeatures player1Features;
-	private CharacterFeatures player2Features;
-
 	private bool fightEnded = false;
 	private bool restartPrompt = false;
+	private bool fightStarted = false;
 
 	IEnumerator PopUpRestartFight(){
 		restartPrompt = true;
@@ -28,8 +26,14 @@ public class FightManager : MonoBehaviour {
 		restartScreen.GetComponent<PopUpWindow>().PopUp();
 	}
 
+	IEnumerator FightStart(){
+		yield return new WaitForSeconds(5);
+		fightStarted = true;
+	}
+
 	private void TimeUpVictory(){
-		int lifeRemainingPlayer1 = player1Features.GetHealthBar().getMaxHP() - player1Features.GetHealthBar().getHP();
+		/////Revise the code for 3 vs 3 (or others) variant //////
+		/*int lifeRemainingPlayer1 = player1Features.GetHealthBar().getMaxHP() - player1Features.GetHealthBar().getHP();
 		int lifeRemainingPlayer2 = player2Features.GetHealthBar().getMaxHP() - player2Features.GetHealthBar().getHP();
 
 		if (lifeRemainingPlayer1 > lifeRemainingPlayer2){
@@ -38,13 +42,27 @@ public class FightManager : MonoBehaviour {
 			print("DRAW");
 		} else{
 			player2Features.SetIsWinner();
+		}*/
+	}
+
+	private bool CheckLifeBars(GameObject currentPlayer){
+		foreach(Transform child in currentPlayer.transform){
+			if(!child.gameObject.GetComponent<CharacterFeatures>().GetIsDead()){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private void SetWinner(GameObject currentPlayer){
+		foreach(Transform child in currentPlayer.transform){
+			child.gameObject.GetComponent<CharacterFeatures>().SetIsWinner();
 		}
 	}
 
 	// Use this for initialization
 	void Start () {
-		player1Features = player1.GetComponent<CharacterFeatures>();
-		player2Features = player2.GetComponent<CharacterFeatures>();
+		StartCoroutine(FightStart());
 		//Initiliaze characters
 		/*for (int i=0; i < selectedCharacters.Length; i++){
 			InitiliazeCharacter(selectedCharactersPlayer1[i], i);
@@ -57,31 +75,32 @@ public class FightManager : MonoBehaviour {
 	}
 
 	void Update(){
-		//Declares a winner if a healthBar has been depleted
-		if (player1Features.GetHealthBar().getHP() == 0 && !fightEnded){
-			player2Features.SetIsWinner(); 
-			fightEnded=true;
-		}
-		if (player2Features.GetHealthBar().getHP() == 0 && !fightEnded){
-			player1Features.SetIsWinner();
-			fightEnded=true;
-		}
+		if (fightStarted){
+			//Declares a winner if all healthBars has been depleted
+			if (CheckLifeBars(player1) && !fightEnded){
+				SetWinner(player2);
+				fightEnded=true;
+			}
+			if (CheckLifeBars(player2) && !fightEnded){
+				SetWinner(player1);
+				fightEnded=true;
+			}
 
-		//Prompts the restart fight screen and stops the timer
-		if (fightEnded && !restartPrompt){
-			timerCounter.GetComponent<Timer>().StopTimer();
-			StartCoroutine(PopUpRestartFight());
-		}
+			//Prompts the restart fight screen and stops the timer
+			if (fightEnded && !restartPrompt){
+				timerCounter.GetComponent<Timer>().StopTimer();
+				StartCoroutine(PopUpRestartFight());
+			}
 
-		//Counts down the time
-		if (timerCounter.GetComponent<Timer>().GetTimer() > 0 && !fightEnded){
-			timerCounter.GetComponent<Timer>().DecreaseTimer();
+			//Counts down the time
+			if (timerCounter.GetComponent<Timer>().GetTimer() > 0 && !fightEnded){
+				timerCounter.GetComponent<Timer>().DecreaseTimer();
+			}
+			if (timerCounter.GetComponent<Timer>().GetTimer() == 0 && !fightEnded){
+				fightEnded = true;
+				TimeUpVictory();
+			}
 		}
-		if (timerCounter.GetComponent<Timer>().GetTimer() == 0 && !fightEnded){
-			fightEnded = true;
-			TimeUpVictory();
-		}
-
 	}
 
 	
