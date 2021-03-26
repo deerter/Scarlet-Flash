@@ -32,7 +32,7 @@ public class FightManager : MonoBehaviour {
 	}
 
 	private void TimeUpVictory(){
-		/////Revise the code for 3 vs 3 (or others) variant //////
+		///// Revise the code for 3 vs 3 (or others) variant //////
 		/*int lifeRemainingPlayer1 = player1Features.GetHealthBar().getMaxHP() - player1Features.GetHealthBar().getHP();
 		int lifeRemainingPlayer2 = player2Features.GetHealthBar().getMaxHP() - player2Features.GetHealthBar().getHP();
 

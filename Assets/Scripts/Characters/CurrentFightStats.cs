@@ -25,8 +25,8 @@ public static class CurrentFightStats{
 		selectedCharactersPlayer1[2] = "Ken";
 
 		selectedCharactersPlayer2[0] = "Sakura";
-		selectedCharactersPlayer1[1] = "Ken";
-		selectedCharactersPlayer1[2] = "Sakura";
+		selectedCharactersPlayer2[1] = "Ken";
+		selectedCharactersPlayer2[2] = "Sakura";
 		
 
 		string charName = "";
