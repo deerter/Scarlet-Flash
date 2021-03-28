@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterAssist : MonoBehaviour {
 
+	[SerializeField] private GameObject lifeBars;
+
 	private bool swapped;  //Used to check if the player swapped their characters recently.
 	private CharacterFeatures currentCharacter;
 
@@ -23,15 +25,14 @@ public class CharacterAssist : MonoBehaviour {
 	private void Swap(){
 		if (SwapAvailable()){
 			StartCoroutine(SwappingTimeout());
-			//print(transform.parent.GetChild(transform.GetSiblingIndex() + 1).gameObject);
 			GameObject characterSwap;
-			GameObject pointCharacter;
-			foreach(Transform child in transform) {
+			GameObject pointCharacter = transform.GetChild(0).gameObject;
+			foreach(Transform child in transform) {  /////Use a for loop for the reverse order
 				if(child.transform.GetSiblingIndex()==0) continue;
 				if (!child.gameObject.GetComponent<CharacterFeatures>().GetIsDead()){
 					characterSwap = child.gameObject;
-					pointCharacter = transform.GetChild(0).gameObject;
 					pointCharacter.transform.SetSiblingIndex(child.transform.GetSiblingIndex()); 
+					SwapLifeBars(characterSwap, pointCharacter);
 					SetCharacterSwapped(characterSwap, pointCharacter);
 					UnsetCharacterSwapped(pointCharacter);
 					break;
@@ -64,13 +65,29 @@ public class CharacterAssist : MonoBehaviour {
 		pointCharacter.GetComponent<FlipSprite>().enabled=false;
 		pointCharacter.GetComponent<Rigidbody2D>().simulated=false;
 	}
+
+	private void SwapLifeBars(GameObject characterSwap, GameObject pointCharacter){
+		Transform pointCharacterLifeBar = lifeBars.transform.GetChild(pointCharacter.transform.GetSiblingIndex());
+		Transform characterSwapLifeBar = lifeBars.transform.GetChild(characterSwap.transform.GetSiblingIndex());
+
+		Vector3 pointCharacterLifeBarPosition = pointCharacterLifeBar.position;
+		Vector3 characterSwapLifeBarPosition = characterSwapLifeBar.position;
+
+		Vector2 pointCharacterLifeBarSize = pointCharacterLifeBar.GetComponent<RectTransform>().sizeDelta;
+		Vector2 characterSwapLifeBarSize = characterSwapLifeBar.GetComponent<RectTransform>().sizeDelta;
+
+		pointCharacterLifeBar.position = characterSwapLifeBarPosition;
+		characterSwapLifeBar.position = pointCharacterLifeBarPosition;
+
+		pointCharacterLifeBar.GetComponent<RectTransform>().sizeDelta = characterSwapLifeBarSize;
+		characterSwapLifeBar.GetComponent<RectTransform>().sizeDelta = pointCharacterLifeBarSize;
+	}
 	
 
 	void Update () {
 		if (Input.GetKeyDown(GameConstants.A1)){  ///Swap for first assist character
 			/////Executes only one command, one function checks if the swap is available and performs it if so
 			Swap();
-			
 		}
 
 		if (Input.GetKeyDown(GameConstants.A2)){  ///Swap for second assist character
