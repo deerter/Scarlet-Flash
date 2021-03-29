@@ -17,27 +17,43 @@ public class CharacterAssist : MonoBehaviour {
 
 	IEnumerator SwappingTimeout(){
 		swapped = true;
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(2); //5
 		print("time passed");
 		swapped = false;
 	}
 
-	private void Swap(){
+	private void Swap(string assist){
 		if (SwapAvailable()){
 			StartCoroutine(SwappingTimeout());
 			GameObject characterSwap;
 			GameObject pointCharacter = transform.GetChild(0).gameObject;
-			foreach(Transform child in transform) {  /////Use a for loop for the reverse order
-				if(child.transform.GetSiblingIndex()==0) continue;
-				if (!child.gameObject.GetComponent<CharacterFeatures>().GetIsDead()){
-					characterSwap = child.gameObject;
-					pointCharacter.transform.SetSiblingIndex(child.transform.GetSiblingIndex()); 
-					SwapLifeBars(characterSwap, pointCharacter);
-					SetCharacterSwapped(characterSwap, pointCharacter);
-					UnsetCharacterSwapped(pointCharacter);
-					break;
-				}
+			bool assistFound = false;
+			switch (assist){
+				case "Assist1": for(int i = 1; i < transform.childCount && !assistFound; i++) { 
+									if (!transform.GetChild(i).gameObject.GetComponent<CharacterFeatures>().GetIsDead()){
+										assistFound = true;
+										characterSwap = transform.GetChild(i).gameObject;
+										pointCharacter.transform.SetSiblingIndex(transform.GetChild(i).transform.GetSiblingIndex());
+										characterSwap.transform.SetSiblingIndex(0);
+										SwapLifeBars(characterSwap, pointCharacter, i);
+										SetCharacterSwapped(characterSwap, pointCharacter);
+										UnsetCharacterSwapped(pointCharacter);
+									}
+								}break;
+				case "Assist2": for (int i = transform.childCount-1; i > 0 & !assistFound; i--){
+								if (!transform.GetChild(i).gameObject.GetComponent<CharacterFeatures>().GetIsDead()){
+										assistFound = true;
+										characterSwap = transform.GetChild(i).gameObject;
+										pointCharacter.transform.SetSiblingIndex(transform.GetChild(i).transform.GetSiblingIndex()); 
+										characterSwap.transform.SetSiblingIndex(0);
+										SwapLifeBars(characterSwap, pointCharacter, i);
+										SetCharacterSwapped(characterSwap, pointCharacter);
+										UnsetCharacterSwapped(pointCharacter);
+									}
+								}break;
 			}
+			
+			
 		}
 	}
 
@@ -66,7 +82,8 @@ public class CharacterAssist : MonoBehaviour {
 		pointCharacter.GetComponent<Rigidbody2D>().simulated=false;
 	}
 
-	private void SwapLifeBars(GameObject characterSwap, GameObject pointCharacter){
+	private void SwapLifeBars(GameObject characterSwap, GameObject pointCharacter, int index){
+
 		Transform pointCharacterLifeBar = lifeBars.transform.GetChild(pointCharacter.transform.GetSiblingIndex());
 		Transform characterSwapLifeBar = lifeBars.transform.GetChild(characterSwap.transform.GetSiblingIndex());
 
@@ -75,6 +92,9 @@ public class CharacterAssist : MonoBehaviour {
 
 		Vector2 pointCharacterLifeBarSize = pointCharacterLifeBar.GetComponent<RectTransform>().sizeDelta;
 		Vector2 characterSwapLifeBarSize = characterSwapLifeBar.GetComponent<RectTransform>().sizeDelta;
+
+		pointCharacterLifeBar.gameObject.transform.SetSiblingIndex(0);
+		characterSwapLifeBar.gameObject.transform.SetSiblingIndex(index);
 
 		pointCharacterLifeBar.position = characterSwapLifeBarPosition;
 		characterSwapLifeBar.position = pointCharacterLifeBarPosition;
@@ -87,11 +107,11 @@ public class CharacterAssist : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(GameConstants.A1)){  ///Swap for first assist character
 			/////Executes only one command, one function checks if the swap is available and performs it if so
-			Swap();
+			Swap("Assist1");
 		}
 
 		if (Input.GetKeyDown(GameConstants.A2)){  ///Swap for second assist character
-			Swap();
+			Swap("Assist2");
 		}
 		
 	}
