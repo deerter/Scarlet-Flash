@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovementFight : MonoBehaviour {
 
-	public Transform followTransform;
+	public Transform player1;
 	public EdgeCollider2D ground;
 	public EdgeCollider2D wallRight;
 	public EdgeCollider2D wallLeft;
@@ -16,6 +16,7 @@ public class CameraMovementFight : MonoBehaviour {
 	private float camOrthSize;
 	private float cameraRatio;
 	private Camera mainCam;
+	private Transform followTransform;
 
 	private void Start(){
 		xMin = wallLeft.bounds.min.x;
@@ -28,6 +29,7 @@ public class CameraMovementFight : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		followTransform = player1.GetChild(0).gameObject.transform;
 		camY = Mathf.Clamp(followTransform.position.y - offsetY, yMin + camOrthSize - 7, yMax - camOrthSize);
 		camX = Mathf.Clamp(followTransform.position.x + offsetX, xMin + cameraRatio, xMax - cameraRatio);
 		this.transform.position = new Vector3(camX, camY, this.transform.position.z);
