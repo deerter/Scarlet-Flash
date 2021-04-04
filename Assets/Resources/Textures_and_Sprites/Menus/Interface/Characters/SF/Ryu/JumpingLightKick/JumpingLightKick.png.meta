@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f443472e7eff63e4481c130f0429589a
-timeCreated: 1617124589
+timeCreated: 1617550236
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -85,12 +85,12 @@ TextureImporter:
       name: JumpingLightKick_3
       rect:
         serializedVersion: 2
-        x: 2216
+        x: 2218
         y: 3419
-        width: 75
+        width: 73
         height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -103,8 +103,8 @@ TextureImporter:
         y: 3421
         width: 72
         height: 79
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.47, y: 0.53}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,8 +117,8 @@ TextureImporter:
         y: 3419
         width: 73
         height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.55}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,8 +131,8 @@ TextureImporter:
         y: 3428
         width: 64
         height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
