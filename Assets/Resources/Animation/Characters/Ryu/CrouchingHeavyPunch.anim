@@ -909,8 +909,8 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0.44
-    functionName: EndAnimation
-    data: Crouching
+    functionName: IsCharacterStillCrouching
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
