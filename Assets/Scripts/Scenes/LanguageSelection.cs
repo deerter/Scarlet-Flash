@@ -8,7 +8,8 @@ public class LanguageSelection : MonoBehaviour {
 	[SerializeField] GameObject checkMark;
 
 	public void SelectLanguage(int changedLanguage){
-		Language.changeLanguage(changedLanguage);
+		Language.ChangeLanguage(changedLanguage);
+		print(Language.prueba);
 		checkMark.transform.position = new Vector3 (checkMark.transform.position.x, EventSystem.current.currentSelectedGameObject.transform.position.y, checkMark.transform.position.z);
 	}
 
