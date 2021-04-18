@@ -9,6 +9,7 @@ public class GameManager: MonoBehaviour {
     private void Awake()
     {
         MakeSingleton();
+        Language.ReadCSV();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

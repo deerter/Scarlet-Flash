@@ -1,6 +1,12 @@
-;English;Spanish
-ConSettings;Controller Settings;Controles
-Language;Language;Idioma
-Version;Version;Version
-En;English;Ingl�s
-Sp;Spanish;Espa�ol
+﻿;English;Spanish
+ConSettings;CONTROLLER SETTINGS;CONTROLES
+Language;LANGUAGE;IDIOMA
+Version;VERSION;VERSION
+En;English;Inglés
+Sp;Spanish;Español
+SeLan;SELECT LANGUAGE;ELIGE IDIOMA
+Versus;VERSUS;VERSUS
+Training;TRAINING;ENTRENAMIENTO
+Options;OPTIONS;OPCIONES
+Exit;EXIT;SALIR
+PressBtn;Press any button;Pulsa cualquier botón 

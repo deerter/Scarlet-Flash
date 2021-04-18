@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 47217003}
   - component: {fileID: 47217002}
   - component: {fileID: 47217005}
+  - component: {fileID: 47217004}
   m_Layer: 5
   m_Name: Press Start
   m_TagString: Untagged
@@ -191,6 +192,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 2045692277}
   m_GameObject: {fileID: 47217000}
+--- !u!114 &47217004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 47217000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: PressBtn
 --- !u!225 &47217005
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3847,14 +3860,14 @@ RectTransform:
   m_GameObject: {fileID: 752876401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.63605, y: 2.79457, z: 99.369934}
-  m_LocalScale: {x: 0.1600685, y: 0.1600685, z: 0.1600685}
+  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
   m_Children:
   - {fileID: 2127878708}
   - {fileID: 47217001}
   - {fileID: 722279687}
   - {fileID: 349029699}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3927,7 +3940,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1247448353
 GameObject:
