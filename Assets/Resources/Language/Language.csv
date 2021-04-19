@@ -1,12 +1,39 @@
-﻿;English;Spanish
-ConSettings;CONTROLLER SETTINGS;CONTROLES
-Language;LANGUAGE;IDIOMA
-Version;VERSION;VERSION
-En;English;Inglés
-Sp;Spanish;Español
-SeLan;SELECT LANGUAGE;ELIGE IDIOMA
-Versus;VERSUS;VERSUS
-Training;TRAINING;ENTRENAMIENTO
-Options;OPTIONS;OPCIONES
-Exit;EXIT;SALIR
-PressBtn;Press any button;Pulsa cualquier botón 
+﻿;English;Spanish;;;Menu
+ConSettings;CONTROLLER SETTINGS;CONTROLES;;;Options
+Language;LANGUAGE;IDIOMA;;;Options
+Version;VERSION;VERSION;;;Options
+En;English;Inglés;;;Options
+Sp;Spanish;Español;;;Options
+SeLan;SELECT LANGUAGE;ELIGE IDIOMA;;;Options
+Versus;VERSUS;VERSUS;;;Main menu
+Training;TRAINING;ENTRENAMIENTO;;;Main menu
+Options;OPTIONS;OPCIONES;;;Main menu
+Exit;EXIT;SALIR;;;Main menu
+PressBtn;Press any button;Pulsa cualquier botón;;;Title screen
+QuitGm;QUIT GAME?;¿CERRAR JUEGO?;;;Main menu
+NoBtn;NO;NO;;;Main menu,Character selection
+YesBtn;YES;SÍ;;;Main menu,Character selection
+BckMainMenu;GO TO MAIN MENU?;¿IR AL MENÚ PRINCIPAL?;;;Character selection
+GameVer;GAME VERSION;VERSIÓN ACTUAL;;;Options
+LP;Light Punch;Puñetazo Débil;;;Options
+LK;Light Kick;Patada Débil;;;Options
+HP;Heavy Punch;Puñetazo Fuerte;;;Options
+HK;Heavy Kick;Patada Fuerte;;;Options
+A1;Assist 1;Asistencia 1;;;Options
+A2;Assist 2;Asistencia 2;;;Options
+Up;Up;Arriba;;;Options
+Down;Down;Abajo;;;Options
+Left;Left;Izquierda;;;Options
+Right;Right;Derecha;;;Options
+Accept;Accept;Aceptar;;;Options
+Difficulty;DIFFICULTY;DIFICULTAD;;;PlayervCPU
+Time;TIME;TIEMPO;;;PlayervCPU,PlayervPlayer,CPUvCPU
+Damage;DAMAGE;DAÑO;;;PlayervCPU,PlayervPlayer,CPUvCPU
+Hyper;HYPER BAR;BARRA HYPER;;;PlayervCPU,PlayervPlayer,CPUvCPU
+DiffCpu1;CPU 1 DIFFICULTY;DIFICULTAD CPU 1;;;CPUvCPU
+DiffCpu2;CPU 2 DIFFICULTY;DIFICULTAD CPU 2;;;CPUvCPU
+PlyVPly;PLAYER VS PLAYER;JUGADOR VS JUGADOR;;;Versus
+PlyVCpu;PLAYER VS CPU;JUGADOR VS CPU;;;Versus
+CpuVCpu;CPU VS CPU;CPU VS CPU;;;Versus
+RstFight;Restart Fight;Reanudar Lucha;;;Fight
+MainMenu;Main Menu;Menú Principal;;;Fight

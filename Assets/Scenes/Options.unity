@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 20892588}
   - component: {fileID: 20892590}
   - component: {fileID: 20892589}
+  - component: {fileID: 20892591}
   m_Layer: 5
   m_Name: Assist2
   m_TagString: Untagged
@@ -250,7 +251,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Assist 2
@@ -260,6 +261,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 20892587}
+--- !u!114 &20892591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 20892587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: A2
 --- !u!1 &91069373
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +820,7 @@ GameObject:
   - component: {fileID: 179937535}
   - component: {fileID: 179937537}
   - component: {fileID: 179937536}
+  - component: {fileID: 179937538}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -861,7 +875,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Left
@@ -871,6 +885,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 179937534}
+--- !u!114 &179937538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 179937534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Left
 --- !u!1 &195723587
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +981,7 @@ GameObject:
   - component: {fileID: 210705188}
   - component: {fileID: 210705190}
   - component: {fileID: 210705189}
+  - component: {fileID: 210705191}
   m_Layer: 5
   m_Name: LightPunch
   m_TagString: Untagged
@@ -1009,7 +1036,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Light Punch
@@ -1019,6 +1046,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 210705187}
+--- !u!114 &210705191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 210705187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: LP
 --- !u!1 &261115148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1727,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 143.19, y: -400}
-  m_SizeDelta: {x: 120.31, y: 40.4}
+  m_SizeDelta: {x: 142.54, y: 40.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &381087877
 MonoBehaviour:
@@ -2048,6 +2087,7 @@ GameObject:
   - component: {fileID: 595841652}
   - component: {fileID: 595841654}
   - component: {fileID: 595841653}
+  - component: {fileID: 595841655}
   m_Layer: 5
   m_Name: Up
   m_TagString: Untagged
@@ -2102,7 +2142,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Up
@@ -2112,6 +2152,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 595841651}
+--- !u!114 &595841655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595841651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Up
 --- !u!1 &620643657
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2402,7 @@ GameObject:
   - component: {fileID: 712190476}
   - component: {fileID: 712190478}
   - component: {fileID: 712190477}
+  - component: {fileID: 712190479}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2414,6 +2467,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 712190475}
+--- !u!114 &712190479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 712190475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: ConSettings
 --- !u!1 &753329416
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,6 +3156,7 @@ GameObject:
   - component: {fileID: 889350821}
   - component: {fileID: 889350823}
   - component: {fileID: 889350822}
+  - component: {fileID: 889350824}
   m_Layer: 5
   m_Name: Down
   m_TagString: Untagged
@@ -3145,7 +3211,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Down
@@ -3155,6 +3221,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889350820}
+--- !u!114 &889350824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 889350820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Down
 --- !u!1 &905911714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,6 +3671,7 @@ GameObject:
   - component: {fileID: 1107592344}
   - component: {fileID: 1107592346}
   - component: {fileID: 1107592345}
+  - component: {fileID: 1107592347}
   m_Layer: 5
   m_Name: LightKick
   m_TagString: Untagged
@@ -3647,7 +3726,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Light Kick
@@ -3657,6 +3736,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107592343}
+--- !u!114 &1107592347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107592343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: LK
 --- !u!1 &1114067824
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +3919,7 @@ GameObject:
   - component: {fileID: 1250247716}
   - component: {fileID: 1250247718}
   - component: {fileID: 1250247717}
+  - component: {fileID: 1250247719}
   m_Layer: 5
   m_Name: Right
   m_TagString: Untagged
@@ -3882,7 +3974,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Right
@@ -3892,6 +3984,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250247715}
+--- !u!114 &1250247719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250247715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Right
 --- !u!1 &1264267274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,9 +4006,10 @@ GameObject:
   - component: {fileID: 1264267275}
   - component: {fileID: 1264267277}
   - component: {fileID: 1264267276}
+  - component: {fileID: 1264267278}
   m_Layer: 5
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Texts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3956,7 +4061,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: GAME VERSION
@@ -3966,6 +4071,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1264267274}
+--- !u!114 &1264267278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1264267274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: GameVer
 --- !u!1 &1364955698
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,6 +4404,7 @@ GameObject:
   - component: {fileID: 1488095626}
   - component: {fileID: 1488095628}
   - component: {fileID: 1488095627}
+  - component: {fileID: 1488095629}
   m_Layer: 5
   m_Name: Assist1
   m_TagString: Untagged
@@ -4341,7 +4459,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Assist 1
@@ -4351,6 +4469,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1488095625}
+--- !u!114 &1488095629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488095625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: A1
 --- !u!1 &1488674095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4801,6 +4931,7 @@ GameObject:
   - component: {fileID: 1687570131}
   - component: {fileID: 1687570133}
   - component: {fileID: 1687570132}
+  - component: {fileID: 1687570134}
   m_Layer: 5
   m_Name: HeavyKick
   m_TagString: Untagged
@@ -4855,7 +4986,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Heavy Kick
@@ -4865,6 +4996,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1687570130}
+--- !u!114 &1687570134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1687570130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: HK
 --- !u!1 &1694113858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5409,7 @@ GameObject:
   - component: {fileID: 1819726369}
   - component: {fileID: 1819726371}
   - component: {fileID: 1819726370}
+  - component: {fileID: 1819726372}
   m_Layer: 5
   m_Name: HeavyPunch
   m_TagString: Untagged
@@ -5320,7 +5464,7 @@ MonoBehaviour:
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Heavy Punch
@@ -5330,6 +5474,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1819726368}
+--- !u!114 &1819726372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1819726368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: HP
 --- !u!1 &1821740998
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,6 +5791,7 @@ GameObject:
   - component: {fileID: 1928734921}
   - component: {fileID: 1928734923}
   - component: {fileID: 1928734922}
+  - component: {fileID: 1928734924}
   m_Layer: 5
   m_Name: AcceptText
   m_TagString: Untagged
@@ -5657,8 +5814,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0000019073, y: 0}
+  m_SizeDelta: {x: 7.14, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928734922
 MonoBehaviour:
@@ -5699,6 +5856,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1928734920}
+--- !u!114 &1928734924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1928734920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ec9aaeb08a7184ea2716d73aa68abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Accept
 --- !u!1 &2035201830
 GameObject:
   m_ObjectHideFlags: 0

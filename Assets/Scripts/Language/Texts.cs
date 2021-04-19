@@ -11,8 +11,13 @@ public class Texts : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
 		Language.ReadCSV();  //////////
+		SetText();
+	}*/
+
+	void OnEnable(){
+		Language.ReadCSV(); ////////////
 		SetText();
 	}
 }

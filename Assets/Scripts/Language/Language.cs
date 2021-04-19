@@ -21,10 +21,6 @@ public static class Language {
 		foreach (var Text in Texts){
 			Text.GetComponent<Texts>().SetText();
 		}
-
-		////////////////pruebas
-		
-		prueba = GetText("Sp");
 	}
 
 	public static int GetLanguage(){
