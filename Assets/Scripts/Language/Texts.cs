@@ -4,10 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Texts : MonoBehaviour {
-	[SerializeField] string key;
+	[SerializeField] private string key;
 
-	public void SetText(){
-		this.GetComponent<Text>().text = Language.GetText(key);
+	public void SetText(string givenKey){
+		if(givenKey=="reloadText"){
+			givenKey=key;
+		}
+		this.GetComponent<Text>().text = Language.GetText(givenKey);
+	}
+
+	public string GetKey(){
+		return key;
 	}
 
 	// Use this for initialization
@@ -18,6 +25,6 @@ public class Texts : MonoBehaviour {
 
 	void OnEnable(){
 		Language.ReadCSV(); ////////////
-		SetText();
+		SetText(key);
 	}
 }

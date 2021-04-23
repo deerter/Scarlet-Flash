@@ -37,3 +37,11 @@ PlyVCpu;PLAYER VS CPU;JUGADOR VS CPU;;;Versus
 CpuVCpu;CPU VS CPU;CPU VS CPU;;;Versus
 RstFight;Restart Fight;Reanudar Lucha;;;Fight
 MainMenu;Main Menu;Menú Principal;;;Fight
+Confirm;CONFIRM;CONFIRMAR;;;Options,PlayervCPU,PlayervPlayer,CPUvCPU,Main menu,Character selection
+Back;BACK;VOLVER;;;Options,PlayervCPU,PlayervPlayer,CPUvCPU,Main menu,Character selection
+DmgHigh;HIGH;ALTO;;;PlayervCPU,PlayervPlayer,CPUvCPU
+DmgMedium;MEDIUM;MEDIO;;;PlayervCPU,PlayervPlayer,CPUvCPU
+DmgLow;LOW;BAJO;;;PlayervCPU,PlayervPlayer,CPUvCPU
+TimeInfinite;∞;∞;;;PlayervCPU,PlayervPlayer,CPUvCPU
+Time99;99;99;;;PlayervCPU,PlayervPlayer,CPUvCPU
+Time50;50;50;;;PlayervCPU,PlayervPlayer,CPUvCPU

@@ -19,7 +19,7 @@ public static class Language {
 		///Reload the texts of menu where language was changed
 		var Texts = GameObject.FindGameObjectsWithTag("Texts");
 		foreach (var Text in Texts){
-			Text.GetComponent<Texts>().SetText();
+			Text.GetComponent<Texts>().SetText("reloadText");
 		}
 	}
 
