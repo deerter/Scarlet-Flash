@@ -45,3 +45,6 @@ DmgLow;LOW;BAJO;;;PlayervCPU,PlayervPlayer,CPUvCPU
 TimeInfinite;∞;∞;;;PlayervCPU,PlayervPlayer,CPUvCPU
 Time99;99;99;;;PlayervCPU,PlayervPlayer,CPUvCPU
 Time50;50;50;;;PlayervCPU,PlayervPlayer,CPUvCPU
+DiffEasy;EASY;FÁCIL;;;CPUvCPU,PlayervCPU
+DiffNormal;NORMAL;NORMAL;;;CPUvCPU,PlayervCPU
+DiffHard;HARD;DIFÍCIL;;;CPUvCPU,PlayervCPU
