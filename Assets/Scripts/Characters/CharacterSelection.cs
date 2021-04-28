@@ -122,6 +122,7 @@ public class CharacterSelection : MonoBehaviour {
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/SF/SF_logo");
 
         loadScene = EventSystem.current.GetComponent<LoadSceneonClick>();
+        GameObject.Find("Music").GetComponent<MusicPlayer>().PlayMusic("Selection");  ////Plays character selection music
     }
 	
 	// Update is called once per frame
