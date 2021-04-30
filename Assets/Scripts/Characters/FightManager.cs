@@ -16,6 +16,7 @@ public class FightManager : MonoBehaviour {
 
 	[SerializeField] GameObject timerCounter;
 
+	private GameObject music;
 	private bool fightEnded = false;
 	private bool restartPrompt = false;
 	private bool fightStarted = false;
@@ -29,6 +30,9 @@ public class FightManager : MonoBehaviour {
 	IEnumerator FightStart(){
 		yield return new WaitForSeconds(5);
 		fightStarted = true;
+		music = GameObject.Find("Music");
+		music.GetComponent<MusicPlayer>().PlayMusic(CurrentFightStats.GetSelectedCharacter(0,"Player1"));
+		music.GetComponent<AudioSource>().loop=true;
 	}
 
 	private void TimeUpVictory(){

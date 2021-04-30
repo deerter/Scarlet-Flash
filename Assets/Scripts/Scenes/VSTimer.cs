@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VSTimer : MonoBehaviour {
 
-	private float timeRemaining = 10;
+	private float timeRemaining = 9;
 	private bool timerIsRunning = false;
 
 	private LoadSceneonClick nextScene = new LoadSceneonClick();

@@ -21,7 +21,7 @@ public class SelectOnInput : MonoBehaviour {
 	}
 	
 	private void Update () {
-        if (eventSystem.currentSelectedGameObject == lastObject)   //Para saber el objeto actualmente seleccionado
+        if (eventSystem.currentSelectedGameObject == lastObject)   //Currently selected object
         addToString();
 		specialMoveQCF ();
         shoryuken();

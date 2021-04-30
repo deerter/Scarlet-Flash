@@ -20,13 +20,10 @@ public static class CurrentFightStats{
 	}*/
 	
 	public static string GetSelectedCharacter(int characterNumber, string player){
-		selectedCharactersPlayer1[0] = "Ken";  ////////Get rid of these lines after testing
-		selectedCharactersPlayer1[1] = "Sakura";
-		selectedCharactersPlayer1[2] = "Ken";
 
 		selectedCharactersPlayer2[0] = "Sakura";
 		selectedCharactersPlayer2[1] = "Ken";
-		selectedCharactersPlayer2[2] = "Sakura";
+		selectedCharactersPlayer2[2] = "Leona";
 		
 
 		string charName = "";

@@ -245,7 +245,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 21653462}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!124 &21653467
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2417,7 +2417,7 @@ Animator:
   m_GameObject: {fileID: 823685769}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e6bfb74efc5ee744bac2f3eefae2728, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5127,7 +5127,7 @@ Animator:
   m_GameObject: {fileID: 2008869947}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 83b9bb2fdadeb664aa53eb4fb974d273, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
