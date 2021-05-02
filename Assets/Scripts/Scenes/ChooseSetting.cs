@@ -10,6 +10,7 @@ public class ChooseSetting : MonoBehaviour {
 	[SerializeField] private GameObject leftArrow;
 	[SerializeField] private GameObject rightArrow;
 	[SerializeField] private int optionSelected;
+	private SoundEffectPlayer soundEffect;
 
 	private void SetArrows(){
 		rightArrow.transform.localPosition = new Vector2(settingText.transform.localPosition.x + (settingText.GetComponent<Text>().preferredWidth/2) + 30, rightArrow.transform.localPosition.y);
@@ -20,12 +21,17 @@ public class ChooseSetting : MonoBehaviour {
 	void Start () {
 		//Sets the position of both arrows//
 		SetArrows();
+		soundEffect = GameObject.Find("SoundEffects").GetComponent<SoundEffectPlayer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (this.name==EventSystem.current.currentSelectedGameObject.name){
+			if ((Input.GetKeyDown(GameConstants.R) || Input.GetKeyDown(GameConstants.L)) && ((optionSelected == 0)||(optionSelected == settingOptions.Length-1))){
+				soundEffect.PlaySoundEffect("Wrong");
+			}
 			if (Input.GetKeyDown(GameConstants.L) && (optionSelected != 0)){
+				soundEffect.PlaySoundEffect("SettingsSlider");
 				optionSelected--;
 				settingText.GetComponent<Texts>().SetText(settingOptions[optionSelected]);
 				if (optionSelected==0){
@@ -35,6 +41,7 @@ public class ChooseSetting : MonoBehaviour {
 				SetArrows();
 			}
 			if (Input.GetKeyDown(GameConstants.R) && (optionSelected != settingOptions.Length-1)){
+				soundEffect.PlaySoundEffect("SettingsSlider");
 				optionSelected++;
 				settingText.GetComponent<Texts>().SetText(settingOptions[optionSelected]);
 				if (optionSelected==settingOptions.Length-1){
@@ -43,6 +50,7 @@ public class ChooseSetting : MonoBehaviour {
 				leftArrow.SetActive(true);
 				SetArrows();
 			}
+			
 		}
 		
 		

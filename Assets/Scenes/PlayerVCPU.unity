@@ -546,6 +546,7 @@ GameObject:
   - component: {fileID: 513220217}
   - component: {fileID: 513220216}
   - component: {fileID: 513220220}
+  - component: {fileID: 513220221}
   m_Layer: 5
   m_Name: DamageButton
   m_TagString: Untagged
@@ -636,6 +637,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 513220221}
+        m_MethodName: PlayButtonSoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Confirm
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &513220218
@@ -690,6 +702,17 @@ MonoBehaviour:
   leftArrow: {fileID: 1564409825}
   rightArrow: {fileID: 1592331677}
   optionSelected: 1
+--- !u!114 &513220221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 513220214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &541823298
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +886,7 @@ GameObject:
   - component: {fileID: 585422654}
   - component: {fileID: 585422655}
   - component: {fileID: 585422659}
+  - component: {fileID: 585422660}
   m_Layer: 5
   m_Name: TimeButton
   m_TagString: Untagged
@@ -918,6 +942,17 @@ MonoBehaviour:
           m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 585422660}
+        m_MethodName: PlayButtonSoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Confirm
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1007,6 +1042,17 @@ MonoBehaviour:
   leftArrow: {fileID: 541823298}
   rightArrow: {fileID: 2076122486}
   optionSelected: 1
+--- !u!114 &585422660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 585422653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &734254610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1913,7 @@ GameObject:
   - component: {fileID: 1448696156}
   - component: {fileID: 1448696157}
   - component: {fileID: 1448696161}
+  - component: {fileID: 1448696162}
   m_Layer: 5
   m_Name: DifficultyButton
   m_TagString: Untagged
@@ -1922,6 +1969,17 @@ MonoBehaviour:
           m_IntArgument: 7
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1448696162}
+        m_MethodName: PlayButtonSoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Confirm
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2011,6 +2069,17 @@ MonoBehaviour:
   leftArrow: {fileID: 1433861929}
   rightArrow: {fileID: 1047459764}
   optionSelected: 1
+--- !u!114 &1448696162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448696155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1477236599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2792,6 +2861,7 @@ GameObject:
   - component: {fileID: 2081118816}
   - component: {fileID: 2081118815}
   - component: {fileID: 2081118814}
+  - component: {fileID: 2081118818}
   m_Layer: 5
   m_Name: HyperBarButton
   m_TagString: Untagged
@@ -2879,6 +2949,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2081118818}
+        m_MethodName: PlayButtonSoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Confirm
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2081118816
@@ -2914,6 +2995,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2081118812}
+--- !u!114 &2081118818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2081118812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2092042335
 GameObject:
   m_ObjectHideFlags: 0

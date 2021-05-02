@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ButtonSoundEffects : MonoBehaviour {
 	private SoundEffectPlayer soundEffect;
+	
 
 	// Use this for initialization
 	void Start () {

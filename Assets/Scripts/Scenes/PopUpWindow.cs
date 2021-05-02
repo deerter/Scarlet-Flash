@@ -11,6 +11,11 @@ public class PopUpWindow : MonoBehaviour {
     public Image image;
     EventSystem myEventSystem;
     static GameObject previouslySelectedObject;
+    private SoundEffectPlayer soundEffect;
+
+    void Start(){
+        soundEffect = GameObject.Find("SoundEffects").GetComponent<SoundEffectPlayer>();
+    }
 
     public void PopUp()
     {
@@ -27,5 +32,6 @@ public class PopUpWindow : MonoBehaviour {
         myEventSystem = EventSystem.current;
         myEventSystem.SetSelectedGameObject(previouslySelectedObject);
         image.color = new Color(image.color.r, image.color.g, image.color.b, 0f);
+        soundEffect.PlaySoundEffect("Back");
     }
 }

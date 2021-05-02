@@ -22,6 +22,7 @@ public class ControllerSettings : MonoBehaviour {
 	private bool waitForInput = false;
 	private string buttonToChange;
 	private GameObject currentButtonSelected;
+	private SoundEffectPlayer soundEffect;
 
 	public void ChangeButton(string key){
 		buttonToChange = key;
@@ -65,14 +66,18 @@ public class ControllerSettings : MonoBehaviour {
 		if (e.isKey && waitForInput && e.keyCode != KeyCode.Return && e.keyCode != KeyCode.Escape && e.keyCode != KeyCode.None){  //None must be checked because when the key is lifted, it sends a None event.//
 			bool buttonAssigned;
 			buttonAssigned = GameConstants.CheckButtonExists(e.keyCode);
-			print(e.keyCode);
 			if (buttonAssigned == false){
+				soundEffect.PlaySoundEffect("Confirm");
 				typeof(GameConstants).GetField(buttonToChange).SetValue(null, e.keyCode);
 				GameConstants.ReloadButtonsAsigned();
 				currentButtonSelected.GetComponent<Button>().interactable = true;
 				EventSystem.current.SetSelectedGameObject(currentButtonSelected);
 				waitForInput = false;
 				ShowButtons();
+			}
+			if (e.type == EventType.KeyUp && waitForInput)   /////Has to be played when key up, otherwise it replays the sound effect constantly while pressed
+			{
+				soundEffect.PlaySoundEffect("Wrong");
 			}
 		}
     }
@@ -81,6 +86,7 @@ public class ControllerSettings : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		ShowButtons();
+		soundEffect = GameObject.Find("SoundEffects").GetComponent<SoundEffectPlayer>();
 	}
 	
 	// Update is called once per frame
