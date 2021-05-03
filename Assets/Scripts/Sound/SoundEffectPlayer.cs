@@ -31,4 +31,16 @@ public class SoundEffectPlayer : MonoBehaviour {
 	public void StopSoundEffect(){
 		currentSoundEffect.Stop();
 	}
+
+	public bool SoundIsPlaying(){
+		return currentSoundEffect.isPlaying;
+	}
+
+	public double CurrentTimeElapsed(){
+		return (double)currentSoundEffect.timeSamples / currentSoundEffect.clip.frequency;
+	}
+
+	public double SoundEffectDuration(){
+		return (double)currentSoundEffect.clip.samples / currentSoundEffect.clip.frequency;
+	}
 }

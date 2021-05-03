@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharacterSelection : MonoBehaviour {
+public class CharacterSelection : MonoBehaviour, IDeselectHandler {
 
     public GameObject artwork;
     public GameObject series;
@@ -24,6 +24,8 @@ public class CharacterSelection : MonoBehaviour {
     private LoadSceneonClick loadScene;
     private PopUpWindow popUp;
     private bool isOnPopUp = false;
+
+    private SoundEffectPlayer soundEffect;
 
     private void DisplayCharacterSelected(string charName)
     {
@@ -112,6 +114,20 @@ public class CharacterSelection : MonoBehaviour {
         chosenChars--;
     }
 
+   /* IEnumerator PlaySoundCharacterSelection(){
+        if (!soundEffect.SoundIsPlaying()){
+            soundEffect.PlaySoundEffect("Cursor");
+        }else if (soundEffect.CurrentTimeElapsed() > (soundEffect.SoundEffectDuration()/10)){
+            soundEffect.PlaySoundEffect("Cursor");
+        }
+        yield return new WaitForSeconds(0.01f);
+    }*/
+
+    public void OnDeselect (BaseEventData eventData)
+    {
+        print("Deselected");
+    }
+
 	// Use this for initialization
 	void Start () {
         //First character selected
@@ -123,6 +139,7 @@ public class CharacterSelection : MonoBehaviour {
 
         loadScene = EventSystem.current.GetComponent<LoadSceneonClick>();
         GameObject.Find("Music").GetComponent<MusicPlayer>().PlayMusic("Selection");  ////Plays character selection music
+        soundEffect = GameObject.Find("SoundEffects").GetComponent<SoundEffectPlayer>();
     }
 	
 	// Update is called once per frame
@@ -131,6 +148,7 @@ public class CharacterSelection : MonoBehaviour {
             name.text = EventSystem.current.currentSelectedGameObject.name;
             if ((Input.GetKey(GameConstants.U)||(Input.GetKey(GameConstants.D))|| Input.GetKey(GameConstants.L)|| Input.GetKey(GameConstants.R)))
             {
+                //StartCoroutine(PlaySoundCharacterSelection());
                 if (name.text != "Random" && name.text != "Random3"){
                     DisplayCharacterSelected(name.text);
                 }else{
@@ -139,6 +157,7 @@ public class CharacterSelection : MonoBehaviour {
             }
             if (Input.GetKeyDown(GameConstants.ACCEPT) && (chosenChars<maxChars))
             {
+                soundEffect.PlaySoundEffect("ConfirmCharSel");
                 if (name.text != "Random" && name.text != "Random3"){
                     ChooseCharacter(name.text);
                 }else{
@@ -147,6 +166,7 @@ public class CharacterSelection : MonoBehaviour {
             }
             if (Input.GetKeyDown(GameConstants.BACK))
             {
+                soundEffect.PlaySoundEffect("Back");
                 if (chosenChars > 0){
                     UnchooseCharacter();
                 }else{

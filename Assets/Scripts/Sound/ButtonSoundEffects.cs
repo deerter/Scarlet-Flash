@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class ButtonSoundEffects : MonoBehaviour {
+public class ButtonSoundEffects : MonoBehaviour, IMoveHandler {
 	private SoundEffectPlayer soundEffect;
 	
 
@@ -16,12 +16,16 @@ public class ButtonSoundEffects : MonoBehaviour {
 	void Update () {
 		if (EventSystem.current.currentSelectedGameObject==gameObject){
 			if(Input.GetKeyDown(GameConstants.D) || Input.GetKeyDown(GameConstants.U)){
-				PlayButtonSoundEffect("Cursor");
+				//PlayButtonSoundEffect("Cursor");
 			}
 		}
 	}
 
 	public void PlayButtonSoundEffect(string currentSoundEffect){
 		soundEffect.PlaySoundEffect(currentSoundEffect);
+	}
+
+	public void OnMove(AxisEventData eventData){
+		PlayButtonSoundEffect("Cursor");
 	}
 }
