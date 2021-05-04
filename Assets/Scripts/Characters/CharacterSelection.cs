@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharacterSelection : MonoBehaviour, IDeselectHandler {
+public class CharacterSelection : MonoBehaviour {
 
     public GameObject artwork;
     public GameObject series;
@@ -35,13 +35,15 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
             + characterSeries + "/" + charName + "/" + charName + "PortraitSelection");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
             + characterSeries + "/" + characterSeries + "_logo");
+        series.GetComponent<Image>().color = new Color(series.GetComponent<Image>().color.r, series.GetComponent<Image>().color.g, series.GetComponent<Image>().color.b, 1f);
     }
 
     private void DisplayRandom(){
         artwork.GetComponent<SpriteRenderer>().flipX = false;
         artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/Random" 
             + "/" + name.text + "PortraitSelection");
-        series.GetComponent<Image>().sprite = null;
+        //series.GetComponent<Image>().sprite = null;
+        series.GetComponent<Image>().color = new Color(series.GetComponent<Image>().color.r, series.GetComponent<Image>().color.g, series.GetComponent<Image>().color.b, 0f);
     }
 
     private bool CharacterAlreadyChosen(string charName){
@@ -56,6 +58,7 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
     private bool ChooseCharacter(string charName)
     {
         if (!CharacterAlreadyChosen(charName)){
+            soundEffect.PlaySoundEffect("ConfirmCharSel");
             chosenChars++;
             switch (chosenChars)
             {
@@ -75,10 +78,12 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
             }
             return true;
         }
+        soundEffect.PlaySoundEffect("Wrong");
         return false;
     }
 
     private void ChooseRandom(string randomType){
+        soundEffect.PlaySoundEffect("ConfirmCharSel");
         switch(randomType){
             case "Random": ChooseOneRandom();break;
             case "Random3": ChooseThreeRandom();break;
@@ -114,20 +119,6 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
         chosenChars--;
     }
 
-   /* IEnumerator PlaySoundCharacterSelection(){
-        if (!soundEffect.SoundIsPlaying()){
-            soundEffect.PlaySoundEffect("Cursor");
-        }else if (soundEffect.CurrentTimeElapsed() > (soundEffect.SoundEffectDuration()/10)){
-            soundEffect.PlaySoundEffect("Cursor");
-        }
-        yield return new WaitForSeconds(0.01f);
-    }*/
-
-    public void OnDeselect (BaseEventData eventData)
-    {
-        print("Deselected");
-    }
-
 	// Use this for initialization
 	void Start () {
         //First character selected
@@ -146,9 +137,8 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
 	void Update () {
         if (!isOnPopUp){
             name.text = EventSystem.current.currentSelectedGameObject.name;
-            if ((Input.GetKey(GameConstants.U)||(Input.GetKey(GameConstants.D))|| Input.GetKey(GameConstants.L)|| Input.GetKey(GameConstants.R)))
+            if (Input.GetKey(GameConstants.U)||Input.GetKey(GameConstants.D)|| Input.GetKey(GameConstants.L)|| Input.GetKey(GameConstants.R))
             {
-                //StartCoroutine(PlaySoundCharacterSelection());
                 if (name.text != "Random" && name.text != "Random3"){
                     DisplayCharacterSelected(name.text);
                 }else{
@@ -157,7 +147,6 @@ public class CharacterSelection : MonoBehaviour, IDeselectHandler {
             }
             if (Input.GetKeyDown(GameConstants.ACCEPT) && (chosenChars<maxChars))
             {
-                soundEffect.PlaySoundEffect("ConfirmCharSel");
                 if (name.text != "Random" && name.text != "Random3"){
                     ChooseCharacter(name.text);
                 }else{

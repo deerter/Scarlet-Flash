@@ -1179,7 +1179,7 @@ GameObject:
   - component: {fileID: 1551684200}
   m_Layer: 5
   m_Name: PlayerVPlayerButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 1595286921}
   m_Layer: 5
   m_Name: PlayerVCPUButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 1799369848}
   m_Layer: 5
   m_Name: CPUVCPUButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

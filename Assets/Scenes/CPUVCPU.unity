@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 317771300}
   m_Layer: 5
   m_Name: HyperBarButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 543698997}
   m_Layer: 5
   m_Name: CPU2Button
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,7 +1448,7 @@ GameObject:
   - component: {fileID: 796892935}
   m_Layer: 5
   m_Name: DamageButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1628,7 +1628,7 @@ GameObject:
   - component: {fileID: 817569399}
   m_Layer: 5
   m_Name: TimeButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2001,7 +2001,7 @@ GameObject:
   - component: {fileID: 996882004}
   m_Layer: 5
   m_Name: CPU1Button
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -640,6 +640,7 @@ GameObject:
   - component: {fileID: 185415132}
   - component: {fileID: 185415131}
   - component: {fileID: 185415130}
+  - component: {fileID: 185415134}
   m_Layer: 0
   m_Name: Lina
   m_TagString: Untagged
@@ -740,6 +741,17 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9000003, y: -5.7499976}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &185415134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 185415129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &234751564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1242,7 @@ GameObject:
   - component: {fileID: 368641977}
   - component: {fileID: 368641976}
   - component: {fileID: 368641975}
+  - component: {fileID: 368641979}
   m_Layer: 0
   m_Name: Regina
   m_TagString: Untagged
@@ -1330,6 +1343,17 @@ RectTransform:
   m_AnchoredPosition: {x: 8.000001, y: -3.8299983}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &368641979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 368641974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &375610408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1459,7 @@ GameObject:
   - component: {fileID: 522362853}
   - component: {fileID: 522362852}
   - component: {fileID: 522362851}
+  - component: {fileID: 522362855}
   m_Layer: 0
   m_Name: Rukia
   m_TagString: Untagged
@@ -1535,6 +1560,17 @@ RectTransform:
   m_AnchoredPosition: {x: 5.460002, y: -1.9199991}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &522362855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 522362850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &549547755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1957,7 @@ GameObject:
   - component: {fileID: 677605484}
   - component: {fileID: 677605483}
   - component: {fileID: 677605482}
+  - component: {fileID: 677605486}
   m_Layer: 0
   m_Name: Leona
   m_TagString: Untagged
@@ -2021,6 +2058,17 @@ RectTransform:
   m_AnchoredPosition: {x: 8.000001, y: 0.01}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &677605486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 677605481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &683087280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,6 +2252,7 @@ GameObject:
   - component: {fileID: 778625236}
   - component: {fileID: 778625235}
   - component: {fileID: 778625234}
+  - component: {fileID: 778625238}
   m_Layer: 0
   m_Name: Naruto
   m_TagString: Untagged
@@ -2304,6 +2353,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0.32, y: -1.9199991}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &778625238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778625233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &794354678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,7 +2378,7 @@ GameObject:
   - component: {fileID: 794354680}
   m_Layer: 5
   m_Name: NoButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2891,6 +2951,7 @@ GameObject:
   - component: {fileID: 968951635}
   - component: {fileID: 968951634}
   - component: {fileID: 968951633}
+  - component: {fileID: 968951637}
   m_Layer: 0
   m_Name: Yugi
   m_TagString: Untagged
@@ -2991,6 +3052,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0.31999996, y: -3.8299983}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &968951637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968951632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1010388960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,9 +3516,10 @@ GameObject:
   - component: {fileID: 1149914636}
   - component: {fileID: 1149914634}
   - component: {fileID: 1149914639}
+  - component: {fileID: 1149914635}
   m_Layer: 5
   m_Name: YesButton
-  m_TagString: Untagged
+  m_TagString: MainButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3501,8 +3574,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1149914635}
+        m_MethodName: PlayButtonSoundEffect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Confirm
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1149914635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149914633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1149914636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4261,6 +4356,7 @@ GameObject:
   - component: {fileID: 1359756783}
   - component: {fileID: 1359756782}
   - component: {fileID: 1359756781}
+  - component: {fileID: 1359756785}
   m_Layer: 0
   m_Name: Ichigo
   m_TagString: Untagged
@@ -4361,6 +4457,17 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9000003, y: -1.9199991}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1359756785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1359756780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1373888631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4372,6 +4479,7 @@ GameObject:
   - component: {fileID: 1373888634}
   - component: {fileID: 1373888633}
   - component: {fileID: 1373888632}
+  - component: {fileID: 1373888636}
   m_Layer: 0
   m_Name: Medaka
   m_TagString: Untagged
@@ -4472,6 +4580,17 @@ RectTransform:
   m_AnchoredPosition: {x: 5.460002, y: -3.8299983}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1373888636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1373888631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417311576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,6 +4738,7 @@ GameObject:
   - component: {fileID: 1459083183}
   - component: {fileID: 1459083182}
   - component: {fileID: 1459083181}
+  - component: {fileID: 1459083185}
   m_Layer: 0
   m_Name: Morrigan
   m_TagString: Untagged
@@ -4719,6 +4839,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0.32, y: -5.7499976}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1459083185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1459083180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1460329587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,6 +4861,7 @@ GameObject:
   - component: {fileID: 1460329590}
   - component: {fileID: 1460329589}
   - component: {fileID: 1460329588}
+  - component: {fileID: 1460329592}
   m_Layer: 0
   m_Name: Ken
   m_TagString: Untagged
@@ -4830,6 +4962,17 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9000003, y: 0.01}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1460329592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1460329587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1489277039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,6 +5125,7 @@ GameObject:
   - component: {fileID: 1513412099}
   - component: {fileID: 1513412098}
   - component: {fileID: 1513412097}
+  - component: {fileID: 1513412100}
   m_Layer: 0
   m_Name: Random
   m_TagString: Untagged
@@ -5082,6 +5226,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1513412100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1513412095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1522353467
 GameObject:
   m_ObjectHideFlags: 0
@@ -5192,6 +5347,7 @@ GameObject:
   - component: {fileID: 1594463985}
   - component: {fileID: 1594463984}
   - component: {fileID: 1594463983}
+  - component: {fileID: 1594463986}
   m_Layer: 0
   m_Name: Random3
   m_TagString: Untagged
@@ -5292,6 +5448,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1594463986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1594463981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1633381688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5447,6 +5614,7 @@ GameObject:
   - component: {fileID: 1683514220}
   - component: {fileID: 1683514219}
   - component: {fileID: 1683514218}
+  - component: {fileID: 1683514222}
   m_Layer: 0
   m_Name: Luffy
   m_TagString: Untagged
@@ -5547,6 +5715,17 @@ RectTransform:
   m_AnchoredPosition: {x: 8.000001, y: -1.9199991}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1683514222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683514217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1718423777
 GameObject:
   m_ObjectHideFlags: 0
@@ -5772,6 +5951,7 @@ GameObject:
   - component: {fileID: 1754014313}
   - component: {fileID: 1754014312}
   - component: {fileID: 1754014311}
+  - component: {fileID: 1754014315}
   m_Layer: 0
   m_Name: Sakura
   m_TagString: Untagged
@@ -5872,6 +6052,17 @@ RectTransform:
   m_AnchoredPosition: {x: 5.460001, y: 0.01}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1754014315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1754014310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755889282
 GameObject:
   m_ObjectHideFlags: 0
@@ -6387,6 +6578,7 @@ GameObject:
   - component: {fileID: 1912267000}
   - component: {fileID: 1912266999}
   - component: {fileID: 1912266998}
+  - component: {fileID: 1912267002}
   m_Layer: 0
   m_Name: Naga
   m_TagString: Untagged
@@ -6487,6 +6679,17 @@ RectTransform:
   m_AnchoredPosition: {x: 5.460002, y: -5.7499976}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1912267002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1912266997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1939343825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6730,6 +6933,7 @@ GameObject:
   - component: {fileID: 1992512140}
   - component: {fileID: 1992512142}
   - component: {fileID: 1992512143}
+  - component: {fileID: 1992512141}
   m_Layer: 0
   m_Name: Ryu
   m_TagString: Untagged
@@ -6764,6 +6968,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &1992512141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1992512139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1992512142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6841,6 +7056,7 @@ GameObject:
   - component: {fileID: 2000177968}
   - component: {fileID: 2000177967}
   - component: {fileID: 2000177966}
+  - component: {fileID: 2000177970}
   m_Layer: 0
   m_Name: Kaiba
   m_TagString: Untagged
@@ -6941,6 +7157,17 @@ RectTransform:
   m_AnchoredPosition: {x: 2.9000003, y: -3.8299983}
   m_SizeDelta: {x: 2.25, y: 1.56}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2000177970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2000177965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2006214219
 GameObject:
   m_ObjectHideFlags: 0
@@ -7093,6 +7320,7 @@ GameObject:
   - component: {fileID: 2142740294}
   - component: {fileID: 2142740295}
   - component: {fileID: 2142740293}
+  - component: {fileID: 2142740296}
   m_Layer: 0
   m_Name: Mii
   m_TagString: Untagged
@@ -7193,3 +7421,14 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2142740291}
+--- !u!114 &2142740296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2142740291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ac6691d0217c0428b9a074d2fa53aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

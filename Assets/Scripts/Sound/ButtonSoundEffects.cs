@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSoundEffects : MonoBehaviour, IMoveHandler {
 	private SoundEffectPlayer soundEffect;
@@ -14,11 +15,9 @@ public class ButtonSoundEffects : MonoBehaviour, IMoveHandler {
 	
 	// Update is called once per frame
 	void Update () {
-		if (EventSystem.current.currentSelectedGameObject==gameObject){
-			if(Input.GetKeyDown(GameConstants.D) || Input.GetKeyDown(GameConstants.U)){
-				//PlayButtonSoundEffect("Cursor");
-			}
-		}
+		/*if (gameObject.name == "VersusButton"){
+			print (gameObject.GetComponentInParent<Button>().navigation.selectOnUp);
+		}*/
 	}
 
 	public void PlayButtonSoundEffect(string currentSoundEffect){
@@ -26,6 +25,16 @@ public class ButtonSoundEffects : MonoBehaviour, IMoveHandler {
 	}
 
 	public void OnMove(AxisEventData eventData){
-		PlayButtonSoundEffect("Cursor");
+		string movement = eventData.moveDir.ToString();
+		if (!(gameObject.tag=="MainButton" && (movement=="Right" || movement=="Left"))){
+			if (((gameObject.GetComponentInParent<Button>().navigation.selectOnUp==null)&&(movement=="Up"))
+				|| ((gameObject.GetComponentInParent<Button>().navigation.selectOnDown==null)&&(movement=="Down"))
+				|| ((gameObject.GetComponentInParent<Button>().navigation.selectOnRight==null)&&(movement=="Right"))
+				|| ((gameObject.GetComponentInParent<Button>().navigation.selectOnLeft==null)&&(movement=="Left"))) {
+				PlayButtonSoundEffect("Wrong");
+			}else{
+				PlayButtonSoundEffect("Cursor");
+			}
+		}
 	}
 }
