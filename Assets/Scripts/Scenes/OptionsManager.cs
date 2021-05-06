@@ -16,7 +16,7 @@ public class OptionsManager : MonoBehaviour {
 		optionPressed = EventSystem.current.currentSelectedGameObject;
 	}
 
-	private void PopUpInactive (){
+	public void PopUpInactive (){
 		this.currentPopUp = PopUp.None;
 		optionPressed.GetComponent<PopUpWindow>().ClosePopUp();
 	}
@@ -30,7 +30,6 @@ public class OptionsManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(GameConstants.BACK)){
-			print(currentPopUp);
 			switch(currentPopUp){
 				case PopUp.None: soundEffect.PlaySoundEffect("Back"); loadScene.LoadByIndex(1); break;
 				case PopUp.Controls: case PopUp.Language: case PopUp.Version: PopUpInactive(); break;

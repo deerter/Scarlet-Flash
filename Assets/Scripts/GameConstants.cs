@@ -19,6 +19,7 @@ public static class GameConstants
     public const KeyCode BACK = KeyCode.Escape;
 
 	private static KeyCode[] buttonsAssigned = new KeyCode[]{U,D,L,R,LP,LK,HP,HK,A1,A2,ACCEPT,BACK};
+	private static KeyCode[] buttonsAssignedProxy = new KeyCode[]{U,D,L,R,LP,LK,HP,HK,A1,A2,ACCEPT,BACK};
 
 	//Keys used for special attacks///
 	/*public static string DL = "down left";
@@ -37,6 +38,24 @@ public static class GameConstants
 
 	public static void ReloadButtonsAsigned(){
 		buttonsAssigned = new KeyCode[]{U,D,L,R,LP,LK,HP,HK,A1,A2,ACCEPT,BACK};
+	}
+
+	public static void SetButtonsAssignedProxy(){
+		buttonsAssignedProxy = buttonsAssigned;
+	}
+
+	public static void ResetButtonsAssigned(){
+		buttonsAssigned = buttonsAssignedProxy;
+		U = buttonsAssigned[0];
+		D =	buttonsAssigned[1];
+		L = buttonsAssigned[2];
+		R = buttonsAssigned[3];
+		LP = buttonsAssigned[4];
+		LK = buttonsAssigned[5];
+		HP = buttonsAssigned[6];
+		HK = buttonsAssigned[7];
+		A1 = buttonsAssigned[8];
+		A2 = buttonsAssigned[9];
 	}
 }
 

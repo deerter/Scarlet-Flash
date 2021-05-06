@@ -23,6 +23,7 @@ public class ControllerSettings : MonoBehaviour {
 	private string buttonToChange;
 	private GameObject currentButtonSelected;
 	private SoundEffectPlayer soundEffect;
+	private bool saveNewControls;
 
 	public void ChangeButton(string key){
 		buttonToChange = key;
@@ -33,7 +34,11 @@ public class ControllerSettings : MonoBehaviour {
 		ShowButtons();
 	}
 
-	private void ResetControls(){
+	public void SaveControllerSettings(){
+		saveNewControls=true;
+	}
+
+	private void ResetDefaultControls(){
 		typeof(GameConstants).GetField("LP").SetValue(null, KeyCode.A);
 		typeof(GameConstants).GetField("LK").SetValue(null, KeyCode.Z);
 		typeof(GameConstants).GetField("HP").SetValue(null, KeyCode.S);
@@ -44,6 +49,10 @@ public class ControllerSettings : MonoBehaviour {
 		typeof(GameConstants).GetField("D").SetValue(null, KeyCode.DownArrow);
 		typeof(GameConstants).GetField("L").SetValue(null, KeyCode.LeftArrow);
 		typeof(GameConstants).GetField("R").SetValue(null, KeyCode.RightArrow);
+	}
+
+	private void ResetControls(){
+		GameConstants.ResetButtonsAssigned();
 	}
 
 	 
@@ -66,7 +75,7 @@ public class ControllerSettings : MonoBehaviour {
 		if (e.isKey && waitForInput && e.keyCode != KeyCode.Return && e.keyCode != KeyCode.Escape && e.keyCode != KeyCode.None){  //None must be checked because when the key is lifted, it sends a None event.//
 			bool buttonAssigned;
 			buttonAssigned = GameConstants.CheckButtonExists(e.keyCode);
-			if (buttonAssigned == false){
+			if (!buttonAssigned){
 				soundEffect.PlaySoundEffect("Confirm");
 				typeof(GameConstants).GetField(buttonToChange).SetValue(null, e.keyCode);
 				GameConstants.ReloadButtonsAsigned();
@@ -82,17 +91,33 @@ public class ControllerSettings : MonoBehaviour {
 		}
     }
 
+	void OnDisable(){
+		if (currentButtonSelected!=null){
+			if (!saveNewControls){
+				ResetControls();
+				GameConstants.ReloadButtonsAsigned();
+				currentButtonSelected.GetComponent<Button>().interactable = true;
+				EventSystem.current.SetSelectedGameObject(currentButtonSelected);
+				waitForInput=false;
+			}
+		}
+	}
+
+	void OnEnable(){
+		ShowButtons();
+		saveNewControls=false;
+		currentButtonSelected=null;
+		GameConstants.SetButtonsAssignedProxy();
+	}
+
 
 	// Use this for initialization
 	void Start () {
-		ShowButtons();
 		soundEffect = GameObject.Find("SoundEffects").GetComponent<SoundEffectPlayer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*if (Input.GetKeyDown(GameConstants.BACK)){
-			ResetControls();
-		}*/
+
 	}
 }
