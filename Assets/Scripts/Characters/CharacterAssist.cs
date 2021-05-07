@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterAssist : MonoBehaviour {
 
@@ -18,7 +19,6 @@ public class CharacterAssist : MonoBehaviour {
 	IEnumerator SwappingTimeout(){
 		swapped = true;
 		yield return new WaitForSeconds(2); //5
-		print("time passed");
 		swapped = false;
 	}
 
@@ -83,10 +83,15 @@ public class CharacterAssist : MonoBehaviour {
 	}
 
 	private void SwapLifeBars(GameObject characterSwap, GameObject pointCharacter, int index){
-
+		
 		Transform pointCharacterLifeBar = lifeBars.transform.GetChild(pointCharacter.transform.GetSiblingIndex());
 		Transform characterSwapLifeBar = lifeBars.transform.GetChild(characterSwap.transform.GetSiblingIndex());
 
+		///Original name positions///
+		Vector3 pointCharacterNamePosition = pointCharacterLifeBar.transform.Find("CharacterName").GetComponent<Text>().transform.position;
+		Vector3 characterSwapNamePosition = characterSwapLifeBar.transform.Find("CharacterName").GetComponent<Text>().transform.position;
+
+		///Change life bars///
 		Vector3 pointCharacterLifeBarPosition = pointCharacterLifeBar.position;
 		Vector3 characterSwapLifeBarPosition = characterSwapLifeBar.position;
 
@@ -101,6 +106,11 @@ public class CharacterAssist : MonoBehaviour {
 
 		pointCharacterLifeBar.GetComponent<RectTransform>().sizeDelta = characterSwapLifeBarSize;
 		characterSwapLifeBar.GetComponent<RectTransform>().sizeDelta = pointCharacterLifeBarSize;
+
+		///Change name positions///
+		pointCharacterLifeBar.transform.Find("CharacterName").GetComponent<Text>().transform.position = characterSwapNamePosition;
+		characterSwapLifeBar.transform.Find("CharacterName").GetComponent<Text>().transform.position = pointCharacterNamePosition;
+
 	}
 	
 

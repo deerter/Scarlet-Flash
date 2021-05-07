@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar {
 
@@ -9,11 +10,12 @@ public class HealthBar {
 	private int currentHealth;
 	private int currentRedHealth;
 
-	public HealthBar(GameObject health, int maxHealth){
+	public HealthBar(GameObject health, int maxHealth, string characterName){
 		this.health = health;
 		this.maxHealth = maxHealth;
 		this.currentHealth = maxHealth;
 		this.currentRedHealth = maxHealth;
+        health.transform.Find("CharacterName").GetComponent<Text>().text = characterName;
 	}
 
 	public int getMaxHP(){
