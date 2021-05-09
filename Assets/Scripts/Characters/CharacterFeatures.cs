@@ -17,6 +17,8 @@ public class CharacterFeatures : MonoBehaviour {
 	private bool isWinner = false;
 	private bool isFlipped;  /// False - Facing Right ; True - Facing Left ////
 	private bool isDead = false;
+	private bool isBlocked = true; /// Character can move or not ///
+	private bool isAI;  /// Character is controlled by AI or not ///
 
 
 	public Character GetCharacter() {
@@ -119,6 +121,7 @@ public class CharacterFeatures : MonoBehaviour {
 		this.isFlipped = flip;
 	}
 
+
 	/// Check if character is dead ///
 	public bool GetIsDead(){
 		return isDead;
@@ -126,7 +129,28 @@ public class CharacterFeatures : MonoBehaviour {
 
 	/// Character Dies ///
 	public void CharacterIsDead(){
-		gameObject.GetComponent<Animator>().enabled = false;
+		//gameObject.GetComponent<Animator>().enabled = false;
+		animator.enabled = false;
+	}
+
+	
+	/// Is Blocked ///
+	public bool GetIsBlocked(){
+		return isBlocked;
+	}
+
+	public void SetIsBlocked(bool isBlocked){
+		this.isBlocked = isBlocked;
+	}
+
+
+	/// Is AI ///
+	public bool GetIsAI(){
+		return isAI;
+	}
+
+	public void SetIsAI(bool isAI){
+		this.isAI = isAI;
 	}
 
 
@@ -156,6 +180,7 @@ public class CharacterFeatures : MonoBehaviour {
 		character = (Character)Activator.CreateInstance(type);
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth(), characterName);
 		animator.runtimeAnimatorController = Resources.Load("Animation/Characters/" + characterName + "/" + characterName) as RuntimeAnimatorController;
+		SetIsAI(CurrentFightStats.GetAI(transform.tag));
 	}
 	
 	// Update is called once per frame

@@ -18,7 +18,7 @@ public class Sakura : Character {
     	this.crouchingLightPunchDamage = 40000;
     	this.crouchingLightKickDamage = 40000;
     	this.crouchingHeavyPunchDamage = 75000;
-    	this.crouchingHeavyKickDamage = 80000;
+    	this.crouchingHeavyKickDamage = 800000;
     	this.jumpingLightPunchDamage = 40000;
     	this.jumpingLightKickDamage = 40000;
     	this.jumpingHeavyPunchDamage = 80000;

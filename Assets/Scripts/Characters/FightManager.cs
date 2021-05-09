@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class FightManager : MonoBehaviour {
@@ -16,10 +17,15 @@ public class FightManager : MonoBehaviour {
 
 	[SerializeField] GameObject timerCounter;
 
+	[SerializeField] GameObject AnnouncerTexts;
+
 	private GameObject music;
+	private GameObject announcer;
+	private Image announcerText;
 	private bool fightEnded = false;
 	private bool restartPrompt = false;
 	private bool fightStarted = false;
+	private bool introEnded = false;
 
 	IEnumerator PopUpRestartFight(){
 		restartPrompt = true;
@@ -28,11 +34,26 @@ public class FightManager : MonoBehaviour {
 	}
 
 	IEnumerator FightStart(){
-		yield return new WaitForSeconds(5);
+		yield return new WaitUntil(() => announcer.GetComponent<AnnouncerVoice>().AnnouncerIsPlaying()==false);
+		yield return new WaitForSeconds(0.5f);
+		announcerText.sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/Fight/Texts/Fight");
+		announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("Fight");
+		yield return new WaitForSeconds(0.2f);
 		fightStarted = true;
+		player1.transform.GetChild(0).GetComponent<CharacterFeatures>().SetIsBlocked(false);
+		player1.transform.GetChild(0).GetComponent<CharacterFeatures>().SetIsBlocked(false);
+		announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 0f);
 		music = GameObject.Find("Music");
 		music.GetComponent<MusicPlayer>().PlayMusic(CurrentFightStats.GetSelectedCharacter(0,"Player1"));
 		music.GetComponent<AudioSource>().loop=true;
+	}
+
+	IEnumerator SwapCharacterWhenDead(GameObject playerCharacter){
+		CharacterFeatures character = playerCharacter.transform.GetChild(0).GetComponent<CharacterFeatures>();
+		if (character.GetIsDead() && !character.GetAnimator().enabled){
+			yield return new WaitForSeconds(0.3f);
+			playerCharacter.GetComponent<CharacterAssist>().Swap("Assist1", true);
+		}
 	}
 
 	private void TimeUpVictory(){
@@ -64,22 +85,36 @@ public class FightManager : MonoBehaviour {
 		}
 	}
 
+	private void AnnounceFight(){
+		if (!introEnded &&
+			player1.transform.GetChild(0).GetComponent<CharacterFeatures>().GetAnimationStatus()=="Standing" &&
+			player2.transform.GetChild(0).GetComponent<CharacterFeatures>().GetAnimationStatus()=="Standing")
+			{
+			introEnded = true;
+			int randomReadyAnnounce = UnityEngine.Random.Range(1,3);
+			announcerText.sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/Fight/Texts/Ready");
+			announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 1f);
+			announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("Ready" + randomReadyAnnounce);
+			StartCoroutine(FightStart());
+			
+		}
+	}
+
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(FightStart());
-		//Initiliaze characters
-		/*for (int i=0; i < selectedCharacters.Length; i++){
-			InitiliazeCharacter(selectedCharactersPlayer1[i], i);
-			healthBars[i] = new HealthBar(health.transform.GetChild(i+1).gameObject, selectedCharacters[i].GetHealth());
-		}*/
-		/*for (int i=0; i < selectedCharacters.Length; i++){
-			InitiliazeCharacter(selectedCharactersPlayer2[i], i);
-			healthBars[i] = new HealthBar(health.transform.GetChild(i+1).gameObject, selectedCharacters[i].GetHealth());
-		}*/
+		announcer = GameObject.Find("Announcer");
+		announcerText = AnnouncerTexts.GetComponent<Image>();
+		player1.transform.GetChild(0).GetComponent<CharacterFeatures>().PlayAnimation(AnimationStates.INTRO);
+		player2.transform.GetChild(0).GetComponent<CharacterFeatures>().PlayAnimation(AnimationStates.INTRO);
 	}
 
 	void Update(){
+		if (!fightStarted){
+			AnnounceFight();
+		}
 		if (fightStarted){
+			StartCoroutine(SwapCharacterWhenDead(player1));
+			StartCoroutine(SwapCharacterWhenDead(player2));
 			//Declares a winner if all healthBars has been depleted
 			if (CheckLifeBars(player1) && !fightEnded){
 				SetWinner(player2);

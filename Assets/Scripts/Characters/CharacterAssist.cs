@@ -22,8 +22,8 @@ public class CharacterAssist : MonoBehaviour {
 		swapped = false;
 	}
 
-	private void Swap(string assist){
-		if (SwapAvailable()){
+	public void Swap(string assist, bool characterDied){
+		if (SwapAvailable() || characterDied){
 			StartCoroutine(SwappingTimeout());
 			GameObject characterSwap;
 			GameObject pointCharacter = transform.GetChild(0).gameObject;
@@ -38,6 +38,7 @@ public class CharacterAssist : MonoBehaviour {
 										SwapLifeBars(characterSwap, pointCharacter, i);
 										SetCharacterSwapped(characterSwap, pointCharacter);
 										UnsetCharacterSwapped(pointCharacter);
+										currentCharacter=characterSwap.GetComponent<CharacterFeatures>();
 									}
 								}break;
 				case "Assist2": for (int i = transform.childCount-1; i > 0 & !assistFound; i--){
@@ -49,11 +50,11 @@ public class CharacterAssist : MonoBehaviour {
 										SwapLifeBars(characterSwap, pointCharacter, i);
 										SetCharacterSwapped(characterSwap, pointCharacter);
 										UnsetCharacterSwapped(pointCharacter);
+										currentCharacter=characterSwap.GetComponent<CharacterFeatures>();
 									}
 								}break;
 			}
-			
-			
+			currentCharacter.SetIsBlocked(false);
 		}
 	}
 
@@ -65,21 +66,25 @@ public class CharacterAssist : MonoBehaviour {
 		characterSwap.GetComponent<SpriteRenderer>().enabled=true;
 		characterSwap.GetComponent<Animator>().enabled=true;
 		characterSwap.GetComponent<BoxCollider2D>().enabled=true;
-		characterSwap.GetComponent<CharacterMovement>().enabled=true;
-		characterSwap.GetComponent<CharacterCombat>().enabled=true;
 		characterSwap.GetComponent<FlipSprite>().enabled=true;
 		characterSwap.GetComponent<Rigidbody2D>().simulated=true;
 		characterSwap.transform.position = new Vector3(pointCharacter.transform.position.x, pointCharacter.transform.position.y, pointCharacter.transform.position.z);
+		if (!characterSwap.GetComponent<CharacterFeatures>().GetIsAI()){
+			characterSwap.GetComponent<CharacterMovement>().enabled=true;
+			characterSwap.GetComponent<CharacterCombat>().enabled=true;
+		}
 	}
 
 	private void UnsetCharacterSwapped(GameObject pointCharacter){
 		pointCharacter.GetComponent<SpriteRenderer>().enabled=false;
 		pointCharacter.GetComponent<BoxCollider2D>().enabled=false;
 		pointCharacter.GetComponent<Animator>().enabled=false;
-		pointCharacter.GetComponent<CharacterMovement>().enabled=false;
-		pointCharacter.GetComponent<CharacterCombat>().enabled=false;
 		pointCharacter.GetComponent<FlipSprite>().enabled=false;
 		pointCharacter.GetComponent<Rigidbody2D>().simulated=false;
+		if (!pointCharacter.GetComponent<CharacterFeatures>().GetIsAI()){
+			pointCharacter.GetComponent<CharacterMovement>().enabled=false;
+			pointCharacter.GetComponent<CharacterCombat>().enabled=false;
+		}
 	}
 
 	private void SwapLifeBars(GameObject characterSwap, GameObject pointCharacter, int index){
@@ -115,13 +120,15 @@ public class CharacterAssist : MonoBehaviour {
 	
 
 	void Update () {
-		if (Input.GetKeyDown(GameConstants.A1)){  ///Swap for first assist character
-			/////Executes only one command, one function checks if the swap is available and performs it if so
-			Swap("Assist1");
-		}
+		if (!currentCharacter.GetIsBlocked()){
+			if (Input.GetKeyDown(GameConstants.A1)){  ///Swap for first assist character
+				/////Executes only one command, one function checks if the swap is available and performs it if so
+				Swap("Assist1", false);
+			}
 
-		if (Input.GetKeyDown(GameConstants.A2)){  ///Swap for second assist character
-			Swap("Assist2");
+			if (Input.GetKeyDown(GameConstants.A2)){  ///Swap for second assist character
+				Swap("Assist2", false);
+			}
 		}
 		
 	}

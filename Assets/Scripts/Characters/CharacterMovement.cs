@@ -147,83 +147,85 @@ public class CharacterMovement : MonoBehaviour {
 			rigidBody.velocity = new Vector2(0,0);
 		}
 
-		///Moving
-		animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
-		if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
-			 (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 
-			 	(currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)){
-			if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
-				switch(currentCharacter.GetIsFlipped()){
-					case true: animator.SetFloat("Horizontal", -Input.GetAxis("Horizontal")); break;
-					case false: animator.SetFloat("Horizontal", Input.GetAxis("Horizontal")); break;
+		if (!currentCharacter.GetIsBlocked()){
+			///Moving
+			animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
+			if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
+				(currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) || 
+					(currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)){
+				if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L))){
+					switch(currentCharacter.GetIsFlipped()){
+						case true: animator.SetFloat("Horizontal", -Input.GetAxis("Horizontal")); break;
+						case false: animator.SetFloat("Horizontal", Input.GetAxis("Horizontal")); break;
+					}
+					Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
+					rigidBody.velocity = horizontal * 3500f * Time.fixedDeltaTime;
+					//rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+																							//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
+				}else{
+					rigidBody.velocity = new Vector2(0,0);
 				}
-				Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f); 
-				rigidBody.velocity = horizontal * 3500f * Time.fixedDeltaTime;
-				//rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
-																						//Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
+			}
+
+			//Blocking
+			if (Input.GetKey(GameConstants.L)){
+				currentCharacter.SetIsBlocking(true);
 			}else{
-				rigidBody.velocity = new Vector2(0,0);
+				currentCharacter.SetIsBlocking(false);
 			}
-		}
 
-		//Blocking
-		if (Input.GetKey(GameConstants.L)){
-			currentCharacter.SetIsBlocking(true);
-		}else{
-			currentCharacter.SetIsBlocking(false);
-		}
-
-		// Crouching
-		if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
-			rigidBody.velocity = new Vector2(0,0); //Prevents from sliding
-			//SetCoordinatesWhenLanding(); //Prevents from phasing through the ground if the down button is pressed when the character touches the ground after a jump.
-			currentCharacter.PlayAnimation(AnimationStates.CROUCH);
-			currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
-			currentCharacter.SetIsCrouching(true);
-			currentCharacter.SetAnimationPlaying(false);
-		}
-
-		if (Input.GetKeyUp(GameConstants.D) && !currentCharacter.GetIsJumping())
-        {
-			//SetCoordinatesWhenLanding();
-			currentCharacter.SetIsCrouching(false);
-			if(!currentCharacter.IsAnimationPlaying()){
-				currentCharacter.EndAnimation(AnimationStates.STANDING);
+			// Crouching
+			if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
+				rigidBody.velocity = new Vector2(0,0); //Prevents from sliding
+				SetCoordinatesWhenLanding(); //Prevents from phasing through the ground if the down button is pressed when the character touches the ground after a jump.
+				currentCharacter.PlayAnimation(AnimationStates.CROUCH);
+				currentCharacter.SetAnimationStatus(AnimationStates.CROUCH);
+				currentCharacter.SetIsCrouching(true);
+				currentCharacter.SetAnimationPlaying(false);
 			}
-        }
 
-		// Jumping
-		if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
-			currentCharacter.SetIsJumping(true);
-			rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
-			if (Input.GetKey(GameConstants.R)){
-				rigidBody.velocity += Vector2.right * 70f;
-				switch (currentCharacter.GetIsFlipped()){
-					case true:  currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
-								currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
-								break;
-					case false: currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
-								currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
-								break;
+			if (Input.GetKeyUp(GameConstants.D) && !currentCharacter.GetIsJumping())
+			{
+				//SetCoordinatesWhenLanding();
+				currentCharacter.SetIsCrouching(false);
+				if(!currentCharacter.IsAnimationPlaying()){
+					currentCharacter.EndAnimation(AnimationStates.STANDING);
 				}
 			}
-			else if(Input.GetKey(GameConstants.L)){
-				rigidBody.velocity += Vector2.left * 70f;
-				switch (currentCharacter.GetIsFlipped()){
-					case true:  currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
-								currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
-								break;
-					case false: currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
-								currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
-								break;
+
+			// Jumping
+			if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
+				currentCharacter.SetIsJumping(true);
+				rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
+				if (Input.GetKey(GameConstants.R)){
+					rigidBody.velocity += Vector2.right * 70f;
+					switch (currentCharacter.GetIsFlipped()){
+						case true:  currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
+									currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
+									break;
+						case false: currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
+									currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
+									break;
+					}
 				}
+				else if(Input.GetKey(GameConstants.L)){
+					rigidBody.velocity += Vector2.left * 70f;
+					switch (currentCharacter.GetIsFlipped()){
+						case true:  currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_FORWARDS);
+									currentCharacter.PlayAnimation(AnimationStates.JUMPING_FORWARDS);
+									break;
+						case false: currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_BACKWARDS);
+									currentCharacter.PlayAnimation(AnimationStates.JUMPING_BACKWARDS);
+									break;
+					}
+				}
+				else{
+					currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
+					currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
+				}
+				CalculateJumpingDestination(boxCollider.bounds.center.x);
+				currentCharacter.SetAnimationPlaying(false);
 			}
-			else{
-				currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
-				currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
-			}
-			CalculateJumpingDestination(boxCollider.bounds.center.x);
-			currentCharacter.SetAnimationPlaying(false);
 		}
 	}
 
