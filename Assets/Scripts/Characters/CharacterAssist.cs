@@ -68,7 +68,7 @@ public class CharacterAssist : MonoBehaviour {
 		characterSwap.GetComponent<BoxCollider2D>().enabled=true;
 		characterSwap.GetComponent<FlipSprite>().enabled=true;
 		characterSwap.GetComponent<Rigidbody2D>().simulated=true;
-		characterSwap.transform.position = new Vector3(pointCharacter.transform.position.x, pointCharacter.transform.position.y, pointCharacter.transform.position.z);
+		characterSwap.transform.position = new Vector3(pointCharacter.transform.position.x, -12.58f, pointCharacter.transform.position.z);
 		if (!characterSwap.GetComponent<CharacterFeatures>().GetIsAI()){
 			characterSwap.GetComponent<CharacterMovement>().enabled=true;
 			characterSwap.GetComponent<CharacterCombat>().enabled=true;

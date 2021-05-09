@@ -26,6 +26,7 @@ public class FightManager : MonoBehaviour {
 	private bool restartPrompt = false;
 	private bool fightStarted = false;
 	private bool introEnded = false;
+	private bool swappingCharacter = false;
 
 	IEnumerator PopUpRestartFight(){
 		restartPrompt = true;
@@ -50,9 +51,11 @@ public class FightManager : MonoBehaviour {
 
 	IEnumerator SwapCharacterWhenDead(GameObject playerCharacter){
 		CharacterFeatures character = playerCharacter.transform.GetChild(0).GetComponent<CharacterFeatures>();
-		if (character.GetIsDead() && !character.GetAnimator().enabled){
-			yield return new WaitForSeconds(0.3f);
+		if (character.GetIsDead() && !character.GetAnimator().enabled && !swappingCharacter){
+			swappingCharacter = true;
+			yield return new WaitForSeconds(0.5f);
 			playerCharacter.GetComponent<CharacterAssist>().Swap("Assist1", true);
+			swappingCharacter = false;
 		}
 	}
 
