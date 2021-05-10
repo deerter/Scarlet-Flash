@@ -110,38 +110,41 @@ public class CharacterMovement : MonoBehaviour {
 
 						}
 						else {
-							float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x));
-							Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
-							StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
-							Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							if (screenDistance=="Mid-screen" && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_LEFT){ /// Behaviour when rival character is against the left wall
+								float distance = Mathf.Abs((characterJumpFinalPosition - characterSides.x) - (center.x + sides.x));
+								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x + distance, center.y);
+								StartCoroutine(LerpPosition(center, characterToPosition, 0.07f, rigidBody));
+								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							}
+							else{  																									////Normal beahaviour
+								float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x));
+								Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
+								StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							}
 						}
 						break; 
 
 				case false: 
 						if (contactPoint.x > (center.x - 4f)){
-							//float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - boxCollider.bounds.extents.x));
 							float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x));
-								
-							//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x - distance, col.gameObject.transform.position.y);
 							Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
-
-							//StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
 							StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
-
 							Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 						}else {
-							//float distance = Mathf.Abs((boxCollider.bounds.extents.x + characterJumpFinalPosition) - (center.x - sides.x));
-							float distance = Mathf.Abs((characterSides.x + characterJumpFinalPosition) - (center.x - sides.x));
-
-							//Vector2 rivalToPosition = new Vector2(col.gameObject.transform.position.x + distance,col.gameObject.transform.position.y);
-							Vector2 rivalToPosition = new Vector2(center.x + distance, center.y);
-							//Vector2 toPosition = new Vector2(gameObject.transform.position.x,gameObject.transform.position.y);  /////To move the character that jumps as well
-
-							//StartCoroutine(LerpPosition(col.gameObject.transform.position, rivalToPosition, 0.17f, rivalRigidBody));
-							StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
-
-							Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							if (screenDistance=="Mid-screen" && rivalCharacter.transform.position.x > ScreenDistances.SCREEN_RIGHT){ /// Behaviour when rival character is against the right wall
+								float distance = Mathf.Abs((characterJumpFinalPosition + characterSides.x) - (center.x - sides.x));
+								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x - distance, center.y);
+								StartCoroutine(LerpPosition(center, characterToPosition, 0.07f, rigidBody));
+								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							}
+							else{  																									////Normal beahaviour
+								float distance = Mathf.Abs((characterSides.x + characterJumpFinalPosition) - (center.x - sides.x));
+								Vector2 rivalToPosition = new Vector2(center.x + distance, center.y);
+								StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+							}
 						}
 						break; 
 			}
@@ -221,6 +224,11 @@ public class CharacterMovement : MonoBehaviour {
 
 			// Jumping
 			if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping()){
+				GetPositionBetweenCharacters();
+				if ((screenDistance=="In-close" || screenDistance=="Poke-range") 
+					&& (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT)){
+					Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+				}
 				currentCharacter.SetIsJumping(true);
 				rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
 				if (Input.GetKey(GameConstants.R)){
@@ -250,11 +258,7 @@ public class CharacterMovement : MonoBehaviour {
 					currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
 				}
 				CalculateJumpingDestination(boxCollider.bounds.center.x);
-				GetPositionBetweenCharacters();
-				if ((screenDistance=="In-close" || screenDistance=="Poke-range") 
-					&& (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT)){
-					Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
-				}
+				
 				currentCharacter.SetAnimationPlaying(false);
 			}
 		}
