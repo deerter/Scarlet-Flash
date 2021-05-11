@@ -185,6 +185,9 @@ public class CharacterFeatures : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (animationStatus=="Standing"){
+			animationPlaying=false;
+		}
 		if (healthBar.getHP() == 0){
 			//GetComponent<CharacterMovement>().enabled = false;  /////Use these commands if the rival character is not AI
 			//GetComponent<CharacterCombat>().enabled = false;

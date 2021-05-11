@@ -18,12 +18,14 @@ public class CharacterMovement : MonoBehaviour {
 	private Vector3 characterSides;  ///Refers to 1/2 the width of the current character's box collider. Used to calculate collisions when jumping over rival.
 
 
+
 	void Start(){
 		currentCharacter = this.GetComponent<CharacterFeatures>();
 		animator = currentCharacter.GetAnimator();
 		rigidBody = this.GetComponent<Rigidbody2D>();
 		boxCollider = this.GetComponent<BoxCollider2D>();
 		characterSides = boxCollider.bounds.extents;
+		rivalBoxCollider = rivalCharacter.GetComponent<BoxCollider2D>();
 	}
 
 	/*public void falling(){       ///////JUST IN CASE/////////////Loops last frames of falling animation
@@ -93,8 +95,6 @@ public class CharacterMovement : MonoBehaviour {
 	///////Character collision when jumping ////////
 	private void JumpingOverCharacter(Collision2D col){
 		currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);
-
-		rivalBoxCollider = col.gameObject.GetComponent<BoxCollider2D>();
 		Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = rivalBoxCollider.bounds.center;
@@ -228,6 +228,7 @@ public class CharacterMovement : MonoBehaviour {
 				if ((screenDistance=="In-close" || screenDistance=="Poke-range") 
 					&& (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT)){
 					Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+
 				}
 				currentCharacter.SetIsJumping(true);
 				rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
