@@ -174,13 +174,13 @@ public class CharacterFeatures : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
-		//string characterName = "Ken";  //For testing
+		//string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
+		string characterName = "Leona";  //For testing
 		var type = Type.GetType(characterName);
 		character = (Character)Activator.CreateInstance(type);
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth(), characterName);
 		animator.runtimeAnimatorController = Resources.Load("Animation/Characters/" + characterName + "/" + characterName) as RuntimeAnimatorController;
-		SetIsAI(CurrentFightStats.GetAI(transform.tag));
+		//SetIsAI(CurrentFightStats.GetAI(transform.tag));
 	}
 	
 	// Update is called once per frame
