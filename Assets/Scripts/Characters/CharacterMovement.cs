@@ -99,50 +99,54 @@ public class CharacterMovement : MonoBehaviour {
 		Vector3 contactPoint = col.contacts[0].point;
         Vector3 center = rivalBoxCollider.bounds.center;
 		Vector3 sides = rivalBoxCollider.bounds.extents;
+		Vector2 rivalOriginalPosition = new Vector2(center.x, rivalCharacter.transform.position.y);
+		//float bottomSide = center.y - sides.y;
+		
 		if (screenDistance!="In-close" && screenDistance!="Poke-range"){
 			switch (currentCharacter.GetIsFlipped()){
 				case true: 
 						if (contactPoint.x < (center.x + 4f)){
 							float distance = Mathf.Abs((characterSides.x + characterJumpFinalPosition) - (center.x - sides.x));
-							Vector2 rivalToPosition = new Vector2(center.x + distance, center.y);
-							StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+							Vector2 rivalToPosition = new Vector2(center.x + distance, rivalCharacter.transform.position.y); ///center.y
+							StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.17f, rivalRigidBody));
 							Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 						}
 						else {
 							if (screenDistance=="Mid-screen" && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_LEFT){ /// Behaviour when rival character is against the left wall
 								float distance = Mathf.Abs((characterJumpFinalPosition - characterSides.x) - (center.x + sides.x));
-								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x + distance, center.y);
-								StartCoroutine(LerpPosition(center, characterToPosition, 0.07f, rigidBody));
+								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x + distance, rivalCharacter.transform.position.y);
+								StartCoroutine(LerpPosition(rivalOriginalPosition, characterToPosition, 0.07f, rigidBody));
 								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 							}
 							else{  																									////Normal beahaviour
 								float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x));
-								Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
-								StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+								Vector2 rivalToPosition = new Vector2(center.x - distance, rivalCharacter.transform.position.y);
+								StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.17f, rivalRigidBody));
 								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 							}
 						}
 						break; 
 
-				case false: 
+				case false:
 						if (contactPoint.x > (center.x - 4f)){
 							float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x));
-							Vector2 rivalToPosition = new Vector2(center.x - distance, center.y);
-							StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+							Vector2 rivalToPosition = new Vector2(center.x - distance, rivalCharacter.transform.position.y);
+							StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.17f, rivalRigidBody));
 							Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 
 						}else {
 							if (screenDistance=="Mid-screen" && rivalCharacter.transform.position.x > ScreenDistances.SCREEN_RIGHT){ /// Behaviour when rival character is against the right wall
 								float distance = Mathf.Abs((characterJumpFinalPosition + characterSides.x) - (center.x - sides.x));
-								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x - distance, center.y);
-								StartCoroutine(LerpPosition(center, characterToPosition, 0.07f, rigidBody));
+
+								Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x - distance, rivalCharacter.transform.position.y);
+								StartCoroutine(LerpPosition(rivalOriginalPosition, characterToPosition, 0.07f, rigidBody));
 								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 							}
-							else{  																									////Normal beahaviour
+							else{  																							////Normal behaviour
 								float distance = Mathf.Abs((characterSides.x + characterJumpFinalPosition) - (center.x - sides.x));
-								Vector2 rivalToPosition = new Vector2(center.x + distance, center.y);
-								StartCoroutine(LerpPosition(center, rivalToPosition, 0.17f, rivalRigidBody));
+								Vector2 rivalToPosition = new Vector2(center.x + distance, rivalCharacter.transform.position.y);
+								StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.17f, rivalRigidBody));
 								Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
 							}
 						}

@@ -175,7 +175,7 @@ public class CharacterFeatures : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
-		string characterName = "Leona";  //For testing
+		string characterName = "Ryu";  //For testing
 		var type = Type.GetType(characterName);
 		character = (Character)Activator.CreateInstance(type);
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth(), characterName);

@@ -26,13 +26,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: -0.036149934
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: -0.03614992
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.03614992
         inSlope: 0
         outSlope: 0
@@ -54,13 +60,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: 0.03595531
-        inSlope: -0.44462365
-        outSlope: -0.44462365
+        inSlope: -0.22231182
+        outSlope: -0.22231182
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: -0.014261097
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.014261097
         inSlope: 0
         outSlope: 0
@@ -82,13 +94,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: 1.086252
-        inSlope: 2.3015811
-        outSlope: 2.3015811
+        inSlope: 1.1507906
+        outSlope: 1.1507906
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: 1.236901
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 1.236901
         inSlope: 0
         outSlope: 0
@@ -110,7 +128,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
+        value: 0.8294753
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.8294753
         inSlope: 0
         outSlope: 0
@@ -126,9 +150,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300004, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
-    - time: 0.08
-      value: {fileID: 21300002, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
     - time: 0.16
+      value: {fileID: 21300002, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
+    - time: 0.32
+      value: {fileID: 21300000, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
+    - time: 0.44
       value: {fileID: 21300000, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
     attribute: m_Sprite
     path: 
@@ -180,12 +206,13 @@ AnimationClip:
     - {fileID: 21300004, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
     - {fileID: 21300002, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
     - {fileID: 21300000, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
+    - {fileID: 21300000, guid: c1e59b722855a1a4592e355298a67b19, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.2
+    m_StopTime: 0.48
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -211,13 +238,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: -0.036149934
         inSlope: 0
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: -0.03614992
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.03614992
         inSlope: 0
         outSlope: 0
@@ -239,13 +272,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: 0.03595531
-        inSlope: -0.44462365
-        outSlope: -0.44462365
+        inSlope: -0.22231182
+        outSlope: -0.22231182
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: -0.014261097
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.014261097
         inSlope: 0
         outSlope: 0
@@ -267,13 +306,19 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
         value: 1.086252
-        inSlope: 2.3015811
-        outSlope: 2.3015811
+        inSlope: 1.1507906
+        outSlope: 1.1507906
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.16
+        time: 0.32
+        value: 1.236901
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 1.236901
         inSlope: 0
         outSlope: 0
@@ -295,7 +340,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.08
+        time: 0.16
+        value: 0.8294753
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.8294753
         inSlope: 0
         outSlope: 0
@@ -355,6 +406,48 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.2
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.24
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.28
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.32
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.44
     functionName: CharacterIsGrounded
     data: 
     objectReferenceParameter: {fileID: 0}

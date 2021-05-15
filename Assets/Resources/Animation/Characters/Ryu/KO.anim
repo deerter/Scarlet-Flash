@@ -119,13 +119,13 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.4
-        value: -0.26325047
-        inSlope: 0.2615437
-        outSlope: 0.2615437
+        value: -0.26437843
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.48
-        value: -0.22768061
+        value: -0.26493406
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -171,13 +171,13 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.4
-        value: 0.5213183
-        inSlope: 0
-        outSlope: 0
+        value: 0.52357423
+        inSlope: 0.027781729
+        outSlope: 0.027781729
         tangentMode: 136
       - serializedVersion: 2
         time: 0.48
-        value: 0.4501786
+        value: 0.5246855
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -263,7 +263,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.52
+    m_StopTime: 0.68
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -382,13 +382,13 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.4
-        value: -0.26325047
-        inSlope: 0.2615437
-        outSlope: 0.2615437
+        value: -0.26437843
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
         time: 0.48
-        value: -0.22768061
+        value: -0.26493406
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -434,13 +434,13 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.4
-        value: 0.5213183
-        inSlope: 0
-        outSlope: 0
+        value: 0.52357423
+        inSlope: 0.027781729
+        outSlope: 0.027781729
         tangentMode: 136
       - serializedVersion: 2
         time: 0.48
-        value: 0.4501786
+        value: 0.5246855
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -456,7 +456,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.52
+  - time: 0.68
     functionName: CharacterIsDead
     data: 
     objectReferenceParameter: {fileID: 0}

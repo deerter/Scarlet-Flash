@@ -24,7 +24,7 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: {x: 1.085, y: 0.898, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -77,13 +77,13 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.16
+        time: 0.12
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -105,7 +105,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: -0.4292932
         inSlope: 0
         outSlope: 0
@@ -127,7 +127,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0.45966077
         inSlope: 0
         outSlope: 0
@@ -149,7 +149,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0.13308269
         inSlope: 0
         outSlope: 0
@@ -171,7 +171,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: -0.38753045
         inSlope: 0
         outSlope: 0
@@ -187,7 +187,7 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300002, guid: 38efb36d7c23000478ab9be24edaad00, type: 3}
-    - time: 0.12
+    - time: 0.04
       value: {fileID: 21300000, guid: 38efb36d7c23000478ab9be24edaad00, type: 3}
     attribute: m_Sprite
     path: 
@@ -271,7 +271,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16
+    m_StopTime: 0.12
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -329,13 +329,13 @@ AnimationClip:
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
       - serializedVersion: 2
-        time: 0.16
+        time: 0.12
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -357,7 +357,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 1.085
         inSlope: 0
         outSlope: 0
@@ -379,7 +379,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0.898
         inSlope: 0
         outSlope: 0
@@ -401,7 +401,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0
         inSlope: 0
         outSlope: 0
@@ -423,7 +423,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: -0.4292932
         inSlope: 0
         outSlope: 0
@@ -445,7 +445,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0.45966077
         inSlope: 0
         outSlope: 0
@@ -467,7 +467,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: 0.13308269
         inSlope: 0
         outSlope: 0
@@ -489,7 +489,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.04
         value: -0.38753045
         inSlope: 0
         outSlope: 0
@@ -506,7 +506,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.16
+  - time: 0.12
     functionName: EndAnimation
     data: Standing
     objectReferenceParameter: {fileID: 0}

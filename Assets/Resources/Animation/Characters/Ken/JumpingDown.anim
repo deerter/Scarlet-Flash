@@ -26,7 +26,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 0.020628095
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.020628095
         inSlope: 0
         outSlope: 0
@@ -48,7 +54,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 1.1088362
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 1.1088362
         inSlope: 0
         outSlope: 0
@@ -70,7 +82,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: -0.06478262
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.06478262
         inSlope: 0
         outSlope: 0
@@ -92,7 +110,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 0.7006285
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.7006285
         inSlope: 0
         outSlope: 0
@@ -108,7 +132,9 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300002, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
-    - time: 0.12
+    - time: 0.16
+      value: {fileID: 21300000, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
+    - time: 0.44
       value: {fileID: 21300000, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
     attribute: m_Sprite
     path: 
@@ -159,12 +185,13 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300002, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
     - {fileID: 21300000, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
+    - {fileID: 21300000, guid: e6d295f1d27a85a44971748260d6e820, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16
+    m_StopTime: 0.48
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -190,7 +217,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 0.020628095
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.020628095
         inSlope: 0
         outSlope: 0
@@ -212,7 +245,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 1.1088362
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 1.1088362
         inSlope: 0
         outSlope: 0
@@ -234,7 +273,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: -0.06478262
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: -0.06478262
         inSlope: 0
         outSlope: 0
@@ -256,7 +301,13 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.12
+        time: 0.16
+        value: 0.7006285
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.44
         value: 0.7006285
         inSlope: 0
         outSlope: 0
@@ -309,6 +360,55 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.16
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.2
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.24
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.28
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.32
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.36
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.4
+    functionName: CharacterIsGrounded
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.44
     functionName: CharacterIsGrounded
     data: 
     objectReferenceParameter: {fileID: 0}
