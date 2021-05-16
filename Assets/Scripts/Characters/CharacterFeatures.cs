@@ -181,6 +181,7 @@ public class CharacterFeatures : MonoBehaviour {
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth(), characterName);
 		animator.runtimeAnimatorController = Resources.Load("Animation/Characters/" + characterName + "/" + characterName) as RuntimeAnimatorController;
 		//SetIsAI(CurrentFightStats.GetAI(transform.tag));
+
 	}
 	
 	// Update is called once per frame

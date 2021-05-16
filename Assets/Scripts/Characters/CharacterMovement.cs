@@ -6,12 +6,14 @@ public class CharacterMovement : MonoBehaviour {
 	
 	
 	[SerializeField] private LayerMask groundLayerMask;
+	[SerializeField] private GameObject CharacterSoundEffectPlayer;
 	public GameObject rivalCharacter;
 	private CharacterFeatures currentCharacter;
 	private Animator animator;
 	private Rigidbody2D rigidBody;
 	private BoxCollider2D boxCollider;
 	private BoxCollider2D rivalBoxCollider;
+	private CharacterSoundEffect characterSoundEffect;
 
 	private float characterJumpFinalPosition;  ///Needed to assess the final position of a jump
 	private string screenDistance;
@@ -26,6 +28,7 @@ public class CharacterMovement : MonoBehaviour {
 		boxCollider = this.GetComponent<BoxCollider2D>();
 		characterSides = boxCollider.bounds.extents;
 		rivalBoxCollider = rivalCharacter.GetComponent<BoxCollider2D>();
+		characterSoundEffect = CharacterSoundEffectPlayer.GetComponent<CharacterSoundEffect>();
 	}
 
 	/*public void falling(){       ///////JUST IN CASE/////////////Loops last frames of falling animation
@@ -41,6 +44,7 @@ public class CharacterMovement : MonoBehaviour {
 		}*/
 		///Check if character collider is touching another collider
 		if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null){
+			characterSoundEffect.PlayCharacterSoundEffect("Landing");
 			currentCharacter.EndAnimation(AnimationStates.LANDING);
 			currentCharacter.SetIsJumping(false);
 			Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);   //In the case the character collisions with its rival during jumping, the collision is ignored. This sets collisions as not ignored again.
@@ -50,6 +54,7 @@ public class CharacterMovement : MonoBehaviour {
 	}
 
 	public void SetCoordinatesWhenLanding(){ ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
+		
 		transform.position = new Vector3(transform.position.x, -12.58f, transform.position.z);
 	}
 	/////////////////////////////////
@@ -262,6 +267,7 @@ public class CharacterMovement : MonoBehaviour {
 					currentCharacter.SetAnimationStatus(AnimationStates.JUMPING_UP);
 					currentCharacter.PlayAnimation(AnimationStates.JUMPING_UP);
 				}
+				characterSoundEffect.PlayCharacterSoundEffect("Jump");
 				CalculateJumpingDestination(boxCollider.bounds.center.x);
 				
 				currentCharacter.SetAnimationPlaying(false);

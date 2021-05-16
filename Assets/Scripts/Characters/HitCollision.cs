@@ -8,6 +8,8 @@ public class HitCollision : MonoBehaviour {
 	public GameObject blockSprite;
 	private CharacterFeatures rivalCharacter;
 	private CharacterFeatures currentCharacter;
+	[SerializeField] private GameObject RivalSoundEffectPlayer;
+	private CharacterSoundEffect rivalSoundEffect;
 
 	private void PlayHitAnimation(){
 		string animationToPlay;
@@ -37,10 +39,12 @@ public class HitCollision : MonoBehaviour {
 			}
 			
 			if(rivalCharacter.GetIsBlocking()){
+				rivalSoundEffect.PlayCharacterSoundEffect("Block");
 				rivalCharacter.TakeDamage(attackValue/4);
 				PlayBlockAnimation();
 				blockSprite.GetComponent<BlockBehaviour>().ActivateBlockSprite(otherPlayer.gameObject.GetComponent<BoxCollider2D>());
 			}else{
+				rivalSoundEffect.PlayCharacterSoundEffect("Hit");
 				rivalCharacter.TakeDamage(attackValue);
 				PlayHitAnimation();
 				hitSparks.GetComponent<SparksBehaviour>().ActivateHitSparks(gameObject.GetComponent<BoxCollider2D>().bounds.center);
@@ -54,7 +58,7 @@ public class HitCollision : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		rivalSoundEffect = RivalSoundEffectPlayer.GetComponent<CharacterSoundEffect>();
 	}
 	
 	// Update is called once per frame
