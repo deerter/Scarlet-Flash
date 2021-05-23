@@ -6,8 +6,12 @@ using System;
 public class CharacterFeatures : MonoBehaviour {
 	[SerializeField] public GameObject health;
 	[SerializeField] private Animator animator;
+	[SerializeField] private GameObject CharacterVoicePlayer;
 	private Character character;
 	private HealthBar healthBar;
+	private CharacterVoice characterVoice;
+	private string characterName;
+	private string characterSeries;
 	private bool animationPlaying = false;   //Character is currently on an animation other than standing /// Used to not enter other animations when the current one has finished and a button has been pressed during the execution.
 	private string animationStatus;
 	private bool isCrouching = false;
@@ -131,6 +135,7 @@ public class CharacterFeatures : MonoBehaviour {
 	public void CharacterIsDead(){
 		//gameObject.GetComponent<Animator>().enabled = false;
 		animator.enabled = false;
+		characterVoice.PlayCharacterVoice("KO", characterSeries,characterName);
 	}
 
 	
@@ -163,25 +168,30 @@ public class CharacterFeatures : MonoBehaviour {
 		return character.GetAttackOutput(animationStatus);
 	}
 
+	public void FightIntroduction(){
+		PlayAnimation(AnimationStates.INTRO);
+		characterVoice.PlayCharacterVoice("Intro", characterSeries,characterName);
+	}
 
 	/// Character celebrates victory ///
 	IEnumerator VictoryDance(){
-
 		yield return new WaitForSeconds(5);
 		SetAnimationStatus(AnimationStates.VICTORY);
 		PlayAnimation(AnimationStates.VICTORY);
+		characterVoice.PlayCharacterVoice("Victory", characterSeries,characterName);
 	}
 
 	// Use this for initialization
 	void Start () {
 		//string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
-		string characterName = "Ryu";  //For testing
+		characterName = "Ken";  //For testing
+		characterSeries = CharacterSelectionMapping.GetCharacterSeries(characterName);
 		var type = Type.GetType(characterName);
 		character = (Character)Activator.CreateInstance(type);
 		healthBar = new HealthBar (health.transform.GetChild(transform.GetSiblingIndex()).gameObject, character.GetHealth(), characterName);
-		animator.runtimeAnimatorController = Resources.Load("Animation/Characters/" + characterName + "/" + characterName) as RuntimeAnimatorController;
+		animator.runtimeAnimatorController = Resources.Load("Animation/Characters/" + characterSeries + "/" + characterName + "/" + characterName) as RuntimeAnimatorController;
 		//SetIsAI(CurrentFightStats.GetAI(transform.tag));
-
+		characterVoice = CharacterVoicePlayer.GetComponent<CharacterVoice>();
 	}
 	
 	// Update is called once per frame

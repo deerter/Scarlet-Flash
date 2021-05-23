@@ -1667,6 +1667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 400333284}
   animator: {fileID: 483635890}
+  CharacterVoicePlayer: {fileID: 1537417513}
 --- !u!61 &483635888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2574,6 +2575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 400333284}
   animator: {fileID: 676179207}
+  CharacterVoicePlayer: {fileID: 1537417513}
 --- !u!61 &676179205
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3119,6 +3121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1413783540}
   animator: {fileID: 823685778}
+  CharacterVoicePlayer: {fileID: 1828499187}
 --- !u!61 &823685776
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5113,6 +5116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 400333284}
   animator: {fileID: 1601747131}
+  CharacterVoicePlayer: {fileID: 1537417513}
 --- !u!95 &1601747131
 Animator:
   serializedVersion: 3
@@ -6629,6 +6633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1413783540}
   animator: {fileID: 2008869956}
+  CharacterVoicePlayer: {fileID: 1828499187}
 --- !u!61 &2008869954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7048,6 +7053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1413783540}
   animator: {fileID: 2053421553}
+  CharacterVoicePlayer: {fileID: 1828499187}
 --- !u!114 &2053421557
 MonoBehaviour:
   m_ObjectHideFlags: 0

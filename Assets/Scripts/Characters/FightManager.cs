@@ -107,8 +107,8 @@ public class FightManager : MonoBehaviour {
 	void Start () {
 		announcer = GameObject.Find("Announcer");
 		announcerText = AnnouncerTexts.GetComponent<Image>();
-		player1.transform.GetChild(0).GetComponent<CharacterFeatures>().PlayAnimation(AnimationStates.INTRO);
-		player2.transform.GetChild(0).GetComponent<CharacterFeatures>().PlayAnimation(AnimationStates.INTRO);
+		player1.transform.GetChild(0).GetComponent<CharacterFeatures>().FightIntroduction();
+		player2.transform.GetChild(0).GetComponent<CharacterFeatures>().FightIntroduction();
 	}
 
 	void Update(){

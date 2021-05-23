@@ -20,7 +20,6 @@ public class CharacterSelection : MonoBehaviour {
     private const int maxChars = 3;
     private int chosenChars = 0;
 
-    private CharacterSelectionMapping characterMapping = new CharacterSelectionMapping();
     private LoadSceneonClick loadScene;
     private PopUpWindow popUp;
     private bool isOnPopUp = false;
@@ -30,7 +29,7 @@ public class CharacterSelection : MonoBehaviour {
     private void DisplayCharacterSelected(string charName)
     {
         artwork.GetComponent<SpriteRenderer>().flipX = true;
-        characterSeries = characterMapping.GetCharacterSeries(charName);
+        characterSeries = CharacterSelectionMapping.GetCharacterSeries(charName);
         artwork.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/" 
             + characterSeries + "/" + charName + "/" + charName + "PortraitSelection");
         series.GetComponent<Image>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
@@ -93,8 +92,8 @@ public class CharacterSelection : MonoBehaviour {
     private void ChooseOneRandom (){
         string charName = "";
         do{
-            charName = characterMapping.GetCharacter(Random.Range(0,4));
-            characterSeries = characterMapping.GetCharacterSeries(charName);
+            charName = CharacterSelectionMapping.GetCharacter(Random.Range(0,4));
+            characterSeries = CharacterSelectionMapping.GetCharacterSeries(charName);
         }
         while(!ChooseCharacter(charName));
     }

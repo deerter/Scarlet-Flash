@@ -6,8 +6,6 @@ public class SetVersusScreen : MonoBehaviour {
 	[SerializeField] private GameObject portraitsPlayer1;
 	[SerializeField] private GameObject portraitsPlayer2;
 
-	private CharacterSelectionMapping characterMapping = new CharacterSelectionMapping();
-
 	// Use this for initialization
 	void Start () {
 		GameObject music = GameObject.Find("Music");
@@ -21,7 +19,7 @@ public class SetVersusScreen : MonoBehaviour {
 		int portraitNumber = 0;
 		foreach (Transform portrait in portraits.transform){
 			string charName = CurrentFightStats.GetSelectedCharacter(portraitNumber, portrait.tag);
-			string characterSeries = characterMapping.GetCharacterSeries(charName);
+			string characterSeries = CharacterSelectionMapping.GetCharacterSeries(charName);
 			portrait.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/CharacterSelectionMenu/CharacterProfile/"
                     + characterSeries + "/" + charName + "/" + "Chosen" + charName + "Background");
 			portraitNumber++;

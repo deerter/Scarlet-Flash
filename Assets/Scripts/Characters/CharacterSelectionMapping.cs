@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSelectionMapping {
+public static class CharacterSelectionMapping {
     private const int totalCharacterNum = 16;
 
     public static Dictionary<string, string> characterSeries = new Dictionary<string, string> {
@@ -10,7 +10,7 @@ public class CharacterSelectionMapping {
          {"Ryu", "SF"},
          {"Ken", "SF"},
          {"Sakura", "SF"},
-         //// KOF = King Of Fighters //
+         // KOF = King Of Fighters //
          {"Leona","KOF"},
          // N = Naruto //
          {"Naruto", "N"},
@@ -39,11 +39,11 @@ public class CharacterSelectionMapping {
         "Ryu", "Ken", "Sakura", "Leona", "Naruto", "Ichigo", "Rukia", "Luffy", "Morrigan", "Yugi", "Kaiba", "Medaka", "Regina", "Lina", "Naga", "Mii"
     };
 
-    public string GetCharacterSeries(string character){
+    public static string GetCharacterSeries(string character){
         return characterSeries[character];
     }
 
-    public string GetCharacter(int num){
+    public static string GetCharacter(int num){
         return characters[num];
     }
 }
