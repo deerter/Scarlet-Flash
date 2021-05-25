@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,16 @@ using UnityEngine;
 public class StaticAI : MonoBehaviour
 {
 
-
+    [SerializeField] private Timer currentTimer;
     private List<RulesInterface> rulesEngineRivalAttacks = new List<RulesInterface>();
+    private List<RulesInterface> rulesEngineCharacterLowHealth = new List<RulesInterface>();
+    private List<RulesInterface> rulesEngineRivalBlocks = new List<RulesInterface>();
+    private List<RulesInterface> rulesEngineRivalIsHit = new List<RulesInterface>();
+    private List<RulesInterface> rulesEngineRivalMovement = new List<RulesInterface>();
     private CharacterFeatures currentCharacter;
-    private AIConditions conditions;
+    private CharacterActions characterActions;
+    private string characterAction = "Standing";
+    private bool actionTaken = false;
 
 
     void AddRule(RulesInterface rule, List<RulesInterface> rulesEngine)
@@ -21,20 +28,16 @@ public class StaticAI : MonoBehaviour
     {
         foreach (RulesInterface rule in rulesEngine)
         {
-            rule.Conditions = conditions;
-            /*if (rule.condition(conditions))
+            if (rule.condition(AIConditionChecking.GetConditions()) && !actionTaken)
             {
-                rule.action();
-            }*/
+                characterAction = rule.action();
+                if (!currentCharacter.GetIsJumping() && (Array.IndexOf(AnimationStates.GetGroundAttacks(), characterAction) >= 0))
+                {
+                    characterActions.PerformAttack(characterAction);
+                }
+                actionTaken = true;
+            }
         }
-    }
-
-    void CheckIfChange()
-    {
-        /// tiene mas vida
-        conditions |= AIConditions.canChange;
-
-        /// tiene menos vida
     }
 
     void AddRulesRivalAttacks()
@@ -46,9 +49,8 @@ public class StaticAI : MonoBehaviour
     void Start()
     {
         currentCharacter = this.GetComponent<CharacterFeatures>();
+        characterActions = this.GetComponent<CharacterActions>();
         AddRulesRivalAttacks();
-
-
     }
 
     // Update is called once per frame
@@ -56,7 +58,13 @@ public class StaticAI : MonoBehaviour
     {
         if (!currentCharacter.GetIsBlocked())
         {
-            ExecuteRules(rulesEngineRivalAttacks);
+            AIConditionChecking.CheckTimer(currentTimer.GetTimer());
+
+            if (currentCharacter.GetAnimationStatus() == "Standing")
+            {
+                actionTaken = false;
+                ExecuteRules(rulesEngineRivalAttacks);
+            }
 
         }
 

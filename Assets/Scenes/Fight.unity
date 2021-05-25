@@ -1622,6 +1622,7 @@ GameObject:
   - component: {fileID: 483635888}
   - component: {fileID: 483635887}
   - component: {fileID: 483635886}
+  - component: {fileID: 483635892}
   m_Layer: 5
   m_Name: P2ThirdCharacter
   m_TagString: Player2
@@ -1774,6 +1775,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &483635892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483635884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1638213361}
 --- !u!1 &492323763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2543,7 @@ GameObject:
   - component: {fileID: 676179205}
   - component: {fileID: 676179204}
   - component: {fileID: 676179203}
+  - component: {fileID: 676179209}
   m_Layer: 5
   m_Name: P2SecondCharacter
   m_TagString: Player2
@@ -2682,6 +2696,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &676179209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676179201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1638213361}
 --- !u!1 &746265495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,6 +3073,7 @@ GameObject:
   - component: {fileID: 823685774}
   - component: {fileID: 823685773}
   - component: {fileID: 823685771}
+  - component: {fileID: 823685772}
   m_Layer: 5
   m_Name: P1SecondCharacter
   m_TagString: Player1
@@ -3080,6 +3107,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rivalCharacter: {fileID: 1601747125}
+--- !u!114 &823685772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823685769}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1047738483}
 --- !u!114 &823685773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3137,9 +3176,9 @@ BoxCollider2D:
   m_Offset: {x: 0.002626121, y: 0.023990035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.47, y: 0.57}
-    oldSize: {x: 0.96, y: 0.92}
-    newSize: {x: 0.97333336, y: 0.93333334}
+    pivot: {x: 0.5, y: 0.454}
+    oldSize: {x: 0.88, y: 1.24}
+    newSize: {x: 0.88, y: 1.2533333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3223,7 +3262,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.97333336, y: 0.93333334}
+  m_Size: {x: 0.88, y: 1.2533333}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -4989,6 +5028,8 @@ GameObject:
   - component: {fileID: 1601747129}
   - component: {fileID: 1601747130}
   - component: {fileID: 1601747132}
+  - component: {fileID: 1601747133}
+  - component: {fileID: 1601747134}
   m_Layer: 5
   m_Name: P2PointCharacter
   m_TagString: Player2
@@ -5146,6 +5187,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rivalCharacter: {fileID: 2053421549}
+--- !u!114 &1601747133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601747125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3421c423f875214c89442a6438ec741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimer: {fileID: 44406819}
+--- !u!114 &1601747134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1601747125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1638213361}
 --- !u!1 &1632710855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,6 +6624,7 @@ GameObject:
   - component: {fileID: 2008869952}
   - component: {fileID: 2008869951}
   - component: {fileID: 2008869949}
+  - component: {fileID: 2008869950}
   m_Layer: 5
   m_Name: P1ThirdCharacter
   m_TagString: Player1
@@ -6592,6 +6658,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rivalCharacter: {fileID: 1601747125}
+--- !u!114 &2008869950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2008869947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1047738483}
 --- !u!114 &2008869951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6892,6 +6970,7 @@ GameObject:
   - component: {fileID: 2053421552}
   - component: {fileID: 2053421557}
   - component: {fileID: 2053421558}
+  - component: {fileID: 2053421559}
   m_Layer: 5
   m_Name: P1PointCharacter
   m_TagString: Player1
@@ -7078,3 +7157,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rivalCharacter: {fileID: 1601747125}
+--- !u!114 &2053421559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2053421549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cb2435f3b8d09846aa5bc026d77b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterSoundEffectPlayer: {fileID: 1047738483}
