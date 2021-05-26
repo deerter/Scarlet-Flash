@@ -8,6 +8,8 @@ public class StaticAI : MonoBehaviour
 {
 
     [SerializeField] private Timer currentTimer;
+    [SerializeField] private GameObject characters;
+    [SerializeField] private GameObject rivalCharacters;
     private List<RulesInterface> rulesEngineRivalAttacks = new List<RulesInterface>();
     private List<RulesInterface> rulesEngineCharacterLowHealth = new List<RulesInterface>();
     private List<RulesInterface> rulesEngineRivalBlocks = new List<RulesInterface>();
@@ -59,6 +61,10 @@ public class StaticAI : MonoBehaviour
         if (!currentCharacter.GetIsBlocked())
         {
             AIConditionChecking.CheckTimer(currentTimer.GetTimer());
+            AIConditionChecking.CheckCharacterStates(currentCharacter);
+            AIConditionChecking.CheckDistance(characterActions);
+            AIConditionChecking.CheckCharacterHealth(currentTimer.GetTimer(), characters, rivalCharacters);
+
 
             if (currentCharacter.GetAnimationStatus() == "Standing")
             {

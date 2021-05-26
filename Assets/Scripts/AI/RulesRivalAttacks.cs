@@ -8,8 +8,8 @@ public class FirstRuleRivalAttacks : RulesInterface
 
     bool RulesInterface.condition(AIConditions conditions)
     {
-        return ((conditions & AIConditions.timer) != 0);
-        //&& ((conditions & AIConditions.characterHealth) != 0);
+        return ((conditions & AIConditions.timer) != 0)
+            && ((conditions & AIConditions.characterHealth) != 0);
     }
 
     string RulesInterface.action()

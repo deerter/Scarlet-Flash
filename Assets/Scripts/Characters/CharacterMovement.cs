@@ -10,6 +10,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private GameObject CharacterSoundEffectPlayer;
     public GameObject rivalCharacter;
     private CharacterFeatures currentCharacter;
+    private CharacterActions characterActions;
     private Animator animator;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
@@ -25,6 +26,7 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         currentCharacter = this.GetComponent<CharacterFeatures>();
+        characterActions = this.GetComponent<CharacterActions>();
         animator = currentCharacter.GetAnimator();
         rigidBody = this.GetComponent<Rigidbody2D>();
         boxCollider = this.GetComponent<BoxCollider2D>();
@@ -63,30 +65,6 @@ public class CharacterMovement : MonoBehaviour
         transform.position = new Vector3(transform.position.x, -12.58f, transform.position.z);
     }
     /////////////////////////////////
-
-    ////Get the screen distance between the two characters//////
-    private void GetPositionBetweenCharacters()
-    {
-        if (Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) > ScreenDistances.IN_CLOSE
-            && Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) < ScreenDistances.POKE_RANGE)
-        {
-            screenDistance = "In-close";
-        }
-        else if (Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) > ScreenDistances.POKE_RANGE
-            && Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) < ScreenDistances.MID_SCREEN)
-        {
-            screenDistance = "Poke-range";
-        }
-        else if (Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) > ScreenDistances.MID_SCREEN
-            && Mathf.Abs(this.transform.position.x - rivalCharacter.transform.position.x) < ScreenDistances.FULL_SCREEN)
-        {
-            screenDistance = "Mid-screen";
-        }
-        else
-        {
-            screenDistance = "Full-screen";
-        }
-    }
 
     ////Get final position of a jump//////////
     private void CalculateJumpingDestination(float jumpOriginPosition)
@@ -275,7 +253,7 @@ public class CharacterMovement : MonoBehaviour
             // Jumping
             if (Input.GetKeyDown(GameConstants.U) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping())
             {
-                GetPositionBetweenCharacters();
+                screenDistance = characterActions.GetPositionBetweenCharacters();
                 if ((screenDistance == "In-close" || screenDistance == "Poke-range")
                     && (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT))
                 {
