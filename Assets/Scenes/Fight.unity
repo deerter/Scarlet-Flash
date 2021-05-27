@@ -4051,6 +4051,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: MainMenu
+--- !u!1 &1122243285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1122243286}
+  - component: {fileID: 1122243288}
+  - component: {fileID: 1122243287}
+  m_Layer: 5
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1122243286
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122243285}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0454681, y: 0.7570001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.9999607}
+  m_Children: []
+  m_Father: {fileID: 1601747126}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1122243287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122243285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6656a290551bc5a4abe2670876ff0daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSparks: {fileID: 621230786}
+  blockSprite: {fileID: 1637167024}
+  RivalSoundEffectPlayer: {fileID: 1638213361}
+--- !u!61 &1122243288
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122243285}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.32885003, y: -0.43462783}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34229997, y: 0.20776689}
+  m_EdgeRadius: 0
 --- !u!1 &1156694172
 GameObject:
   m_ObjectHideFlags: 0
@@ -5105,7 +5174,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 471, y: -182.99998, z: 0}
   m_LocalScale: {x: 470, y: 470, z: 1.000029}
-  m_Children: []
+  m_Children:
+  - {fileID: 1122243286}
   m_Father: {fileID: 1592446731}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5258,8 +5328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTimer: {fileID: 44406819}
-  characters: {fileID: 746265495}
-  rivalCharacters: {fileID: 1592446730}
+  characters: {fileID: 1592446730}
+  rivalCharacters: {fileID: 746265495}
 --- !u!114 &1601747134
 MonoBehaviour:
   m_ObjectHideFlags: 0

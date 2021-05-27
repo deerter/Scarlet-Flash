@@ -8,21 +8,27 @@ public class FirstRuleRivalAttacks : RulesInterface
 
     bool RulesInterface.condition(AIConditions conditions)
     {
-        return ((conditions & AIConditions.timer) != 0)
-            && ((conditions & AIConditions.characterHealth) != 0);
+        return ((conditions & AIConditions.timer) == 0)
+            && ((conditions & AIConditions.distance) != 0)
+            && ((conditions & AIConditions.characterHealth) == 0)
+            && ((conditions & AIConditions.characterStateAir) == 0);
     }
 
     string RulesInterface.action()
     {
         string animationToPlay;
         float randomValue = Random.value;
+
         if (randomValue > 0.5)
         {
-            animationToPlay = AnimationStates.HEAVY_KICK;
+            /*string[] possibleAttacks = AnimationStates.GetGroundAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];*/
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
         }
         else
         {
-            animationToPlay = AnimationStates.HEAVY_PUNCH;
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
         }
 
         return animationToPlay;

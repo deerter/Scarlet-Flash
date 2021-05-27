@@ -14,7 +14,7 @@ public static class AIConditionChecking
 
     public static void CheckTimer(int timer)
     {
-        if (timer >= 98 || timer == -1)
+        if (timer >= 20 || timer == -1)
         {
             conditions &= ~AIConditions.timer;
         }
@@ -44,11 +44,11 @@ public static class AIConditionChecking
                     low++;
                 }
             }
-            if (full == 3 || (full == 2))
+            if (full == 3 || (full == 2)) /// Character health is high
             {
                 conditions &= ~AIConditions.characterHealth;
             }
-            else
+            else                          /// Character health is low
             {
                 conditions |= AIConditions.characterHealth;
             }
@@ -64,6 +64,14 @@ public static class AIConditionChecking
             for (int i = 0; i < rivalCharacters.transform.childCount; i++)
             {
                 fullLifeRival += rivalCharacters.transform.GetChild(i).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+            }
+            if (fullLifePlayer >= fullLifeRival) /// Character health is higher than rival's
+            {
+                conditions |= AIConditions.characterHealth;
+            }
+            else                                 /// Caharacter health is lower than rival's
+            {
+                conditions &= ~AIConditions.characterHealth;
             }
         }
     }

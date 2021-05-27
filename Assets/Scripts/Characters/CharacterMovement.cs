@@ -188,7 +188,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit())
+        if ((currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit())
+                || currentCharacter.GetAnimationStatus() == AnimationStates.STANDING)
         { //In case the animation goes from walking to other animation, prevents from sliding behaviour
             rigidBody.velocity = new Vector2(0, 0);
         }
@@ -197,37 +198,19 @@ public class CharacterMovement : MonoBehaviour
         {
             ///Moving
             animator.SetFloat("Horizontal", 0);  //Sets the horizontal back to 0 so that the animator can move from walking to standing (if not, loops the walking animation)
-            if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
-                (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) ||
-                    (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS))
+
+
+            if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L)))
             {
-                if ((Input.GetKey(GameConstants.R)) || (Input.GetKey(GameConstants.L)))
-                {
-                    switch (currentCharacter.GetIsFlipped())
-                    {
-                        case true: animator.SetFloat("Horizontal", -Input.GetAxis("Horizontal")); break;
-                        case false: animator.SetFloat("Horizontal", Input.GetAxis("Horizontal")); break;
-                    }
-                    Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
-                    rigidBody.velocity = horizontal * 3500f * Time.fixedDeltaTime;
-                    //rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
-                    //Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
-                }
-                else
-                {
-                    rigidBody.velocity = new Vector2(0, 0);
-                }
+                characterActions.Walk(rigidBody, animator);
             }
 
             //Blocking
-            if (Input.GetKey(GameConstants.L))
+            if ((Input.GetKey(GameConstants.R)) && currentCharacter.GetIsFlipped() || (Input.GetKey(GameConstants.L)) && !currentCharacter.GetIsFlipped())
             {
-                currentCharacter.SetIsBlocking(true);
+                characterActions.Block();
             }
-            else
-            {
-                currentCharacter.SetIsBlocking(false);
-            }
+
 
             // Crouching
             if (Input.GetKey(GameConstants.D) && !currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsCrouching() && !currentCharacter.GetIsJumping())

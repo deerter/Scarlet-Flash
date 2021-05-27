@@ -29,7 +29,7 @@ public static class AnimationStates
     public const string TAKING_DAMAGE = "TakingDamage";
     public const string TAKING_DAMAGE_CROUCHING = "TakingDamageCrouching";
     public const string TAKING_DAMAGE_JUMPING = "TakingDamageJumping";
-    public const string BLOCKING = "Blocking";
+    public const string BLOCKING_STANDING = "BlockingStanding";
     public const string BLOCKING_CROUCHING = "BlockingCrouching";
     public const string BLOCKING_JUMPING = "BlockingJumping";
     public const string KO = "KO";
@@ -45,6 +45,13 @@ public static class AnimationStates
     public static string[] GetAirAttacks()
     {
         return new string[] { JUMPING_LIGHT_PUNCH, JUMPING_LIGHT_KICK, JUMPING_HEAVY_PUNCH, JUMPING_HEAVY_KICK };
+    }
+
+    public static string[] GetAttacks()
+    {
+        return new string[] {LIGHT_PUNCH, LIGHT_KICK, HEAVY_PUNCH, HEAVY_KICK, CROUCHING_LIGHT_PUNCH,
+                            CROUCHING_LIGHT_KICK, CROUCHING_HEAVY_PUNCH, CROUCHING_HEAVY_KICK, JUMPING_LIGHT_PUNCH,
+                            JUMPING_LIGHT_KICK, JUMPING_HEAVY_PUNCH, JUMPING_HEAVY_KICK };
     }
 
 }

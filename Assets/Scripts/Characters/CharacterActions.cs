@@ -20,6 +20,39 @@ public class CharacterActions : MonoBehaviour
         currentCharacter.SetAnimationStatus(attack);
     }
 
+    /// Moves the character forwards or backwards
+    public void Walk(Rigidbody2D rigidBody, Animator animator)
+    {
+        if ((currentCharacter.GetAnimationStatus() == AnimationStates.STANDING) ||
+            (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS) ||
+                (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS))
+        {
+            switch (currentCharacter.GetIsFlipped())
+            {
+                case true: animator.SetFloat("Horizontal", -Input.GetAxis("Horizontal")); break;
+                case false: animator.SetFloat("Horizontal", Input.GetAxis("Horizontal")); break;
+            }
+            Vector2 horizontal = new Vector2(Input.GetAxis("Horizontal"), 0.0f);
+            rigidBody.velocity = horizontal * 3500f * Time.fixedDeltaTime;
+            //rigidBody.MovePosition(rigidBody.position + horizontal * Time.fixedDeltaTime * 70f);   ///Uses MovePosition because both transform and rb.position makes the character phase through when pushing the rival on the edge of the screen.
+            //Uses Time.fixedDeltaTime instead of Time.deltaTime because MovePosition works with physics (as does fixedDeltaTime)
+        }
+    }
+
+    public void Block()
+    {
+        if ((currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)
+            || ((currentCharacter.GetIsCrouching() || currentCharacter.GetIsJumping()) && !currentCharacter.IsAnimationPlaying()))
+        {
+            currentCharacter.SetIsBlocking(true);
+        }
+    }
+
+    public void StopBlocking()
+    {
+        currentCharacter.SetIsBlocking(false);
+    }
+
     //// Checks if character is still crouching after performing a crouching attack so that it doesn't go to Crouching by default
     public void IsCharacterStillCrouching()
     {
