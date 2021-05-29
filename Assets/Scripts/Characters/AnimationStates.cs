@@ -54,4 +54,9 @@ public static class AnimationStates
                             JUMPING_LIGHT_KICK, JUMPING_HEAVY_PUNCH, JUMPING_HEAVY_KICK };
     }
 
+    public static string[] GetIdleMovements()
+    {
+        return new string[] { STANDING, WALK_BACKWARDS, WALK_FORWARDS, JUMPING_BACKWARDS, JUMPING_DOWN, JUMPING_FORWARDS, JUMPING_UP, CROUCHING };
+    }
+
 }

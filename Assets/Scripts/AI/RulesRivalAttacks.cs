@@ -24,11 +24,11 @@ public class FirstRuleRivalAttacks : RulesInterface
             /*string[] possibleAttacks = AnimationStates.GetGroundAttacks();
             int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
             animationToPlay = possibleAttacks[randomAttack];*/
-            animationToPlay = AnimationStates.WALK_BACKWARDS;
+            animationToPlay = AnimationStates.STANDING;
         }
         else
         {
-            animationToPlay = AnimationStates.WALK_BACKWARDS;
+            animationToPlay = AnimationStates.STANDING;
         }
 
         return animationToPlay;
@@ -40,12 +40,19 @@ public class SecondRuleRivalAttacks : RulesInterface
 
     bool RulesInterface.condition(AIConditions conditions)
     {
-        return false;
+        return ((conditions & AIConditions.timer) == 0)
+            && ((conditions & AIConditions.distance) == 0)
+            && ((conditions & AIConditions.characterHealth) == 0)
+            && ((conditions & AIConditions.characterStateAir) == 0);
     }
 
     string RulesInterface.action()
     {
-        return "";
+        string animationToPlay;
+
+        animationToPlay = AnimationStates.STANDING;
+
+        return animationToPlay;
     }
 }
 

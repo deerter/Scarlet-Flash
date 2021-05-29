@@ -18,6 +18,7 @@ public class StaticAI : MonoBehaviour
     private CharacterFeatures currentCharacter;
     private CharacterActions characterActions;
     private Rigidbody2D rigidBody;
+    private BoxCollider2D boxCollider;
     private Animator animator;
     private string characterAction = "Standing";
     private bool actionTaken = false;
@@ -49,13 +50,36 @@ public class StaticAI : MonoBehaviour
         }
         else if (characterAction == AnimationStates.WALK_BACKWARDS)
         {
-            characterActions.Walk(rigidBody, animator);
+            characterActions.Block();
+            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_BACKWARDS);
+        }
+        else if (characterAction == AnimationStates.WALK_FORWARDS)
+        {
+            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_FORWARDS);
+        }
+        else if (characterAction == AnimationStates.STANDING)
+        {
+            animator.SetFloat("Horizontal", 0);
+            currentCharacter.EndAnimation(AnimationStates.STANDING);
+        }
+        else if (characterAction == AnimationStates.JUMPING_BACKWARDS)
+        {
+            switch (currentCharacter.GetIsFlipped())
+            {
+                case true: characterActions.Jump(rigidBody, "JumpingRight"); break;
+                case false: characterActions.Jump(rigidBody, "JumpingLeft"); break;
+            }
+        }
+        else if (characterAction == AnimationStates.BLOCKING_JUMPING || characterAction == AnimationStates.BLOCKING_CROUCHING)
+        {
+            characterActions.Block();
+            characterActions.Invoke("StopBlocking", 2);   //// Stops blocking after 2 seconds
         }
     }
 
     private void AddRulesRivalAttacks()
     {
-        AddRule(new FirstRuleRivalAttacks(), rulesEngineRivalAttacks);
+        AddRule(new FirstRuleRivalAttacks(), rulesEngineRivalAttacks); AddRule(new SecondRuleRivalAttacks(), rulesEngineRivalAttacks);
     }
 
     // Use this for initialization
@@ -65,6 +89,8 @@ public class StaticAI : MonoBehaviour
         characterActions = this.GetComponent<CharacterActions>();
         animator = currentCharacter.GetAnimator();
         rigidBody = this.GetComponent<Rigidbody2D>();
+        boxCollider = this.GetComponent<BoxCollider2D>();
+
         AddRulesRivalAttacks();
     }
 
@@ -84,14 +110,13 @@ public class StaticAI : MonoBehaviour
             AIConditionChecking.CheckDistance(characterActions);
             AIConditionChecking.CheckCharacterHealth(currentTimer.GetTimer(), characters, rivalCharacters);
 
-            if ((currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS || currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS)
-                && rigidBody.velocity.x == 0 && actionTaken == true)
+            if (currentCharacter.GetAnimationStatus() != AnimationStates.WALK_BACKWARDS || characterAction != AnimationStates.BLOCKING_JUMPING
+                || characterAction != AnimationStates.BLOCKING_CROUCHING)
             {
-                print("movement");
-                currentCharacter.EndAnimation("Standing");
+                characterActions.StopBlocking();
             }
 
-            if (currentCharacter.GetAnimationStatus() == "Standing")
+            if (Array.IndexOf(AnimationStates.GetIdleMovements(), currentCharacter.GetAnimationStatus()) >= 0)
             {
                 actionTaken = false;
                 ExecuteRules(rulesEngineRivalAttacks);

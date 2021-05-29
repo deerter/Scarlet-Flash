@@ -15,8 +15,10 @@ public class HitCollision : MonoBehaviour
     private void PlayHitAnimation()
     {
         string animationToPlay;
-        animationToPlay = rivalCharacter.GetIsJumping() ? AnimationStates.TAKING_DAMAGE_JUMPING : AnimationStates.TAKING_DAMAGE;
-        animationToPlay = rivalCharacter.GetIsCrouching() ? AnimationStates.TAKING_DAMAGE_CROUCHING : AnimationStates.TAKING_DAMAGE;
+        animationToPlay =
+                    rivalCharacter.GetIsJumping() ? AnimationStates.TAKING_DAMAGE_JUMPING :
+                    rivalCharacter.GetIsCrouching() ? AnimationStates.TAKING_DAMAGE_CROUCHING :
+                    AnimationStates.TAKING_DAMAGE;
         rivalCharacter.SetAnimationStatus(animationToPlay);
         rivalCharacter.PlayAnimation(animationToPlay);
     }
@@ -24,8 +26,10 @@ public class HitCollision : MonoBehaviour
     private void PlayBlockAnimation()
     {
         string animationToPlay;
-        animationToPlay = rivalCharacter.GetIsJumping() ? AnimationStates.BLOCKING_JUMPING : AnimationStates.BLOCKING_STANDING;
-        animationToPlay = rivalCharacter.GetIsCrouching() ? AnimationStates.BLOCKING_CROUCHING : AnimationStates.BLOCKING_STANDING;
+        animationToPlay =
+                    rivalCharacter.GetIsJumping() ? AnimationStates.BLOCKING_JUMPING :
+                    rivalCharacter.GetIsCrouching() ? AnimationStates.BLOCKING_CROUCHING :
+                    AnimationStates.BLOCKING_STANDING;
         rivalCharacter.SetAnimationStatus(animationToPlay);
         rivalCharacter.PlayAnimation(animationToPlay);
     }
@@ -53,7 +57,7 @@ public class HitCollision : MonoBehaviour
                 rivalSoundEffect.PlayCharacterSoundEffect("Block");
                 rivalCharacter.TakeDamage(attackValue / 4);
                 PlayBlockAnimation();
-                blockSprite.GetComponent<BlockBehaviour>().ActivateBlockSprite(otherPlayer.gameObject.GetComponent<BoxCollider2D>());
+                blockSprite.GetComponent<BlockBehaviour>().ActivateBlockSprite(otherPlayer.gameObject.GetComponent<BoxCollider2D>(), rivalCharacter.GetIsFlipped());
             }
             else
             {

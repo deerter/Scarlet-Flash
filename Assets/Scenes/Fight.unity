@@ -1788,6 +1788,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1638213361}
   rivalCharacters: {fileID: 746265495}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &492323763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2713,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1638213361}
   rivalCharacters: {fileID: 746265495}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &746265495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,6 +3126,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1047738483}
   rivalCharacters: {fileID: 1592446730}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &823685773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3143,11 +3152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  CharacterSoundEffectPlayer: {fileID: 1047738483}
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 0}
 --- !u!114 &823685775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5343,6 +5348,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1638213361}
   rivalCharacters: {fileID: 746265495}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1632710855
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,6 +6813,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1047738483}
   rivalCharacters: {fileID: 1592446730}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2008869951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6828,11 +6839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  CharacterSoundEffectPlayer: {fileID: 1047738483}
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 0}
 --- !u!114 &2008869953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7187,11 +7194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  CharacterSoundEffectPlayer: {fileID: 1047738483}
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 1592446730}
 --- !u!95 &2053421553
 Animator:
   serializedVersion: 3
@@ -7305,3 +7308,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterSoundEffectPlayer: {fileID: 1047738483}
   rivalCharacters: {fileID: 1592446730}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
