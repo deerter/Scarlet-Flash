@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /// Timer > 20 || infinite ; Distance: Close ; Characer health: Full ; Character State: Ground
-public class FirstRuleRivalIsHit : RulesInterface
+public class FirstRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -16,14 +15,30 @@ public class FirstRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string[] possibleAttacks = AnimationStates.GetGroundAttacks();
-        int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-        return possibleAttacks[randomAttack];
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.7)
+        {
+            string[] possibleAttacks = AnimationStates.GetGroundAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];
+        }
+        else if (randomValue > 0.7 && randomValue < 0.9)
+        {
+            animationToPlay = AnimationStates.WALK_FORWARDS;
+        }
+        else
+        {
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
+        }
+
+        return animationToPlay;
     }
 }
 
 /// Timer > 20 || infinite ; Distance: Close ; Characer health: Full ; Character State: Air
-public class SecondRuleRivalIsHit : RulesInterface
+public class SecondRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -35,14 +50,26 @@ public class SecondRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string[] possibleAttacks = AnimationStates.GetAirAttacks();
-        int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-        return possibleAttacks[randomAttack];
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.8)
+        {
+            string[] possibleAttacks = AnimationStates.GetAirAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];
+        }
+        else
+        {
+            animationToPlay = AnimationStates.BLOCKING_JUMPING;
+        }
+
+        return animationToPlay;
     }
 }
 
 /// Timer > 20 || infinite ; Distance: Far ; Characer health: Full ; Character State: Ground
-public class ThirdRuleRivalIsHit : RulesInterface
+public class ThirdRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -71,7 +98,7 @@ public class ThirdRuleRivalIsHit : RulesInterface
 }
 
 /// Timer > 20 || infinite ; Distance: Far ; Characer health: Full ; Character State: Air
-public class FourthRuleRivalIsHit : RulesInterface
+public class FourthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -83,17 +110,71 @@ public class FourthRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
+
         return "";
     }
 }
 
 /// Timer > 20 || infinite ; Distance: Close ; Characer health: Low ; Character State: Ground
-public class FifthRuleRivalIsHit : RulesInterface
+public class FifthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
         return ((conditions & AIConditions.timer) == 0)
             && ((conditions & AIConditions.distance) != 0)
+            && ((conditions & AIConditions.characterHealth) != 0)
+            && ((conditions & AIConditions.characterStateAir) == 0);
+    }
+
+    string RulesInterface.action()
+    {
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.45)
+        {
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
+
+        }
+        else if (randomValue > 0.45 && randomValue < 0.9)
+        {
+            animationToPlay = AnimationStates.JUMPING_BACKWARDS;
+        }
+        else
+        {
+            string[] possibleAttacks = AnimationStates.GetGroundAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];
+        }
+
+        return animationToPlay;
+    }
+}
+
+/// Timer > 20 || infinite ; Distance: Close ; Characer health: Low ; Character State: Air
+public class SixthRuleRivalBackwards : RulesInterface
+{
+    bool RulesInterface.condition(AIConditions conditions)
+    {
+        return ((conditions & AIConditions.timer) == 0)
+            && ((conditions & AIConditions.distance) != 0)
+            && ((conditions & AIConditions.characterHealth) != 0)
+            && ((conditions & AIConditions.characterStateAir) != 0);
+    }
+
+    string RulesInterface.action()
+    {
+        return AnimationStates.BLOCKING_JUMPING;
+    }
+}
+
+/// Timer > 20 || infinite ; Distance: Far ; Characer health: Low ; Character State: Ground
+public class SeventhRuleRivalBackwards : RulesInterface
+{
+    bool RulesInterface.condition(AIConditions conditions)
+    {
+        return ((conditions & AIConditions.timer) == 0)
+            && ((conditions & AIConditions.distance) == 0)
             && ((conditions & AIConditions.characterHealth) != 0)
             && ((conditions & AIConditions.characterStateAir) == 0);
     }
@@ -105,81 +186,20 @@ public class FifthRuleRivalIsHit : RulesInterface
 
         if (randomValue < 0.4)
         {
-            string[] possibleAttacks = AnimationStates.GetGroundAttacks();
-            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-            animationToPlay = possibleAttacks[randomAttack];
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
+
         }
         else if (randomValue > 0.4 && randomValue < 0.8)
         {
-            animationToPlay = AnimationStates.WALK_BACKWARDS;
-        }
-        else
-        {
             animationToPlay = AnimationStates.JUMPING_BACKWARDS;
         }
-
-        return animationToPlay;
-    }
-}
-
-/// Timer > 20 || infinite ; Distance: Close ; Characer health: Low ; Character State: Air
-public class SixthRuleRivalIsHit : RulesInterface
-{
-    bool RulesInterface.condition(AIConditions conditions)
-    {
-        return ((conditions & AIConditions.timer) == 0)
-            && ((conditions & AIConditions.distance) != 0)
-            && ((conditions & AIConditions.characterHealth) != 0)
-            && ((conditions & AIConditions.characterStateAir) != 0);
-    }
-
-    string RulesInterface.action()
-    {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.5)
-        {
-            string[] possibleAttacks = AnimationStates.GetAirAttacks();
-            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-            animationToPlay = possibleAttacks[randomAttack];
-        }
-        else
-        {
-            animationToPlay = AnimationStates.BLOCKING_JUMPING;
-        }
-
-        return animationToPlay;
-    }
-}
-
-/// Timer > 20 || infinite ; Distance: Far ; Characer health: Low ; Character State: Ground
-public class SeventhRuleRivalIsHit : RulesInterface
-{
-    bool RulesInterface.condition(AIConditions conditions)
-    {
-        return ((conditions & AIConditions.timer) == 0)
-            && ((conditions & AIConditions.distance) == 0)
-            && ((conditions & AIConditions.characterHealth) != 0)
-            && ((conditions & AIConditions.characterStateAir) == 0);
-    }
-
-    string RulesInterface.action()
-    {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.5)
-        {
-            animationToPlay = AnimationStates.WALK_BACKWARDS;
-        }
-        else if (randomValue > 0.5 && randomValue < 0.75)
-        {
-            animationToPlay = AnimationStates.WALK_FORWARDS;
-        }
-        else
+        else if (randomValue > 0.8 && randomValue < 0.9)
         {
             animationToPlay = AnimationStates.JUMPING_FORWARDS;
+        }
+        else
+        {
+            animationToPlay = AnimationStates.WALK_FORWARDS;
         }
 
         return animationToPlay;
@@ -187,7 +207,7 @@ public class SeventhRuleRivalIsHit : RulesInterface
 }
 
 /// Timer > 20 || infinite ; Distance: Far ; Characer health: Low ; Character State: Air
-public class EighthRuleRivalIsHit : RulesInterface
+public class EighthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -205,6 +225,7 @@ public class EighthRuleRivalIsHit : RulesInterface
         if (randomValue < 0.9)
         {
             animationToPlay = AnimationStates.BLOCKING_JUMPING;
+
         }
 
         return animationToPlay;
@@ -212,7 +233,7 @@ public class EighthRuleRivalIsHit : RulesInterface
 }
 
 /// Timer < 20 ; Distance: Close ; Characer health: High (Rival > Own) ; Character State: Ground
-public class NinthRuleRivalIsHit : RulesInterface
+public class NinthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -224,14 +245,27 @@ public class NinthRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string[] possibleAttacks = AnimationStates.GetGroundAttacks();
-        int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-        return possibleAttacks[randomAttack];
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.9)
+        {
+            string[] possibleAttacks = AnimationStates.GetGroundAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];
+
+        }
+        else
+        {
+            animationToPlay = AnimationStates.WALK_FORWARDS;
+        }
+
+        return animationToPlay;
     }
 }
 
 /// Timer < 20 ; Distance: Close ; Characer health: High (Rival > Own) ; Character State: Air
-public class TenthRuleRivalIsHit : RulesInterface
+public class TenthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -243,14 +277,27 @@ public class TenthRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string[] possibleAttacks = AnimationStates.GetAirAttacks();
-        int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-        return possibleAttacks[randomAttack];
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.9)
+        {
+            string[] possibleAttacks = AnimationStates.GetAirAttacks();
+            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
+            animationToPlay = possibleAttacks[randomAttack];
+
+        }
+        else
+        {
+            animationToPlay = AnimationStates.BLOCKING_JUMPING;
+        }
+
+        return animationToPlay;
     }
 }
 
 /// Timer < 20 ; Distance: Far ; Characer health: High (Rival > Own) ; Character State: Ground
-public class EleventhRuleRivalIsHit : RulesInterface
+public class EleventhRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -265,9 +312,10 @@ public class EleventhRuleRivalIsHit : RulesInterface
         string animationToPlay = "";
         float randomValue = Random.value;
 
-        if (randomValue < 0.5)
+        if (randomValue < 0.6)
         {
             animationToPlay = AnimationStates.WALK_FORWARDS;
+
         }
         else
         {
@@ -279,7 +327,7 @@ public class EleventhRuleRivalIsHit : RulesInterface
 }
 
 /// Timer < 20 ; Distance: Far ; Characer health: High (Rival > Own) ; Character State: Air
-public class TwelfthRuleRivalIsHit : RulesInterface
+public class TwelfthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -291,20 +339,12 @@ public class TwelfthRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.1)
-        {
-            animationToPlay = AnimationStates.BLOCKING_JUMPING;
-        }
-
-        return animationToPlay;
+        return "";
     }
 }
 
 /// Timer < 20 ; Distance: Close ; Characer health: Low (Rival < Own) ; Character State: Ground
-public class ThirteenthRuleRivalIsHit : RulesInterface
+public class ThirteenthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -319,15 +359,63 @@ public class ThirteenthRuleRivalIsHit : RulesInterface
         string animationToPlay = "";
         float randomValue = Random.value;
 
-        if (randomValue < 0.6)
+        if (randomValue < 0.8)
         {
             animationToPlay = AnimationStates.WALK_BACKWARDS;
+
         }
-        else if (randomValue > 0.6 && randomValue < 0.9)
+        else if (randomValue > 0.8 && randomValue < 0.9)
+        {
+            animationToPlay = AnimationStates.JUMPING_BACKWARDS;
+        }
+        else
         {
             string[] possibleAttacks = AnimationStates.GetGroundAttacks();
             int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-            return possibleAttacks[randomAttack];
+            animationToPlay = possibleAttacks[randomAttack];
+        }
+
+        return animationToPlay;
+    }
+}
+
+/// Timer < 20 ; Distance: Close ; Characer health: Low (Rival < Own) ; Character State: Air
+public class FourteenthRuleRivalBackwards : RulesInterface
+{
+    bool RulesInterface.condition(AIConditions conditions)
+    {
+        return ((conditions & AIConditions.timer) != 0)
+            && ((conditions & AIConditions.distance) != 0)
+            && ((conditions & AIConditions.characterHealth) != 0)
+            && ((conditions & AIConditions.characterStateAir) != 0);
+    }
+
+    string RulesInterface.action()
+    {
+        return AnimationStates.BLOCKING_JUMPING;
+    }
+}
+
+/// Timer < 20 ; Distance: Far ; Characer health: Low (Rival < Own) ; Character State: Ground
+public class FifteenthRuleRivalBackwards : RulesInterface
+{
+    bool RulesInterface.condition(AIConditions conditions)
+    {
+        return ((conditions & AIConditions.timer) != 0)
+            && ((conditions & AIConditions.distance) == 0)
+            && ((conditions & AIConditions.characterHealth) != 0)
+            && ((conditions & AIConditions.characterStateAir) == 0);
+    }
+
+    string RulesInterface.action()
+    {
+        string animationToPlay = "";
+        float randomValue = Random.value;
+
+        if (randomValue < 0.8)
+        {
+            animationToPlay = AnimationStates.WALK_BACKWARDS;
+
         }
         else
         {
@@ -338,72 +426,8 @@ public class ThirteenthRuleRivalIsHit : RulesInterface
     }
 }
 
-/// Timer < 20 ; Distance: Close ; Characer health: Low (Rival < Own) ; Character State: Air
-public class FourteenthRuleRivalIsHit : RulesInterface
-{
-    bool RulesInterface.condition(AIConditions conditions)
-    {
-        return ((conditions & AIConditions.timer) != 0)
-            && ((conditions & AIConditions.distance) != 0)
-            && ((conditions & AIConditions.characterHealth) != 0)
-            && ((conditions & AIConditions.characterStateAir) != 0);
-    }
-
-    string RulesInterface.action()
-    {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.8)
-        {
-            animationToPlay = AnimationStates.BLOCKING_JUMPING;
-        }
-        else
-        {
-            string[] possibleAttacks = AnimationStates.GetAirAttacks();
-            int randomAttack = Random.Range(0, possibleAttacks.Length - 1);
-            return possibleAttacks[randomAttack];
-        }
-
-        return animationToPlay;
-    }
-}
-
-/// Timer < 20 ; Distance: Far ; Characer health: Low (Rival < Own) ; Character State: Ground
-public class FifteenthRuleRivalIsHit : RulesInterface
-{
-    bool RulesInterface.condition(AIConditions conditions)
-    {
-        return ((conditions & AIConditions.timer) != 0)
-            && ((conditions & AIConditions.distance) == 0)
-            && ((conditions & AIConditions.characterHealth) != 0)
-            && ((conditions & AIConditions.characterStateAir) == 0);
-    }
-
-    string RulesInterface.action()
-    {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.6)
-        {
-            animationToPlay = AnimationStates.WALK_BACKWARDS;
-        }
-        else if (randomValue > 0.6 && randomValue < 0.8)
-        {
-            animationToPlay = AnimationStates.WALK_FORWARDS;
-        }
-        else
-        {
-            animationToPlay = AnimationStates.JUMPING_FORWARDS;
-        }
-
-        return animationToPlay;
-    }
-}
-
 /// Timer < 20 ; Distance: Far ; Characer health: Low (Rival < Own) ; Character State: Air
-public class SixteenthRuleRivalIsHit : RulesInterface
+public class SixteenthRuleRivalBackwards : RulesInterface
 {
     bool RulesInterface.condition(AIConditions conditions)
     {
@@ -415,14 +439,6 @@ public class SixteenthRuleRivalIsHit : RulesInterface
 
     string RulesInterface.action()
     {
-        string animationToPlay = "";
-        float randomValue = Random.value;
-
-        if (randomValue < 0.9)
-        {
-            animationToPlay = AnimationStates.BLOCKING_JUMPING;
-        }
-
-        return animationToPlay;
+        return AnimationStates.BLOCKING_JUMPING;
     }
 }

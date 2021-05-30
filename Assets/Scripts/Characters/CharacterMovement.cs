@@ -34,8 +34,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if ((currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit())
-                || currentCharacter.GetAnimationStatus() == AnimationStates.STANDING)
+        if ((currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit()))
         { //In case the animation goes from walking to other animation, prevents from sliding behaviour
             rigidBody.velocity = new Vector2(0, 0);
         }
@@ -68,6 +67,10 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetKeyUp(GameConstants.L) || Input.GetKeyUp(GameConstants.R))
             {
                 characterActions.StopBlocking();
+                if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS || currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS)
+                {
+                    rigidBody.velocity = new Vector2(0, 0);
+                }
             }
 
             //Blocking

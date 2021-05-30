@@ -59,4 +59,14 @@ public static class AnimationStates
         return new string[] { STANDING, WALK_BACKWARDS, WALK_FORWARDS, JUMPING_BACKWARDS, JUMPING_DOWN, JUMPING_FORWARDS, JUMPING_UP, CROUCHING };
     }
 
+    public static string[] GetTakingDamageStates()
+    {
+        return new string[] { TAKING_DAMAGE, TAKING_DAMAGE_CROUCHING, TAKING_DAMAGE_JUMPING };
+    }
+
+    public static string[] GetBlockingStates()
+    {
+        return new string[] { BLOCKING_CROUCHING, BLOCKING_JUMPING, BLOCKING_STANDING };
+    }
+
 }

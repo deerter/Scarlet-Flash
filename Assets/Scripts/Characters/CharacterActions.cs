@@ -59,11 +59,17 @@ public class CharacterActions : MonoBehaviour
     public void Jump(Rigidbody2D rigidBody, string direction)
     {
         screenDistance = GetPositionBetweenCharacters();
+        /// If rival is not in the air and screen distance is close (and not on corners), disable collision system
         if ((screenDistance == "In-close" || screenDistance == "Poke-range")
             && (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT)
             && !(rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping()))
         {
             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+        }
+        /// If rival is already in the air, turn on the collision system
+        if (rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping())
+        {
+            Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);
         }
         currentCharacter.SetIsJumping(true);
         rigidBody.velocity = Vector2.up * 200f;   ///Force necessary to break free from gravity
@@ -179,7 +185,7 @@ public class CharacterActions : MonoBehaviour
                             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
                         }
                         else
-                        {                                                                                                   ////Normal beahaviour
+                        {                                                                                                   ////Normal behaviour
                             float distance = Mathf.Abs((center.x + sides.x) - (characterJumpFinalPosition - characterSides.x)) + offsetDistance;
                             Vector2 rivalToPosition = new Vector2(center.x - distance, rivalCharacter.transform.position.y);
                             StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.17f, rivalRigidBody));
@@ -218,6 +224,24 @@ public class CharacterActions : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            float offset = 5f;
+            Vector2 rivalToPosition;
+            switch (rivalCharacter.transform.GetComponent<CharacterFeatures>().GetIsFlipped())
+            {
+                case true:
+                    rivalToPosition = new Vector2(rivalCharacter.transform.position.x + sides.x + offset, rivalCharacter.transform.position.y);
+                    StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.02f, rivalRigidBody));
+                    Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+                    break;
+                case false:
+                    rivalToPosition = new Vector2(rivalCharacter.transform.position.x - sides.x - offset, rivalCharacter.transform.position.y);
+                    StartCoroutine(LerpPosition(rivalOriginalPosition, rivalToPosition, 0.02f, rivalRigidBody));
+                    Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
+                    break;
+            }
+        }
 
     }
 
@@ -236,7 +260,7 @@ public class CharacterActions : MonoBehaviour
     }
 
 
-    ///// Executes when there's a collision between the characters and the current character is jumping
+    ///// Executes when there's a collision between the characters
     void OnCollisionEnter2D(Collision2D col)
     {
         if (currentCharacter.GetIsJumping() && !rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping())
@@ -250,10 +274,34 @@ public class CharacterActions : MonoBehaviour
         {
             switch (currentCharacter.GetIsFlipped())
             {
-                case true: rigidBody.AddForce(Vector2.right * 1000f, ForceMode2D.Impulse); break;
-                case false: rigidBody.AddForce(Vector2.left * 1000f, ForceMode2D.Impulse); break;
+                case true: rigidBody.AddForce(Vector2.right * 400f, ForceMode2D.Impulse); break;
+                case false: rigidBody.AddForce(Vector2.left * 400f, ForceMode2D.Impulse); break;
             }
+        }
+    }
 
+    ////// Check if characters are on top of each other
+    void CheckOnTopJumping()
+    {
+        if (!currentCharacter.GetIsJumping() && (rivalCharacter.GetComponent<CharacterFeatures>().GetAnimationStatus() == AnimationStates.JUMPING_UP))
+        /*|| (rivalCharacter.GetComponent<CharacterFeatures>().GetAnimationStatus() == AnimationStates.JUMPING_BACKWARDS && (
+            rivalCharacter.transform.position.x >= ScreenDistances.SCREEN_RIGHT || rivalCharacter.transform.position.x >= ScreenDistances.SCREEN_LEFT))))*/
+        {
+            switch (currentCharacter.GetIsFlipped())
+            {
+                case true:
+                    if (rivalCharacter.transform.position.x >= this.transform.position.x - characterSides.x)
+                    {
+                        Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);
+                    }
+                    break;
+                case false:
+                    if (rivalCharacter.transform.position.x <= this.transform.position.x + characterSides.x)
+                    {
+                        Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);
+                    }
+                    break;
+            }
         }
     }
 
@@ -332,6 +380,7 @@ public class CharacterActions : MonoBehaviour
     {
         rivalCharacter = rivalCharacters.transform.GetChild(0).gameObject;  //Has to be done constantly in case it changes
         rivalBoxCollider = rivalCharacters.transform.GetChild(0).GetComponent<BoxCollider2D>();
+        CheckOnTopJumping();
     }
 
 }
