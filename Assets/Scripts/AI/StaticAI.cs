@@ -142,6 +142,30 @@ public class StaticAI : MonoBehaviour
         AddRule(new FifteenthRuleRivalBackwards(), rulesEngineRivalBackwards); AddRule(new SixteenthRuleRivalBackwards(), rulesEngineRivalBackwards);
     }
 
+    private void AddRulesRivalJumpingBackwards()
+    {
+        AddRule(new FirstRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new SecondRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new ThirdRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new FourthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new FifthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new SixthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new SeventhRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new EighthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new NinthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new TenthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new EleventhRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new TwelfthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new ThirteenthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new FourteenthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+        AddRule(new FifteenthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards); AddRule(new SixteenthRuleRivalJumpingBackwards(), rulesEngineRivalJumpingBackwards);
+    }
+
+    private void AddRulesRivalForwards()
+    {
+        AddRule(new FirstRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new SecondRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new ThirdRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new FourthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new FifthRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new SixthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new SeventhRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new EighthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new NinthRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new TenthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new EleventhRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new TwelfthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new ThirteenthRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new FourteenthRuleRivalForwards(), rulesEngineRivalForwards);
+        AddRule(new FifteenthRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new SixteenthRuleRivalForwards(), rulesEngineRivalForwards);
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -156,11 +180,15 @@ public class StaticAI : MonoBehaviour
         AddRulesRivalIsHit();
         AddRulesRivalIsBlock();
         AddRulesRivalBackwards();
+        AddRulesRivalJumpingBackwards();
+        AddRulesRivalForwards();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if ((currentCharacter.IsAnimationPlaying() && !currentCharacter.GetIsJumping() && !currentCharacter.GetIsHit())
                 || currentCharacter.GetAnimationStatus() == AnimationStates.STANDING)
         { //In case the animation goes from walking to other animation, prevents from sliding behaviour

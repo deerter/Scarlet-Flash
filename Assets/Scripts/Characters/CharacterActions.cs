@@ -179,9 +179,9 @@ public class CharacterActions : MonoBehaviour
                     {
                         if (screenDistance == "Mid-screen" && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_LEFT)
                         { /// Behaviour when rival character is against the left wall
-                            float distance = Mathf.Abs((characterJumpFinalPosition - characterSides.x) - (center.x + sides.x)) + offsetDistance;
-                            Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x + distance, rivalCharacter.transform.position.y);
-                            StartCoroutine(LerpPosition(rivalOriginalPosition, characterToPosition, 0.07f, rigidBody));
+                            Vector2 characterOriginalPosition = new Vector2(this.transform.position.x, this.transform.position.y);
+                            Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x, rivalCharacter.transform.position.y);
+                            StartCoroutine(LerpPosition(characterOriginalPosition, characterToPosition, 0.07f, rigidBody));
                             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
                         }
                         else
@@ -207,10 +207,9 @@ public class CharacterActions : MonoBehaviour
                     {
                         if (screenDistance == "Mid-screen" && rivalCharacter.transform.position.x > ScreenDistances.SCREEN_RIGHT)
                         { /// Behaviour when rival character is against the right wall
-                            float distance = Mathf.Abs((characterJumpFinalPosition + characterSides.x) - (center.x - sides.x)) + offsetDistance;
-
-                            Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x - distance, rivalCharacter.transform.position.y);
-                            StartCoroutine(LerpPosition(rivalOriginalPosition, characterToPosition, 0.07f, rigidBody));
+                            Vector2 characterOriginalPosition = new Vector2(this.transform.position.x, this.transform.position.y);
+                            Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x, rivalCharacter.transform.position.y);
+                            StartCoroutine(LerpPosition(characterOriginalPosition, characterToPosition, 0.15f, rigidBody));
                             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
                         }
                         else

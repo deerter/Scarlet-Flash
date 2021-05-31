@@ -195,7 +195,11 @@ public class CharacterFeatures : MonoBehaviour
 
     public int DoDamage()
     {
-        return character.GetAttackOutput(animationStatus);
+        if (Array.IndexOf(AnimationStates.GetAttacks(), animationStatus) >= 0)
+        {
+            return character.GetAttackOutput(animationStatus);
+        }
+        return 0;
     }
 
     public void FightIntroduction()
