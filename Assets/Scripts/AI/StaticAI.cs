@@ -11,7 +11,7 @@ public class StaticAI : MonoBehaviour
     [SerializeField] private GameObject characters;
     [SerializeField] private GameObject rivalCharacters;
     private List<RulesInterface> rulesEngineRivalAttacks = new List<RulesInterface>();
-    private List<RulesInterface> rulesEngineCharacterLowHealth = new List<RulesInterface>();
+    private List<RulesInterface> rulesEngineSwapCharacter = new List<RulesInterface>();
     private List<RulesInterface> rulesEngineRivalBlocks = new List<RulesInterface>();
     private List<RulesInterface> rulesEngineRivalIsHit = new List<RulesInterface>();
     private List<RulesInterface> rulesEngineRivalIdle = new List<RulesInterface>();
@@ -22,6 +22,7 @@ public class StaticAI : MonoBehaviour
     private CharacterFeatures currentCharacter;
     private CharacterFeatures rivalCharacter;
     private CharacterActions characterActions;
+    private CharacterAssist characterAssist;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private Animator animator;
@@ -91,6 +92,19 @@ public class StaticAI : MonoBehaviour
         {
             characterActions.Block();
             characterActions.Invoke("StopBlocking", 3);   //// Stops blocking after 2 seconds
+        }
+
+
+        ///// Swap characters
+        if (characterAction == "SwapCharacter2")
+        {
+            print("how do you do");
+            characterAssist.Swap("Assist1", false);
+        }
+        else if (characterAction == "SwapCharacter3")
+        {
+            print("On my own");
+            characterAssist.Swap("Assist2", false);
         }
     }
 
@@ -166,12 +180,43 @@ public class StaticAI : MonoBehaviour
         AddRule(new FifteenthRuleRivalForwards(), rulesEngineRivalForwards); AddRule(new SixteenthRuleRivalForwards(), rulesEngineRivalForwards);
     }
 
+    private void AddRulesRivalJumpingForwards()
+    {
+        AddRule(new FirstRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new SecondRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new ThirdRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new FourthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new FifthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new SixthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new SeventhRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new EighthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new NinthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new TenthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new EleventhRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new TwelfthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new ThirteenthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new FourteenthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+        AddRule(new FifteenthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards); AddRule(new SixteenthRuleRivalJumpingForwards(), rulesEngineRivalJumpingForwards);
+    }
+
+    private void AddRulesRivalIdle()
+    {
+        AddRule(new FirstRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new SecondRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new ThirdRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new FourthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new FifthRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new SixthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new SeventhRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new EighthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new NinthRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new TenthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new EleventhRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new TwelfthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new ThirteenthRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new FourteenthRuleRivalIdle(), rulesEngineRivalIdle);
+        AddRule(new FifteenthRuleRivalIdle(), rulesEngineRivalIdle); AddRule(new SixteenthRuleRivalIdle(), rulesEngineRivalIdle);
+    }
+
+    private void AddRulesSwapCharacter()
+    {
+        AddRule(new FirstRuleSwapCharacter(), rulesEngineSwapCharacter); AddRule(new SecondRuleSwapCharacter(), rulesEngineSwapCharacter);
+        AddRule(new ThirdRuleSwapCharacter(), rulesEngineSwapCharacter);
+    }
+
     // Use this for initialization
     void Start()
     {
         currentCharacter = this.GetComponent<CharacterFeatures>();
         rivalCharacter = rivalCharacters.transform.GetChild(0).GetComponent<CharacterFeatures>();
         characterActions = this.GetComponent<CharacterActions>();
+        characterAssist = characters.GetComponent<CharacterAssist>();
         animator = currentCharacter.GetAnimator();
         rigidBody = this.GetComponent<Rigidbody2D>();
         boxCollider = this.GetComponent<BoxCollider2D>();
@@ -182,6 +227,9 @@ public class StaticAI : MonoBehaviour
         AddRulesRivalBackwards();
         AddRulesRivalJumpingBackwards();
         AddRulesRivalForwards();
+        AddRulesRivalJumpingForwards();
+        AddRulesRivalIdle();
+        AddRulesSwapCharacter();
 
     }
 
@@ -196,12 +244,15 @@ public class StaticAI : MonoBehaviour
         }
         rivalCharacter = rivalCharacters.transform.GetChild(0).GetComponent<CharacterFeatures>(); //Has to be done constantly in case it changes
 
-        if (!currentCharacter.GetIsBlocked())
+        if (!currentCharacter.GetIsBlocked() && !currentCharacter.GetIsDead())
         {
             AIConditionChecking.CheckTimer(currentTimer.GetTimer());
             AIConditionChecking.CheckCharacterStates(currentCharacter);
             AIConditionChecking.CheckDistance(characterActions);
             AIConditionChecking.CheckCharacterHealth(currentTimer.GetTimer(), characters, rivalCharacters);
+            AIConditionChecking.CheckCharacterSwap(characterAssist, currentCharacter, characters);
+
+
 
             if (currentCharacter.GetAnimationStatus() != AnimationStates.WALK_BACKWARDS || characterAction != AnimationStates.BLOCKING_JUMPING
                 || characterAction != AnimationStates.BLOCKING_CROUCHING)
@@ -212,6 +263,7 @@ public class StaticAI : MonoBehaviour
             if (Array.IndexOf(AnimationStates.GetIdleMovements(), currentCharacter.GetAnimationStatus()) >= 0)
             {
                 actionTaken = false;
+                ExecuteRules(rulesEngineSwapCharacter);
                 if (Array.IndexOf(AnimationStates.GetAttacks(), rivalCharacter.GetAnimationStatus()) >= 0)
                 {
                     ExecuteRules(rulesEngineRivalAttacks);
@@ -241,7 +293,8 @@ public class StaticAI : MonoBehaviour
                     ExecuteRules(rulesEngineRivalJumpingForwards);
                 }
                 if (rivalCharacter.GetAnimationStatus() == AnimationStates.STANDING || rivalCharacter.GetAnimationStatus() == AnimationStates.CROUCHING
-                    || rivalCharacter.GetAnimationStatus() == AnimationStates.JUMPING_DOWN || rivalCharacter.GetAnimationStatus() == AnimationStates.JUMPING_UP)
+                    || rivalCharacter.GetAnimationStatus() == AnimationStates.JUMPING_DOWN || rivalCharacter.GetAnimationStatus() == AnimationStates.JUMPING_UP
+                    || rivalCharacter.GetAnimationStatus() == AnimationStates.CROUCH)
                 {
                     ExecuteRules(rulesEngineRivalIdle);
                 }

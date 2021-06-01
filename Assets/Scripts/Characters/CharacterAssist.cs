@@ -18,6 +18,11 @@ public class CharacterAssist : MonoBehaviour
         currentCharacter = transform.GetChild(0).gameObject.GetComponent<CharacterFeatures>();
     }
 
+    public bool GetSwapped()
+    {
+        return swapped;
+    }
+
     IEnumerator SwappingTimeout()
     {
         swapped = true;

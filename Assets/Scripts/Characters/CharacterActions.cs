@@ -181,7 +181,7 @@ public class CharacterActions : MonoBehaviour
                         { /// Behaviour when rival character is against the left wall
                             Vector2 characterOriginalPosition = new Vector2(this.transform.position.x, this.transform.position.y);
                             Vector2 characterToPosition = new Vector2(boxCollider.bounds.center.x, rivalCharacter.transform.position.y);
-                            StartCoroutine(LerpPosition(characterOriginalPosition, characterToPosition, 0.07f, rigidBody));
+                            StartCoroutine(LerpPosition(characterOriginalPosition, characterToPosition, 0.15f, rigidBody));
                             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
                         }
                         else

@@ -101,5 +101,67 @@ public static class AIConditionChecking
         }
     }
 
+    public static void CheckCharacterSwap(CharacterAssist assist, CharacterFeatures currentCharacter, GameObject characters)
+    {
+        if (!assist.GetSwapped())
+        {
+            float lifePercentage = (float)currentCharacter.GetHealthBar().getHP() / currentCharacter.GetHealthBar().getMaxHP();
+            int pointCharacterHealth = currentCharacter.GetHealthBar().getHP();
+            int secondCharacterHealth = characters.transform.GetChild(1).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+            int thirdCharacterHealth = characters.transform.GetChild(2).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+            if (lifePercentage < 0.4)
+            {
+                if (pointCharacterHealth > secondCharacterHealth)
+                {
+                    if (pointCharacterHealth > thirdCharacterHealth)
+                    {
+                        ////Leave point character
+                        conditions &= ~AIConditions.changeSecondCharacter;
+                        conditions &= ~AIConditions.changeThirdCharacter;
+                        conditions |= AIConditions.leavePointCharacter;
+                    }
+                    else
+                    {
+                        ///Change to third character
+                        conditions &= ~AIConditions.leavePointCharacter;
+                        conditions &= ~AIConditions.changeSecondCharacter;
+                        conditions |= AIConditions.changeThirdCharacter;
+                    }
+                }
+                else
+                {
+                    if (secondCharacterHealth >= thirdCharacterHealth)
+                    {
+                        ///Change to second character
+                        conditions &= ~AIConditions.leavePointCharacter;
+                        conditions &= ~AIConditions.changeThirdCharacter;
+                        conditions |= AIConditions.changeSecondCharacter;
+                    }
+                    else
+                    {
+                        /// Change to third character
+                        conditions &= ~AIConditions.leavePointCharacter;
+                        conditions &= ~AIConditions.changeSecondCharacter;
+                        conditions |= AIConditions.changeThirdCharacter;
+                    }
+                }
+            }
+            else
+            {
+                /// leave point character
+                conditions &= ~AIConditions.changeSecondCharacter;
+                conditions &= ~AIConditions.changeThirdCharacter;
+                conditions |= AIConditions.leavePointCharacter;
+            }
+        }
+        else
+        {
+            //// Reset all conditions
+            conditions &= ~AIConditions.leavePointCharacter;
+            conditions &= ~AIConditions.changeSecondCharacter;
+            conditions &= ~AIConditions.changeThirdCharacter;
+        }
+    }
+
 
 }
