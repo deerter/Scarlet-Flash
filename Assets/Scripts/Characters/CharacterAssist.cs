@@ -95,6 +95,10 @@ public class CharacterAssist : MonoBehaviour
             characterSwap.GetComponent<CharacterMovement>().enabled = true;
             characterSwap.GetComponent<CharacterCombat>().enabled = true;
         }
+        else
+        {
+            characterSwap.GetComponent<StaticAI>().enabled = true;
+        }
         characterSwap.GetComponent<CharacterActions>().enabled = true;
     }
 
@@ -109,6 +113,10 @@ public class CharacterAssist : MonoBehaviour
         {
             pointCharacter.GetComponent<CharacterMovement>().enabled = false;
             pointCharacter.GetComponent<CharacterCombat>().enabled = false;
+        }
+        else
+        {
+            pointCharacter.GetComponent<StaticAI>().enabled = false;
         }
         pointCharacter.GetComponent<CharacterActions>().enabled = false;
     }

@@ -321,7 +321,6 @@ public class CharacterActions : MonoBehaviour
     public void CharacterIsGrounded()
     {
         BoxCollider2D boxCollider = currentCharacter.GetComponent<BoxCollider2D>();
-        BoxCollider2D rivalBoxCollider = rivalCharacter.GetComponent<BoxCollider2D>();
         float extraHeightText = 1.0f;
         ///Check if character collider is touching another collider
         if ((Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeightText, groundLayerMask).collider) != null)

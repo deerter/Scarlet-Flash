@@ -91,20 +91,31 @@ public class StaticAI : MonoBehaviour
         else if (characterAction == AnimationStates.BLOCKING_JUMPING || characterAction == AnimationStates.BLOCKING_CROUCHING)
         {
             characterActions.Block();
-            characterActions.Invoke("StopBlocking", 3);   //// Stops blocking after 2 seconds
+            characterActions.Invoke("StopBlocking", 5);   //// Stops blocking after x seconds
         }
 
 
         ///// Swap characters
         if (characterAction == "SwapCharacter2")
         {
-            print("how do you do");
             characterAssist.Swap("Assist1", false);
         }
         else if (characterAction == "SwapCharacter3")
         {
-            print("On my own");
             characterAssist.Swap("Assist2", false);
+        }
+    }
+
+    private void PerformWalkState()
+    {
+        if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)
+        {
+            characterActions.Block();
+            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_BACKWARDS);
+        }
+        else if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS)
+        {
+            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_FORWARDS);
         }
     }
 
@@ -210,6 +221,11 @@ public class StaticAI : MonoBehaviour
         AddRule(new ThirdRuleSwapCharacter(), rulesEngineSwapCharacter);
     }
 
+    private void PerformNewAction()
+    {
+        actionTaken = false;
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -260,9 +276,12 @@ public class StaticAI : MonoBehaviour
                 characterActions.StopBlocking();
             }
 
+            PerformWalkState();
+
             if (Array.IndexOf(AnimationStates.GetIdleMovements(), currentCharacter.GetAnimationStatus()) >= 0)
             {
-                actionTaken = false;
+                //actionTaken = false;
+                Invoke("PerformNewAction", 2);
                 ExecuteRules(rulesEngineSwapCharacter);
                 if (Array.IndexOf(AnimationStates.GetAttacks(), rivalCharacter.GetAnimationStatus()) >= 0)
                 {

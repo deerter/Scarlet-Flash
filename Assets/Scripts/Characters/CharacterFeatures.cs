@@ -221,7 +221,7 @@ public class CharacterFeatures : MonoBehaviour
     void Start()
     {
         //string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
-        characterName = "Ken";  //For testing
+        characterName = "Leona";  //For testing
         characterSeries = CharacterSelectionMapping.GetCharacterSeries(characterName);
         var type = Type.GetType(characterName);
         character = (Character)Activator.CreateInstance(type);

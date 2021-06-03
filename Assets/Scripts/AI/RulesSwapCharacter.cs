@@ -45,7 +45,6 @@ public class SecondRuleSwapCharacter : RulesInterface
 
     string RulesInterface.action()
     {
-        Debug.Log("fuuuuuck");
         string actionToTake = "";
         float randomValue = Random.value;
         if (randomValue < 0.8)

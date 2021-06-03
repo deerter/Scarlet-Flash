@@ -31,6 +31,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: -0.15750608
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -49,6 +55,12 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.08
+        value: 0.7039345
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
         value: 0.7039345
         inSlope: 0
         outSlope: 0
@@ -75,6 +87,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: 0.06106335
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -97,6 +115,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: 1.1783153
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -109,6 +133,8 @@ AnimationClip:
     - time: 0
       value: {fileID: 21300002, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
     - time: 0.08
+      value: {fileID: 21300000, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
+    - time: 0.24
       value: {fileID: 21300000, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
     attribute: m_Sprite
     path: 
@@ -159,12 +185,13 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300002, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
     - {fileID: 21300000, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
+    - {fileID: 21300000, guid: 63ac7288b3dc92b40bd9c1035dc8cf2e, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.12
+    m_StopTime: 0.28
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -195,6 +222,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: -0.15750608
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -213,6 +246,12 @@ AnimationClip:
         tangentMode: 136
       - serializedVersion: 2
         time: 0.08
+        value: 0.7039345
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
         value: 0.7039345
         inSlope: 0
         outSlope: 0
@@ -239,6 +278,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: 0.06106335
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -261,6 +306,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 136
+      - serializedVersion: 2
+        time: 0.24
+        value: 1.1783153
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -273,7 +324,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.12
+  - time: 0.2
+    functionName: HitEnding
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.24
     functionName: EndAnimation
     data: Standing
     objectReferenceParameter: {fileID: 0}

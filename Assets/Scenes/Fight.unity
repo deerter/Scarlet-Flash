@@ -1623,6 +1623,7 @@ GameObject:
   - component: {fileID: 483635887}
   - component: {fileID: 483635886}
   - component: {fileID: 483635892}
+  - component: {fileID: 483635893}
   m_Layer: 5
   m_Name: P2ThirdCharacter
   m_TagString: Player2
@@ -1639,7 +1640,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 469.00003, y: -183.00003, z: 0}
   m_LocalScale: {x: 470, y: 470, z: 0.9999895}
-  m_Children: []
+  m_Children:
+  - {fileID: 1540458036}
   m_Father: {fileID: 1592446731}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1654,7 +1656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 2053421549}
+  rivalCharacters: {fileID: 746265495}
 --- !u!114 &483635887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,7 +1792,21 @@ MonoBehaviour:
   rivalCharacters: {fileID: 746265495}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+--- !u!114 &483635893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 483635884}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3421c423f875214c89442a6438ec741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimer: {fileID: 44406819}
+  characters: {fileID: 1592446730}
+  rivalCharacters: {fileID: 746265495}
 --- !u!1 &492323763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,6 +2481,75 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 649190979}
+--- !u!1 &660091592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 660091593}
+  - component: {fileID: 660091595}
+  - component: {fileID: 660091594}
+  m_Layer: 5
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &660091593
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660091592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0412129, y: 0.7570004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 676179202}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660091594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660091592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6656a290551bc5a4abe2670876ff0daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSparks: {fileID: 621230786}
+  blockSprite: {fileID: 1637167024}
+  RivalSoundEffectPlayer: {fileID: 1638213361}
+--- !u!61 &660091595
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 660091592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.32885003, y: -0.43462783}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34229997, y: 0.20776689}
+  m_EdgeRadius: 0
 --- !u!1 &669008354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2633,7 @@ GameObject:
   - component: {fileID: 676179204}
   - component: {fileID: 676179203}
   - component: {fileID: 676179209}
+  - component: {fileID: 676179210}
   m_Layer: 5
   m_Name: P2SecondCharacter
   m_TagString: Player2
@@ -2564,7 +2650,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 469.00003, y: -183.00003, z: 0}
   m_LocalScale: {x: 470, y: 470, z: 0.9999895}
-  m_Children: []
+  m_Children:
+  - {fileID: 660091593}
   m_Father: {fileID: 1592446731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2579,7 +2666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 2053421549}
+  rivalCharacters: {fileID: 746265495}
 --- !u!114 &676179204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,7 +2802,21 @@ MonoBehaviour:
   rivalCharacters: {fileID: 746265495}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+--- !u!114 &676179210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 676179201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3421c423f875214c89442a6438ec741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTimer: {fileID: 44406819}
+  characters: {fileID: 1592446730}
+  rivalCharacters: {fileID: 746265495}
 --- !u!1 &746265495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,7 +3213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 1592446730}
 --- !u!114 &823685772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3128,7 +3229,7 @@ MonoBehaviour:
   rivalCharacters: {fileID: 1592446730}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &823685773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3152,7 +3253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacters: {fileID: 0}
 --- !u!114 &823685775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3182,9 +3282,9 @@ BoxCollider2D:
   m_Offset: {x: 0.002626121, y: 0.023990035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.454}
-    oldSize: {x: 0.88, y: 1.24}
-    newSize: {x: 0.88, y: 1.2533333}
+    pivot: {x: 0.48, y: 0.47}
+    oldSize: {x: 0.5483871, y: 1.5870968}
+    newSize: {x: 0.8, y: 1.2967741}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -3221,7 +3321,7 @@ Animator:
   m_GameObject: {fileID: 823685769}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 83b9bb2fdadeb664aa53eb4fb974d273, type: 2}
+  m_Controller: {fileID: 9100000, guid: f48bd3f4e3bb5cb49be37aa23aa1e77d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3268,7 +3368,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.88, y: 1.2533333}
+  m_Size: {x: 0.8, y: 1.2967741}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -5026,6 +5126,75 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1540458035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1540458036}
+  - component: {fileID: 1540458038}
+  - component: {fileID: 1540458037}
+  m_Layer: 5
+  m_Name: HitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1540458036
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540458035}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.0412129, y: 0.7570007, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 483635885}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540458037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540458035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6656a290551bc5a4abe2670876ff0daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSparks: {fileID: 621230786}
+  blockSprite: {fileID: 1637167024}
+  RivalSoundEffectPlayer: {fileID: 1638213361}
+--- !u!61 &1540458038
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540458035}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.32885003, y: -0.43462783}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.34229997, y: 0.20776689}
+  m_EdgeRadius: 0
 --- !u!1 &1578733374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5301,7 +5470,7 @@ Animator:
   m_GameObject: {fileID: 1601747125}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e6bfb74efc5ee744bac2f3eefae2728, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0a0c54c9e7e1dd54b9714687c3fc8ff9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5320,7 +5489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 2053421549}
+  rivalCharacters: {fileID: 746265495}
 --- !u!114 &1601747133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5915,7 +6084,7 @@ RectTransform:
   m_GameObject: {fileID: 1799249472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.16384737, y: 0.16384737, z: 0.16384737}
+  m_LocalScale: {x: 0.1638136, y: 0.1638136, z: 0.1638136}
   m_Children:
   - {fileID: 44406817}
   - {fileID: 1413783541}
@@ -6799,7 +6968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 1592446730}
 --- !u!114 &2008869950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6815,7 +6984,7 @@ MonoBehaviour:
   rivalCharacters: {fileID: 1592446730}
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
 --- !u!114 &2008869951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6839,7 +7008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacters: {fileID: 0}
 --- !u!114 &2008869953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6869,9 +7037,9 @@ BoxCollider2D:
   m_Offset: {x: 0.002626121, y: 0.023990035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.53, y: 0.571}
-    oldSize: {x: 0.8933333, y: 0.9866667}
-    newSize: {x: 0.8933333, y: 0.9866667}
+    pivot: {x: 0.42, y: 0.36}
+    oldSize: {x: 0.73333335, y: 0.9066667}
+    newSize: {x: 0.73333335, y: 0.9066667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -6908,7 +7076,7 @@ Animator:
   m_GameObject: {fileID: 2008869947}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a0c54c9e7e1dd54b9714687c3fc8ff9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6955,7 +7123,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8933333, y: 0.9866667}
+  m_Size: {x: 0.73333335, y: 0.9066667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -7194,7 +7362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c0c9269555a999458cdecf44f28395d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacters: {fileID: 1592446730}
 --- !u!95 &2053421553
 Animator:
   serializedVersion: 3
@@ -7294,7 +7461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62940b1e03a420343b54fa6692519da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rivalCharacter: {fileID: 1601747125}
+  rivalCharacters: {fileID: 1592446730}
 --- !u!114 &2053421559
 MonoBehaviour:
   m_ObjectHideFlags: 0
