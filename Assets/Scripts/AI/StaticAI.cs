@@ -26,7 +26,7 @@ public class StaticAI : MonoBehaviour
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
     private Animator animator;
-    private string characterAction = "Standing";
+    private string characterAction = "";
     private bool actionTaken = false;
 
 
@@ -63,7 +63,7 @@ public class StaticAI : MonoBehaviour
         {
             characterActions.Walk(rigidBody, animator, AnimationStates.WALK_FORWARDS);
         }
-        else if (characterAction == AnimationStates.STANDING)
+        else if (characterAction == AnimationStates.STANDING && !currentCharacter.GetIsJumping())
         {
             animator.SetFloat("Horizontal", 0);
             currentCharacter.EndAnimation(AnimationStates.STANDING);
@@ -108,14 +108,17 @@ public class StaticAI : MonoBehaviour
 
     private void PerformWalkState()
     {
-        if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)
+        if (!currentCharacter.GetIsJumping())
         {
-            characterActions.Block();
-            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_BACKWARDS);
-        }
-        else if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS)
-        {
-            characterActions.Walk(rigidBody, animator, AnimationStates.WALK_FORWARDS);
+            if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)
+            {
+                characterActions.Block();
+                characterActions.Walk(rigidBody, animator, AnimationStates.WALK_BACKWARDS);
+            }
+            else if (currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS)
+            {
+                characterActions.Walk(rigidBody, animator, AnimationStates.WALK_FORWARDS);
+            }
         }
     }
 
@@ -226,6 +229,15 @@ public class StaticAI : MonoBehaviour
         actionTaken = false;
     }
 
+    private void BugFixStandingIsJumping()  ///// Code that fixes a nasty bug which causes the character to stay in the air with standing animation but keeps character as jumping. The character doesn't land, goes directly to standing animation.
+    {
+        if ((currentCharacter.GetAnimationStatus() == AnimationStates.WALK_FORWARDS || currentCharacter.GetAnimationStatus() == AnimationStates.WALK_BACKWARDS)
+                 && currentCharacter.GetIsJumping())
+        {
+            currentCharacter.PlayAnimation(AnimationStates.LANDING);
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -277,10 +289,12 @@ public class StaticAI : MonoBehaviour
             }
 
             PerformWalkState();
+            BugFixStandingIsJumping();
+
+
 
             if (Array.IndexOf(AnimationStates.GetIdleMovements(), currentCharacter.GetAnimationStatus()) >= 0)
             {
-                //actionTaken = false;
                 Invoke("PerformNewAction", 2);
                 ExecuteRules(rulesEngineSwapCharacter);
                 if (Array.IndexOf(AnimationStates.GetAttacks(), rivalCharacter.GetAnimationStatus()) >= 0)

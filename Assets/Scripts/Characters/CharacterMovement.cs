@@ -22,8 +22,6 @@ public class CharacterMovement : MonoBehaviour
         characterActions = this.GetComponent<CharacterActions>();
         animator = currentCharacter.GetAnimator();
         rigidBody = this.GetComponent<Rigidbody2D>();
-
-
     }
 
     /*public void falling(){       ///////JUST IN CASE/////////////Loops last frames of falling animation

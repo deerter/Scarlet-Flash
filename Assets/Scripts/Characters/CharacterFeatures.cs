@@ -25,6 +25,9 @@ public class CharacterFeatures : MonoBehaviour
     private bool isBlocked = true; /// Character can move or not ///
 	private bool isAI;  /// Character is controlled by AI or not ///
 
+    private bool victoryAlreadyStated = false;   ////////Erase this one eventually
+    private bool deathAleradyStated = false;     ////////Erase this one eventually
+
 
     public Character GetCharacter()
     {
@@ -159,7 +162,15 @@ public class CharacterFeatures : MonoBehaviour
     {
         //gameObject.GetComponent<Animator>().enabled = false;
         animator.enabled = false;
-        characterVoice.PlayCharacterVoice("KO", characterSeries, characterName);
+    }
+
+    public void PlayCharacterDeadVoice()
+    {
+        if (!deathAleradyStated)
+        {
+            characterVoice.PlayCharacterVoice("KO", characterSeries, characterName);
+            deathAleradyStated = true;
+        }
     }
 
 
@@ -214,14 +225,19 @@ public class CharacterFeatures : MonoBehaviour
         yield return new WaitForSeconds(5);
         SetAnimationStatus(AnimationStates.VICTORY);
         PlayAnimation(AnimationStates.VICTORY);
-        characterVoice.PlayCharacterVoice("Victory", characterSeries, characterName);
+        if (!victoryAlreadyStated)
+        {
+            characterVoice.PlayCharacterVoice("Victory", characterSeries, characterName);
+            victoryAlreadyStated = true;
+        }
+
     }
 
     // Use this for initialization
     void Start()
     {
-        //string characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
-        characterName = "Leona";  //For testing
+        characterName = CurrentFightStats.GetSelectedCharacter(transform.GetSiblingIndex(), gameObject.tag);
+        //characterName = "Ken";  //For testing
         characterSeries = CharacterSelectionMapping.GetCharacterSeries(characterName);
         var type = Type.GetType(characterName);
         character = (Character)Activator.CreateInstance(type);

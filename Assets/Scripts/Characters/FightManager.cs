@@ -47,9 +47,8 @@ public class FightManager : MonoBehaviour
         player1.transform.GetChild(0).GetComponent<CharacterFeatures>().SetIsBlocked(false);
         player2.transform.GetChild(0).GetComponent<CharacterFeatures>().SetIsBlocked(false);
         announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 0f);
-        //music = GameObject.Find("Music");
-        //music.GetComponent<MusicPlayer>().PlayMusic(CurrentFightStats.GetSelectedCharacter(0,"Player1"));
-        //music.GetComponent<AudioSource>().loop=true;
+        music.GetComponent<MusicPlayer>().PlayMusic(CurrentFightStats.GetSelectedCharacter(0, "Player1"));
+        music.GetComponent<AudioSource>().loop = true;
     }
 
     IEnumerator SwapCharacterWhenDead(GameObject playerCharacter)
@@ -119,6 +118,8 @@ public class FightManager : MonoBehaviour
     void Start()
     {
         announcer = GameObject.Find("Announcer");
+        music = GameObject.Find("Music");
+        music.GetComponent<MusicPlayer>().PlayMusic("");
         announcerText = AnnouncerTexts.GetComponent<Image>();
         player1.transform.GetChild(0).GetComponent<CharacterFeatures>().FightIntroduction();
         player2.transform.GetChild(0).GetComponent<CharacterFeatures>().FightIntroduction();

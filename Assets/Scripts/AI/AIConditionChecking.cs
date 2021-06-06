@@ -35,7 +35,7 @@ public static class AIConditionChecking
             for (int i = 0; i < characters.transform.childCount; i++)
             {
                 characterHealthBar = characters.transform.GetChild(i).GetComponent<CharacterFeatures>().GetHealthBar();
-                if (((float)characterHealthBar.getHP() / characterHealthBar.getMaxHP()) > 0.4f)
+                if (((float)characterHealthBar.getHP() / characterHealthBar.getMaxHP()) > 0.2f)
                 {
                     full++;
                 }
@@ -44,7 +44,7 @@ public static class AIConditionChecking
                     low++;
                 }
             }
-            if (full == 3 || full == 2) /// Character health is high
+            if (full == 3 || full == 2 || full == 1) /// Character health is high
             {
                 conditions &= ~AIConditions.characterHealth;
             }

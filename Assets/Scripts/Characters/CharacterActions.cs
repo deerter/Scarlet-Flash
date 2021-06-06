@@ -20,6 +20,10 @@ public class CharacterActions : MonoBehaviour
     //// Plays the animation of the given attack and its sound effect
     public void PerformAttack(string attack)
     {
+        if (!currentCharacter.GetIsJumping())
+        {
+            rigidBody.velocity = new Vector2(0, 0);
+        }
         characterSoundEffect.PlayCharacterSoundEffect("Attack");
         currentCharacter.PlayAnimation(attack);
         currentCharacter.SetAnimationStatus(attack);
@@ -155,7 +159,10 @@ public class CharacterActions : MonoBehaviour
         currentCharacter.EndAnimation(AnimationStates.JUMPING_DOWN);
         GameObject rivalCharacter = rivalCharacters.transform.GetChild(0).gameObject;
         Rigidbody2D rivalRigidBody = col.gameObject.GetComponent<Rigidbody2D>();
-        Vector3 contactPoint = col.contacts[0].point;
+        ContactPoint2D[] contacts = new ContactPoint2D[10];
+        col.GetContacts(contacts);
+        //Vector3 contactPoint = col.contacts[0].point;
+        Vector3 contactPoint = contacts[0].point;
         Vector3 center = rivalBoxCollider.bounds.center;
         Vector3 sides = rivalBoxCollider.bounds.extents;
         Vector2 rivalOriginalPosition = new Vector2(center.x, rivalCharacter.transform.position.y);
@@ -333,6 +340,10 @@ public class CharacterActions : MonoBehaviour
     ///Sets the Y on the character to the one it has when standing. If this isn't done, the character phases through the ground as the box collider changes shape between animations.
     public void SetCoordinatesWhenLanding()
     {
+        if (currentCharacter.GetAnimationStatus() == AnimationStates.BLOCKING_JUMPING || currentCharacter.GetAnimationStatus() == AnimationStates.TAKING_DAMAGE_JUMPING)
+        {
+            currentCharacter.HitEnding();
+        }
         transform.position = new Vector3(transform.position.x, -12.58f, transform.position.z);
         currentCharacter.SetIsJumping(false);
         Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);   //In the case the character collisions with its rival during jumping, the collision is ignored. This sets collisions as not ignored again.
