@@ -2,8 +2,8 @@ fileFormatVersion: 2
 guid: 36d7a41ba1281dc44b5aa442d5e6e8e2
 TextureImporter:
   fileIDToRecycleName:
-    21300000: BlockingCrouching2_0
-    21300002: BlockingCrouching2_1
+    21300000: BlockingCrouching_1
+    21300002: BlockingCrouching_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,29 +81,29 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlockingCrouching2_0
+      name: BlockingCrouching_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 65
         height: 63
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.445, y: 0.67}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: BlockingCrouching2_1
+      name: BlockingCrouching_0
       rect:
         serializedVersion: 2
         x: 73
         y: 0
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.485, y: 0.66}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 6a4572e408a0193498a28d35a2f1fa28
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: HeavyKick_8
+    21300002: HeavyKick_7
+    21300004: HeavyKick_6
+    21300006: HeavyKick_5
+    21300008: HeavyKick_4
+    21300010: HeavyKick_3
+    21300012: HeavyKick_2
+    21300014: HeavyKick_1
+    21300016: HeavyKick_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -29,7 +38,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -38,12 +47,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -56,7 +65,17 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -67,7 +86,133 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HeavyKick_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 76
+        height: 95
+      alignment: 9
+      pivot: {x: 0.65, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_7
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1
+        width: 72
+        height: 93
+      alignment: 9
+      pivot: {x: 0.955, y: 0.44}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_6
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 1
+        width: 74
+        height: 92
+      alignment: 9
+      pivot: {x: 0.995, y: 0.445}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_5
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1
+        width: 103
+        height: 94
+      alignment: 9
+      pivot: {x: 0.95, y: 0.435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_4
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 1
+        width: 120
+        height: 95
+      alignment: 9
+      pivot: {x: 0.84, y: 0.43}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_3
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 0
+        width: 79
+        height: 93
+      alignment: 9
+      pivot: {x: 0.71, y: 0.441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_2
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 0
+        width: 81
+        height: 91
+      alignment: 9
+      pivot: {x: 0.485, y: 0.455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_1
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 0
+        width: 76
+        height: 93
+      alignment: 9
+      pivot: {x: 0.575, y: 0.447}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: HeavyKick_0
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 0
+        width: 68
+        height: 95
+      alignment: 9
+      pivot: {x: 0.525, y: 0.445}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
