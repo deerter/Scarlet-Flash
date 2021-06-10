@@ -12,7 +12,7 @@ public static class AIConditionChecking
         return conditions;
     }
 
-    public static void CheckTimer(int timer)
+    public static void CheckTimer(float timer)
     {
         if (timer >= 20 || timer == -1)
         {
@@ -24,7 +24,7 @@ public static class AIConditionChecking
         }
     }
 
-    public static void CheckCharacterHealth(int timer, GameObject characters, GameObject rivalCharacters)
+    public static void CheckCharacterHealth(float timer, GameObject characters, GameObject rivalCharacters)
     {
 
         if (timer >= 20 || timer == -1)
@@ -55,8 +55,8 @@ public static class AIConditionChecking
         }
         else
         {
-            int fullLifePlayer = 0;
-            int fullLifeRival = 0;
+            float fullLifePlayer = 0;
+            float fullLifeRival = 0;
             for (int i = 0; i < characters.transform.childCount; i++)
             {
                 fullLifePlayer += characters.transform.GetChild(i).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
@@ -106,9 +106,9 @@ public static class AIConditionChecking
         if (!assist.GetSwapped())
         {
             float lifePercentage = (float)currentCharacter.GetHealthBar().getHP() / currentCharacter.GetHealthBar().getMaxHP();
-            int pointCharacterHealth = currentCharacter.GetHealthBar().getHP();
-            int secondCharacterHealth = characters.transform.GetChild(1).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
-            int thirdCharacterHealth = characters.transform.GetChild(2).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+            float pointCharacterHealth = currentCharacter.GetHealthBar().getHP();
+            float secondCharacterHealth = characters.transform.GetChild(1).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+            float thirdCharacterHealth = characters.transform.GetChild(2).GetComponent<CharacterFeatures>().GetHealthBar().getHP();
             if (lifePercentage < 0.4)
             {
                 if (pointCharacterHealth > secondCharacterHealth)

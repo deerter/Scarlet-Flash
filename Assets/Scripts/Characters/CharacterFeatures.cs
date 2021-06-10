@@ -199,7 +199,7 @@ public class CharacterFeatures : MonoBehaviour
 
 
     /// Character Takes or Does damage ///
-    public void TakeDamage(int attackValue)
+    public void TakeDamage(float attackValue)
     {
         healthBar.Deplete(attackValue);
     }
@@ -230,7 +230,11 @@ public class CharacterFeatures : MonoBehaviour
             characterVoice.PlayCharacterVoice("Victory", characterSeries, characterName);
             victoryAlreadyStated = true;
         }
+    }
 
+    public void StopAnimation()
+    {
+        animator.enabled = false;
     }
 
     // Use this for initialization

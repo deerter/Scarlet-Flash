@@ -39,7 +39,7 @@ public class HitCollision : MonoBehaviour
         if (otherPlayer.tag == rival)
         {
             rivalCharacter = otherPlayer.gameObject.GetComponent<CharacterFeatures>();
-            int attackValue = currentCharacter.DoDamage();
+            float attackValue = currentCharacter.DoDamage() * CurrentFightStats.GetDamage();
             ///Moves hit character
             rivalCharacter.HitDone();
             switch (currentCharacter.GetIsFlipped())

@@ -150,7 +150,10 @@ public class FightManager : MonoBehaviour
             //Prompts the restart fight screen and stops the timer
             if (fightEnded && !restartPrompt)
             {
-                timerCounter.GetComponent<Timer>().StopTimer();
+                if (CurrentFightStats.GetTimer() > 0)
+                {
+                    timerCounter.GetComponent<Timer>().StopTimer();
+                }
                 StartCoroutine(PopUpRestartFight());
             }
 

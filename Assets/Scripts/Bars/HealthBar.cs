@@ -3,30 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar {
+public class HealthBar
+{
 
-	private GameObject health;
-	private int maxHealth;
-	private int currentHealth;
-	private int currentRedHealth;
+    private GameObject health;
+    private int maxHealth;
+    private float currentHealth;
+    private float currentRedHealth;
 
-	public HealthBar(GameObject health, int maxHealth, string characterName){
-		this.health = health;
-		this.maxHealth = maxHealth;
-		this.currentHealth = maxHealth;
-		this.currentRedHealth = maxHealth;
+    public HealthBar(GameObject health, int maxHealth, string characterName)
+    {
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.currentHealth = maxHealth;
+        this.currentRedHealth = maxHealth;
         health.transform.Find("CharacterName").GetComponent<Text>().text = characterName;
-	}
+    }
 
-	public int getMaxHP(){
-		return this.maxHealth;
-	}
+    public int getMaxHP()
+    {
+        return this.maxHealth;
+    }
 
-    public int getHP(){
+    public float getHP()
+    {
         return this.currentHealth;
     }
 
-	public void SetHP(float hpNormalized)
+    public void SetHP(float hpNormalized)
     {
         health.transform.GetChild(2).localScale = new Vector3(hpNormalized, 1f);
     }
@@ -36,11 +40,11 @@ public class HealthBar {
         health.transform.GetChild(1).localScale = new Vector3(redHealthNormalized, 1f);
     }
 
-	public bool Deplete(int attackValue)
+    public bool Deplete(float attackValue)
     {
         currentHealth -= attackValue / 2;
         currentRedHealth -= attackValue / 4;
-        
+
 
         if (currentHealth <= 0)
         {
