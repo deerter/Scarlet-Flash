@@ -18,11 +18,14 @@ public class CameraMovementFight : MonoBehaviour
     private float camY, camX;
     private float camOrthSize;
     private float cameraRatio;
+    private float cameraSpeed = 0.4f;
+    private bool cameraFlip;
     private Camera mainCam;
     private Transform followTransformP1;
     private Transform followTransformP2;
     private BoxCollider2D boxColliderP1;
     private BoxCollider2D boxColliderP2;
+
 
     private Vector3 middle;
 
@@ -40,18 +43,42 @@ public class CameraMovementFight : MonoBehaviour
     private void SetCameraPosition()
     {
         float camYMovement = Mathf.Max(followTransformP1.position.y, followTransformP2.position.y);
+        bool camStartFlip = cameraFlip;
+        Vector3 camStartPosition = new Vector3(camX, camY, mainCam.transform.position.z);
         camY = Mathf.Clamp(camYMovement - offsetY, yMin + camOrthSize - 7, yMax - camOrthSize);
         switch (followTransformP1.GetComponent<CharacterFeatures>().GetIsFlipped())
         {
-            case true: camX = Mathf.Clamp(followTransformP1.position.x - offsetX, xMin + cameraRatio, xMax - cameraRatio); break;
-            case false: camX = Mathf.Clamp(followTransformP1.position.x + offsetX, xMin + cameraRatio, xMax - cameraRatio); break;
+            case true: camX = Mathf.Clamp(followTransformP1.position.x - offsetX, xMin + cameraRatio, xMax - cameraRatio); cameraFlip = true; break;
+            case false: camX = Mathf.Clamp(followTransformP1.position.x + offsetX, xMin + cameraRatio, xMax - cameraRatio); cameraFlip = false; break;
         }
+        Vector3 camEndPosition = new Vector3(camX, camY, mainCam.transform.position.z);
+        bool camEndFlip = cameraFlip;
 
-        mainCam.transform.position = new Vector3(
+        if ((camStartFlip == false && camEndFlip == true) || (camStartFlip == true && camEndFlip == false))
+        {
+            StartCoroutine(LerpCameraPosition(camStartPosition, camEndPosition));
+        }
+        else
+        {
+            mainCam.transform.position = new Vector3(
             camX,
             camY,
             mainCam.transform.position.z
-        );
+            );
+        }
+
+
+    }
+
+    IEnumerator LerpCameraPosition(Vector3 camStartPosition, Vector3 camEndPosition)
+    {
+        float time = 0;
+        while (time < cameraSpeed)
+        {
+            mainCam.transform.position = Vector3.Lerp(camStartPosition, camEndPosition, time / cameraSpeed);
+            time += Time.deltaTime;
+            yield return null;
+        }
     }
 
     private void SetCameraSize()

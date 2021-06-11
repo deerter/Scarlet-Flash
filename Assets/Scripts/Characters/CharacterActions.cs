@@ -66,12 +66,12 @@ public class CharacterActions : MonoBehaviour
         /// If rival is not in the air and screen distance is close (and not on corners), disable collision system
         if ((screenDistance == "In-close" || screenDistance == "Poke-range")
             && (rivalCharacter.transform.position.x > ScreenDistances.SCREEN_LEFT && rivalCharacter.transform.position.x < ScreenDistances.SCREEN_RIGHT)
-            && !(rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping()))
+            && !(rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping()) && rivalBoxCollider != null && boxCollider != null)
         {
             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, true);
         }
         /// If rival is already in the air, turn on the collision system
-        if (rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping())
+        if (rivalCharacter.GetComponent<CharacterFeatures>().GetIsJumping() && rivalBoxCollider != null && boxCollider != null)
         {
             Physics2D.IgnoreCollision(rivalBoxCollider, boxCollider, false);
         }

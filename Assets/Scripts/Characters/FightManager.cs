@@ -32,7 +32,7 @@ public class FightManager : MonoBehaviour
     IEnumerator PopUpRestartFight()
     {
         restartPrompt = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(8);
         restartScreen.GetComponent<PopUpWindow>().PopUp();
     }
 
@@ -96,6 +96,22 @@ public class FightManager : MonoBehaviour
         {
             child.gameObject.GetComponent<CharacterFeatures>().SetIsWinner();
         }
+        fightEnded = true;
+        StartCoroutine(AnnounceEnd());
+    }
+
+    IEnumerator AnnounceEnd()
+    {
+        int randomKOAnnounce = UnityEngine.Random.Range(1, 3);
+        int randomFinishAnnounce = UnityEngine.Random.Range(1, 3);
+        yield return new WaitForSeconds(0.4f);
+        announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("KO" + randomKOAnnounce);
+        announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 1f);
+        announcerText.sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/Fight/Texts/KO");
+        yield return new WaitForSeconds(1.0f);
+        announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 0f);
+        yield return new WaitForSeconds(2.0f);
+        announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("Finish" + randomFinishAnnounce);
     }
 
     private void AnnounceFight()
@@ -139,12 +155,10 @@ public class FightManager : MonoBehaviour
             if (CheckLifeBars(player1) && !fightEnded)
             {
                 SetWinner(player2);
-                fightEnded = true;
             }
             if (CheckLifeBars(player2) && !fightEnded)
             {
                 SetWinner(player1);
-                fightEnded = true;
             }
 
             //Prompts the restart fight screen and stops the timer
