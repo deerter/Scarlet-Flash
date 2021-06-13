@@ -225,7 +225,7 @@ public class CharacterFeatures : MonoBehaviour
         yield return new WaitForSeconds(5);
         SetAnimationStatus(AnimationStates.VICTORY);
         PlayAnimation(AnimationStates.VICTORY);
-        if (!victoryAlreadyStated)
+        if (!victoryAlreadyStated && animator.enabled)
         {
             characterVoice.PlayCharacterVoice("Victory", characterSeries, characterName);
             victoryAlreadyStated = true;

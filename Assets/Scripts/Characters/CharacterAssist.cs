@@ -156,7 +156,7 @@ public class CharacterAssist : MonoBehaviour
 
     void Update()
     {
-        if (!currentCharacter.GetIsBlocked())
+        if (!currentCharacter.GetIsBlocked() && !currentCharacter.GetIsAI())
         {
             if (Input.GetKeyDown(GameConstants.A1))
             {  ///Swap for first assist character

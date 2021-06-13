@@ -480,7 +480,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 1.12
+  - time: 0.48
     functionName: StopAnimation
     data: 
     objectReferenceParameter: {fileID: 0}
