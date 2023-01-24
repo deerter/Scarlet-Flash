@@ -28,6 +28,7 @@ public class FightManager : MonoBehaviour
     private bool fightStarted = false;
     private bool introEnded = false;
     private bool swappingCharacter = false;
+    private bool timeUp = false;
 
     IEnumerator PopUpRestartFight()
     {
@@ -65,17 +66,28 @@ public class FightManager : MonoBehaviour
 
     private void TimeUpVictory()
     {
-        ///// Revise the code for 3 vs 3 (or others) variant //////
-        /*int lifeRemainingPlayer1 = player1Features.GetHealthBar().getMaxHP() - player1Features.GetHealthBar().getHP();
-		int lifeRemainingPlayer2 = player2Features.GetHealthBar().getMaxHP() - player2Features.GetHealthBar().getHP();
-
-		if (lifeRemainingPlayer1 > lifeRemainingPlayer2){
-			player1Features.SetIsWinner();
-		} else if (lifeRemainingPlayer1 == lifeRemainingPlayer2){
-			print("DRAW");
-		} else{
-			player2Features.SetIsWinner();
-		}*/
+        float lifeRemainingPlayer1 = 0;
+        float lifeRemainingPlayer2 = 0;
+        foreach (Transform child in player1.transform)
+        {
+            lifeRemainingPlayer1 += child.GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+        }
+        foreach (Transform child2 in player2.transform)
+        {
+            lifeRemainingPlayer2 += child2.GetComponent<CharacterFeatures>().GetHealthBar().getHP();
+        }
+        if (lifeRemainingPlayer1 > lifeRemainingPlayer2)
+        {
+            SetWinner(player1);
+        }
+        else if (lifeRemainingPlayer1 == lifeRemainingPlayer2)
+        {
+            print("Draw");
+        }
+        else
+        {
+            SetWinner(player2);
+        }
     }
 
     private bool CheckLifeBars(GameObject currentPlayer)
@@ -102,12 +114,21 @@ public class FightManager : MonoBehaviour
 
     IEnumerator AnnounceEnd()
     {
-        int randomKOAnnounce = UnityEngine.Random.Range(1, 3);
+
         int randomFinishAnnounce = UnityEngine.Random.Range(1, 3);
         yield return new WaitForSeconds(0.4f);
-        announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("KO" + randomKOAnnounce);
-        announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 1f);
-        announcerText.sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/Fight/Texts/KO");
+        if (!timeUp)
+        {
+            int randomKOAnnounce = UnityEngine.Random.Range(1, 3);
+            announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("KO" + randomKOAnnounce);
+            announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 1f);
+            announcerText.sprite = Resources.Load<Sprite>("Textures_and_Sprites/Menus/Interface/Fight/Texts/KO");
+        }
+        else
+        {
+            int randomTimeUpAnnounce = UnityEngine.Random.Range(1, 3);
+            announcer.GetComponent<AnnouncerVoice>().PlayAnnouncer("TimeUp" + randomTimeUpAnnounce);
+        }
         yield return new WaitForSeconds(1.0f);
         announcerText.GetComponent<Image>().color = new Color(announcerText.color.r, announcerText.color.g, announcerText.color.b, 0f);
         yield return new WaitForSeconds(2.0f);
@@ -179,6 +200,7 @@ public class FightManager : MonoBehaviour
             if (timerCounter.GetComponent<Timer>().GetTimer() == 0 && !fightEnded)
             {
                 fightEnded = true;
+                timeUp = true;
                 TimeUpVictory();
             }
         }

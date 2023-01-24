@@ -69,7 +69,7 @@ public static class AIConditionChecking
             {
                 conditions |= AIConditions.characterHealth;
             }
-            else                                 /// Caharacter health is lower than rival's
+            else                                 /// Character health is lower than rival's
             {
                 conditions &= ~AIConditions.characterHealth;
             }

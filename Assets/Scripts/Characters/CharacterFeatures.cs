@@ -213,6 +213,7 @@ public class CharacterFeatures : MonoBehaviour
         return 0;
     }
 
+    /// Character introduces itself ///
     public void FightIntroduction()
     {
         PlayAnimation(AnimationStates.INTRO);

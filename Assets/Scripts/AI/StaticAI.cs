@@ -249,7 +249,7 @@ public class StaticAI : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody2D>();
         boxCollider = this.GetComponent<BoxCollider2D>();
 
-        /*AddRulesRivalAttacks();
+        AddRulesRivalAttacks();
         AddRulesRivalIsHit();
         AddRulesRivalIsBlock();
         AddRulesRivalBackwards();
@@ -257,7 +257,7 @@ public class StaticAI : MonoBehaviour
         AddRulesRivalForwards();
         AddRulesRivalJumpingForwards();
         AddRulesRivalIdle();
-        AddRulesSwapCharacter();*/
+        AddRulesSwapCharacter();
 
     }
 

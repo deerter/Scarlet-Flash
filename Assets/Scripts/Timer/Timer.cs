@@ -52,7 +52,6 @@ public class Timer : MonoBehaviour
     {
         if (CurrentFightStats.GetTimer() > 0)
         {
-            //timer = 100;
             timer = CurrentFightStats.GetTimer();
             counter.text = timer.ToString();
         }

@@ -174,7 +174,6 @@ public class SixthRuleRivalAttacks : RulesInterface
 
     string RulesInterface.action()
     {
-
         return AnimationStates.BLOCKING_JUMPING;
     }
 }
